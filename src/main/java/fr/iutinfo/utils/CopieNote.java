@@ -10,7 +10,7 @@ public class CopieNote extends Effet{
 
 	@Override
 	public void modifNote(Note n) {
-		
+		personnage.clearEffet(this);
 	}
 
 }

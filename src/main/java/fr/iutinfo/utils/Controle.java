@@ -37,5 +37,9 @@ public class Controle {
 		return date;
 	}
 	
+	public int getNote(Personnage p){
+		return notes.get(p).getNote();
+	}
+	
 	
 }

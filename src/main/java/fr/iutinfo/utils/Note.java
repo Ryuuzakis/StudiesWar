@@ -38,6 +38,10 @@ public class Note {
 		}
 	}
 
+	public Personnage getPersonne() {
+		return personne;
+	}
+
 	public int getNote() {
 		return note;
 	}
