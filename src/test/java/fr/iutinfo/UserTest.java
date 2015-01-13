@@ -18,6 +18,9 @@ import javax.ws.rs.core.Response.Status;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
+import fr.iutinfo.utils.App;
+import fr.iutinfo.utils.User;
+
 
 public class UserTest extends JerseyTest {
 	@Override
