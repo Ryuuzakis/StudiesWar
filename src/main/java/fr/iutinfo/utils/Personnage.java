@@ -27,7 +27,8 @@ public abstract class Personnage {
 	public Personnage(){
 		this.ef = new ArrayList<Effet>();
 		Random r = new Random();
-		this.nom = "RandomGuy" + r.nextInt(10000);	
+		
+		this.nom = "RandomGuy" + r.nextInt(10000);
 		this.stats.put("Maths",r.nextInt(19));
 		this.stats.put("Physique", r.nextInt(19));
 		this.stats.put("SVT", r.nextInt(19));
@@ -42,7 +43,6 @@ public abstract class Personnage {
 	public void setStat(String s,int i){
 		this.stats.put(s,i);
 	}
-
 	/**
 	 * 
 	 * @param i
@@ -82,6 +82,11 @@ public abstract class Personnage {
 	
 	public void genererAction(){
 		
+	}
+
+	public ArrayList<Action> getAction() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

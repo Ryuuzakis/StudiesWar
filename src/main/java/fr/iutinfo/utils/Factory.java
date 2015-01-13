@@ -1,0 +1,18 @@
+package fr.iutinfo.utils;
+
+public class Factory {
+	
+	public static final byte PARTIE = 0;
+	private static Partie partie = null;
+	
+	public Object getResource(byte resource) {
+		if(resource == PARTIE) {
+			if(partie.equals(null)) {
+				partie = new Partie(10,0);
+			}
+			return partie;
+		} else {
+			return null;
+		}
+	}
+}
