@@ -8,9 +8,7 @@ public class CopieNote extends Effet{
 
 	@Override
 	public void modifNote(Note n) {
-		//n.setNote(p.get);
-		note.getControle().calculerNoteDe()
-		
+				
 	}
 
 }

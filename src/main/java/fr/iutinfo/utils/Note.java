@@ -5,7 +5,7 @@ import java.util.Random;
 public class Note {
 	
 	private Controle controle;
-	private byte note=0;
+	private int note=0;
 	boolean notefinal=true;
 	private Personnage personne;
 	
@@ -32,19 +32,26 @@ public class Note {
 	
 	public void calculNoteRelation(){
 		if(personne.getEffets(3).isEmpty()){
-			for(Effet e:personne.getEffets(3)){
-				e.modifNote(this);
+			for(int i=0;i<personne.getEffets(3).size();i++){
+				personne.getEffets(3).get(i).modifNote(this);
 			}
 		}
 	}
 
-	public byte getNote() {
+	public int getNote() {
 		return note;
+	}
+	
+	public void setNote(int i) {
+		this.note=note+i;
+		
 	}
 
 	public Controle getControle() {
 		return controle;
 	}
+
+	
 
 	
 	

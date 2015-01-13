@@ -12,7 +12,7 @@ public class BoostNote extends Effet {
 
 	@Override
 	public void modifNote(Note n) {
-		n.setNote(this.getNote() + this.modificateur);
+		n.setNote(n.getNote() + this.modificateur);
 	}
 
 }

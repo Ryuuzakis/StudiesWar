@@ -19,6 +19,11 @@ public abstract class Effet {
 		this.priorite = pri;
 	}
 	
+	public boolean estActif(Controle c){
+		
+		return dDebut <= c.getDate() && dFin > c.getDate();
+	}
+	
 	public abstract void modifNote(Note n);
 	
 	
