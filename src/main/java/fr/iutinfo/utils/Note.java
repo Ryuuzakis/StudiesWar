@@ -46,8 +46,8 @@ public class Note {
 		return note;
 	}
 	
-	public void setNote(int i) {
-		this.note=note+i;
+	public void setNote(int note) {
+		this.note=note;
 	}
 
 	public Controle getControle() {

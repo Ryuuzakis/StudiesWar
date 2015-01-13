@@ -10,7 +10,7 @@ public class Partie {
 	private int dureeTour;
 	private int id;
 
-	Partie(int dureeTour,int id){
+	public Partie(int dureeTour,int id){
 		this.id=id;
 		this.dureeTour=dureeTour;
 		this.personnes=new ArrayList<Personnage>();
@@ -18,7 +18,7 @@ public class Partie {
 	/**
 	 * methode appelé quand un joueur rejoin la partie
 	 */
-	private void rejoinPartie(Personnage p){
+	public void rejoinPartie(Personnage p){
 		personnes.add(p);
 	}
 	/**

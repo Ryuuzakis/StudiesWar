@@ -85,7 +85,6 @@ public abstract class Personnage {
 	}
 
 	public ArrayList<Action> getAction() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

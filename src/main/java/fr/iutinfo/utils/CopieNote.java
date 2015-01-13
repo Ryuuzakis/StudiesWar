@@ -10,8 +10,8 @@ public class CopieNote extends Effet{
 
 	@Override
 	public void modifNote(Note n) {
-		if(n.getNote()<n.getControle().getNote(personnage)){
-			n.setNote(n.getControle().getNote(personnage));
+		if(n.getNote()<n.getControle().getNote(personnage).getNote()){
+			n.setNote(n.getControle().getNote(personnage).getNote());
 			n.getPersonne().clearEffet(this);
 		}
 	}

@@ -1,7 +1,5 @@
 package fr.iutinfo.utils;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,8 +12,8 @@ public class Controle {
 	private Partie partie;
 	private byte date;
 	
-	Controle(String s,Partie p,byte date){
-		this.matiere=matiere;
+	public Controle(String s,Partie p,byte date){
+		this.matiere=s;
 		this.partie=p;
 		this.date=date;
 		init();
@@ -27,24 +25,47 @@ public class Controle {
 		}
 	}
 
-	public void calculerNoteDe(){
+	public void calculerTousLesNotes(){
 		
+		for(Personnage p : partie.getPersonnes()){
+			this.getNote(p).calculerNote();
+		}
+		int n;
+		boolean changement=true;
+		while(changement){
+			changement=false;
+			triParNote();
+			for(Personnage p : partie.getPersonnes()){
+				n=this.getNote(p).getNote();
+				this.getNote(p).calculNoteRelation();
+				if(n!=this.getNote(p).getNote()){
+					changement=true;
+				}
+			}
+		}
+		for(Personnage p : partie.getPersonnes()){
+			if(this.getNote(p).getNote()>20){
+				this.getNote(p).setNote(20);
+			}else if(this.getNote(p).getNote()<0){
+				this.getNote(p).setNote(0);
+			}
+		}
+		
+	}
+	
+	public void triParNote(){
 		Collections.sort(partie.getPersonnes(),new Comparator<Personnage>() {
 
 			@Override
 			public int compare(Personnage p1, Personnage p2) {
-				if(getNote(p1)>getNote(p2)){
+				if(getNote(p1).getNote()>getNote(p2).getNote()){
 					return 1;
-				}else if(getNote(p1)>getNote(p2)){
+				}else if(getNote(p1).getNote()>getNote(p2).getNote()){
 					return -1;
 				}
 				return 0;
 			}
 		});
-		
-		for(Personnage p : partie.getPersonnes()){
-			
-		}
 	}
 
 	public String getMatiere() {
@@ -55,8 +76,8 @@ public class Controle {
 		return date;
 	}
 	
-	public int getNote(Personnage p){
-		return notes.get(p).getNote();
+	public Note getNote(Personnage p){
+		return notes.get(p);
 	}
 	
 }
