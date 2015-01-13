@@ -16,8 +16,8 @@ public class Partie {
 	/**
 	 * methode appelé quand un joueur rejoin la partie
 	 */
-	private void rejoinPartie(){
-		personnes.add(new Personnage());
+	private void rejoinPartie(Personnage p){
+		personnes.add(p);
 	}
 	/**
 	 * methode appelé a chaque debut de tour

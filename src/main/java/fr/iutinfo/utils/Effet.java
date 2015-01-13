@@ -1,5 +1,5 @@
 package fr.iutinfo.utils;
 
-public class Effet {
-
+public abstract class Effet {
+	
 }
