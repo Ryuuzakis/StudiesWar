@@ -20,7 +20,7 @@ public abstract class Personnage {
 		this.stats.put("Maths", r.nextInt(19));
 		this.stats.put("Physique", r.nextInt(19));
 		this.stats.put("SVT", r.nextInt(19));
-		this.stats.put("Algo", r.nextInt(19));
+		this.stats.put("Etudier", r.nextInt(19));
 		this.stats.put("Triche", r.nextInt(19));
 	}
 	
@@ -32,7 +32,7 @@ public abstract class Personnage {
 		this.stats.put("Maths",r.nextInt(19));
 		this.stats.put("Physique", r.nextInt(19));
 		this.stats.put("SVT", r.nextInt(19));
-		this.stats.put("Algo", r.nextInt(19));
+		this.stats.put("Etudier", r.nextInt(19));
 		this.stats.put("Triche", r.nextInt(19));
 	}
 	
@@ -86,6 +86,10 @@ public abstract class Personnage {
 
 	public ArrayList<Action> getAction() {
 		return null;
+	}
+	
+	public void addEffect(Effet e){
+		ef.add(e);
 	}
 	
 	
