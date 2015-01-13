@@ -1,5 +1,9 @@
 package fr.iutinfo.utils;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,20 +22,29 @@ public class Controle {
 	}
 	
 	private void init() {
-<<<<<<< HEAD
 		for(Personnage p:partie.getPersonnes()){
 			notes.put(p, new Note(this,p));
-=======
-		for(Personnage p:partie){
-			notes.put(p, new Note(this.p));
->>>>>>> 31a4ae7f27bc0afb49d3f37a549887021a91b609
 		}
 	}
 
-	public void calculerNoteDe(Personnage p){
+	public void calculerNoteDe(){
 		
-		Note note=new Note(this,p);
-		notes.put(p, note);
+		Collections.sort(partie.getPersonnes(),new Comparator<Personnage>() {
+
+			@Override
+			public int compare(Personnage p1, Personnage p2) {
+				if(getNote(p1)>getNote(p2)){
+					return 1;
+				}else if(getNote(p1)>getNote(p2)){
+					return -1;
+				}
+				return 0;
+			}
+		});
+		
+		for(Personnage p : partie.getPersonnes()){
+			
+		}
 	}
 
 	public String getMatiere() {
@@ -42,5 +55,8 @@ public class Controle {
 		return date;
 	}
 	
+	public int getNote(Personnage p){
+		return notes.get(p).getNote();
+	}
 	
 }

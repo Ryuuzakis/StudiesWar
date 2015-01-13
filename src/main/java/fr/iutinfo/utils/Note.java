@@ -15,14 +15,14 @@ public class Note {
 	}
 	
 	public void calculerNote(){
-		for(Effet e:personne.getEffets(1)){
+		for(Effet e:personne.getEffets(1,controle)){
 			e.modifNote(this);
 		}
-		if(personne.getEffets(1).isEmpty()){
+		if(personne.getEffets(1,controle).isEmpty()){
 			note=personne.getStat(controle.getMatiere());
 			note+=new Random().nextInt(5)-2;
 			
-			for(Effet e:personne.getEffets(2)){
+			for(Effet e:personne.getEffets(2,controle)){
 				e.modifNote(this);
 			}
 			
@@ -31,9 +31,9 @@ public class Note {
 	}
 	
 	public void calculNoteRelation(){
-		if(personne.getEffets(3).isEmpty()){
-			for(int i=0;i<personne.getEffets(3).size();i++){
-				personne.getEffets(3).get(i).modifNote(this);
+		if(personne.getEffets(3,controle).isEmpty()){
+			for(int i=0;i<personne.getEffets(3,controle).size();i++){
+				personne.getEffets(3,controle).get(i).modifNote(this);
 			}
 		}
 	}
@@ -42,14 +42,12 @@ public class Note {
 		return note;
 	}
 	
-<<<<<<< HEAD
 	public void setNote(int i) {
 		this.note=note+i;
-		
-=======
-	public void setNote(byte i) {
-		this.note =(byte) (note+i);
->>>>>>> 31a4ae7f27bc0afb49d3f37a549887021a91b609
+	}
+
+	public Personnage getPersonne() {
+		return personne;
 	}
 
 	public Controle getControle() {
