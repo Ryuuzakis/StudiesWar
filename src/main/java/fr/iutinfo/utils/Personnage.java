@@ -25,6 +25,7 @@ public abstract class Personnage {
 	}
 	
 	public Personnage(){
+		this.ef = new ArrayList<Effet>();
 		Random r = new Random();
 		this.nom = "RandomGuy" + r.nextInt(10000);	
 		this.stats.put("Maths",r.nextInt(19));
@@ -59,6 +60,14 @@ public abstract class Personnage {
 		
 	}
 	
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
 	public void clearEffet(Effet e){
 		ef.remove(e);
 	}
@@ -69,6 +78,10 @@ public abstract class Personnage {
 
 	public void setPA(int pA) {
 		PA = pA;
+	}
+	
+	public void genererAction(){
+		
 	}
 	
 	
