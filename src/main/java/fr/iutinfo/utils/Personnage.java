@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 
-public class Personnage {
+public abstract class Personnage {
 	
 	private String nom ;
 	private int PA;
@@ -22,13 +22,21 @@ public class Personnage {
 	}
 	
 	public Personnage(){
-		this.nom = "RandomGuy";
 		Random r = new Random();
+		this.nom = "RandomGuy" + r.nextInt(10000);
 		this.stats.put("Maths",r.nextInt(20));
 		this.stats.put("Physique",r.nextInt(20));
 		this.stats.put("SVT",r.nextInt(20));
 		this.stats.put("Algo",r.nextInt(20));
 		this.stats.put("Triche",r.nextInt(20));
+	}
+	
+	public int getStat(String s){
+		return this.stats.get(s);
+	}
+	
+	public void setStat(String s,Integer i){
+		this.stats.put(s,i);
 	}
 	
 	
