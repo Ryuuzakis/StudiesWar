@@ -38,7 +38,7 @@ public abstract class Personnage {
 	public Integer getStat(String s){
 		return this.stats.get(s);
 	}
-
+	
 	public void setStat(String s,int i){
 		this.stats.put(s,i);
 	}
