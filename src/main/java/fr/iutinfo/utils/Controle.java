@@ -16,7 +16,7 @@ public class Controle {
 	}
 	
 	private void init() {
-		for(Personne p:partie){
+		for(Personnage p:partie){
 			notes.put(p, new Note(this.p));
 		}
 	}
@@ -31,6 +31,5 @@ public class Controle {
 		return matiere;
 	}
 	
-	public Note 
 	
 }

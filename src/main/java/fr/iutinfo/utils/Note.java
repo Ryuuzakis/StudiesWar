@@ -41,6 +41,10 @@ public class Note {
 	public byte getNote() {
 		return note;
 	}
+	
+	public void setNote(byte i) {
+		this.note =(byte) (note+i);
+	}
 
 	public Controle getControle() {
 		return controle;
