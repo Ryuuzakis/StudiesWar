@@ -18,7 +18,7 @@ public class Partie {
 	/**
 	 * methode appelé quand un joueur rejoin la partie
 	 */
-	private void rejoinPartie(Personnage p){
+	public void rejoinPartie(Personnage p){
 		personnes.add(p);
 	}
 	/**
