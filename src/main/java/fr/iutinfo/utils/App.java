@@ -16,6 +16,7 @@ public class App extends Application{
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(UserResource.class);
     	s.add(TestResource.class);
+    	s.add(PartieRessource.class);
     	return s;
     }
 }

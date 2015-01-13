@@ -27,28 +27,39 @@
 
 		<h3 style="text-align: center">Choisir vos paramètres</h3>
 
-		<p style="text-align: center">
-			nombre d'étudiants ?</br>
-			école ?</br>
-			.</br>
-			.</br>
-			.</br>
-		</p>
-
-		<div class="container" >
-			
-			<div>
-				<a href="/accueil.html"><button id="accueil">Accueil</button> </a>
-			</div>
+		<div style="text-align: center">
+			<form action="/v1/partie" method="get">
+				<input type="text" name="nom" />
+				<input type="submit" value="Lancer"/>
+				</form>
 		</div>
 		
 		
 		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#get").click(function () {getUser($('#user').val())});
-				$("#post").click(function () {postUser($('#user').val())});
-				$("#list").click(function () {listUsers()});
-			});
+			var element = document.getElementById('sub');
+			
+			
+
+   			 element.onclick = function() {
+   			 		var nom = $("#user").val();
+   			 		document.location.href="v1/partie/"+nom;
+				/*			$.ajax({
+							type : 'POST',
+							contentType : 'application/json',
+							url : "v1/partie",
+							dataType : "json",
+							data : JSON.stringify({
+								"nom" : 
+							}),
+							success : function(data, textStatus, jqXHR) {
+								alert('GG !!');	
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert('postUser error: ' + textStatus);
+							}
+							});
+				*/
+			}
   		</script>
 	</body>
 </html>
