@@ -8,7 +8,12 @@ public class CopieNote extends Effet{
 
 	@Override
 	public void modifNote(Note n) {
+<<<<<<< HEAD
 				
+=======
+	
+		
+>>>>>>> 31a4ae7f27bc0afb49d3f37a549887021a91b609
 	}
 
 }

@@ -42,9 +42,14 @@ public class Note {
 		return note;
 	}
 	
+<<<<<<< HEAD
 	public void setNote(int i) {
 		this.note=note+i;
 		
+=======
+	public void setNote(byte i) {
+		this.note =(byte) (note+i);
+>>>>>>> 31a4ae7f27bc0afb49d3f37a549887021a91b609
 	}
 
 	public Controle getControle() {
