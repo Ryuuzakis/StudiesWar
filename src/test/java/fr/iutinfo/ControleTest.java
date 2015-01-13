@@ -28,9 +28,9 @@ public class ControleTest {
 		
 		c1.calculerTousLesNotes();
 		
-		System.out.println(c1.getNote(p1).getNote());
-		System.out.println(c1.getNote(p2).getNote());
-		System.out.println(c1.getNote(p3).getNote());
+		c1.getNote(p1).getNote();
+		c1.getNote(p2).getNote();
+		c1.getNote(p3).getNote();
 		
 	}
 
