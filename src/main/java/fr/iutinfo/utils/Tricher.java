@@ -6,7 +6,8 @@ public class Tricher extends Action{
 	byte eff ;
 	Personnage c;
 	
-	public Tricher(Personnage c){
+	public Tricher(Personnage p,Personnage c){
+		super(p);
 		Random r = new Random();
 		this.eff = (byte) r.nextInt(4);
 		this.c = c;
