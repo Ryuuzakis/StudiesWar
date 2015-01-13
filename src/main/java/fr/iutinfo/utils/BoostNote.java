@@ -3,16 +3,20 @@ package fr.iutinfo.utils;
 import java.util.HashMap;
 
 public class BoostNote extends Effet {
-	private byte modificateur;
+	private int modificateur;
+	private String matiere;
 
-	public BoostNote(byte dD, byte dF, byte modif) {
+	public BoostNote(byte dD, byte dF, int modif,String matiere) {
 		super(dD, dF, (byte) 3);
 		this.modificateur = modif;
+		this.matiere = matiere;
 	}
 
 	@Override
 	public void modifNote(Note n) {
-		n.setNote(n.getNote() + this.modificateur);
+		if(n.getControle().getMatiere().equals(matiere)){
+			n.setNote(n.getNote() + this.modificateur);
+		}
 	}
 
 }

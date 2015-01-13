@@ -10,7 +10,7 @@ public class Partie {
 	private int dureeTour;
 	private int id;
 
-	Partie(int dureeTour,int id){
+	public Partie(int dureeTour,int id){
 		this.id=id;
 		this.dureeTour=dureeTour;
 		this.personnes=new ArrayList<Personnage>();
