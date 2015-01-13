@@ -18,13 +18,8 @@ public class Controle {
 	}
 	
 	private void init() {
-<<<<<<< HEAD
 		for(Personnage p:partie.getPersonnes()){
 			notes.put(p, new Note(this,p));
-=======
-		for(Personnage p:partie){
-			notes.put(p, new Note(this.p));
->>>>>>> 31a4ae7f27bc0afb49d3f37a549887021a91b609
 		}
 	}
 

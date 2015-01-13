@@ -15,9 +15,6 @@ public class PersonnageTest {
 	public void test() {
 		Personnage p = new PersonnageJoueur();
 		assertTrue(p.getStat("Maths") <= 20);
-		p.setStat("Triche", (byte)15);
-		assertEquals(p.getStat("Triche"),15);
-		
 	}
 
 }
