@@ -43,3 +43,20 @@ function afficheListUsers(data) {
 	html = html + "</ul>";
 	$("#reponse").html(html);
 }
+
+function lancerPartie() {
+	alert('Lancer la partie');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
