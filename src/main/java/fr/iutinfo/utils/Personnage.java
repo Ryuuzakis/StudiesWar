@@ -1,5 +1,6 @@
 package fr.iutinfo.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -9,10 +10,12 @@ public abstract class Personnage {
 	private String nom ;
 	private int PA;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
+	private ArrayList<Effet> ef ;
 	
 	
 	public Personnage(String s){
 		this.nom = s;
+		this.ef = new ArrayList<Effet>();
 		Random r = new Random();
 		this.stats.put("Maths",r.nextInt(20));
 		this.stats.put("Physique",r.nextInt(20));
