@@ -48,5 +48,10 @@ public class Partie {
 		return semaineActuel;
 	}
 	
+	public ArrayList<Action> getActions(Personnage p){
+		p.genererAction();
+		return p.getAction();
+	}
+	
 	
 }

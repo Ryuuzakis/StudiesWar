@@ -27,13 +27,10 @@
 
 		<h3 style="text-align: center">Choisir vos paramètres</h3>
 
-		<p style="text-align: center">
-			nombre d'étudiants ?</br>
-			école ?</br>
-			.</br>
-			.</br>
-			.</br>
-		</p>
+		<div style="text-align: center">
+			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
+			<button id="sub">Valider</button>
+		</div>
 
 		<div class="container" >
 			
@@ -44,11 +41,25 @@
 		
 		
 		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#get").click(function () {getUser($('#user').val())});
-				$("#post").click(function () {postUser($('#user').val())});
-				$("#list").click(function () {listUsers()});
-			});
+			var element = document.getElementById('user');
+
+   			 element.onclick = function() {
+							$.ajax({
+							type : 'POST',
+							contentType : 'application/json',
+							url : "v1/partie/",
+							dataType : "json",
+							data : JSON.stringify({
+								"name" : $('#user').val()
+							}),
+							success : function(data, textStatus, jqXHR) {
+								alert('GG !!');	
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert('postUser error: ' + textStatus);
+							}
+							});
+						}
   		</script>
 	</body>
 </html>

@@ -38,11 +38,14 @@ public class Note {
 		}
 	}
 
+	public Personnage getPersonne() {
+		return personne;
+	}
+
 	public int getNote() {
 		return note;
 	}
 	
-
 	public void setNote(int i) {
 		this.note=note+i;
 	}
