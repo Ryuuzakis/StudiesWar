@@ -28,9 +28,14 @@ public class ControleTest {
 		
 		c1.calculerTousLesNotes();
 		
-		c1.getNote(p1).getNote();
-		c1.getNote(p2).getNote();
-		c1.getNote(p3).getNote();
+		assertArrayTrue(c1.getNote(p1).getNote());
+		assertArrayTrue(c1.getNote(p2).getNote());
+		assertArrayTrue(c1.getNote(p3).getNote());
+		
+	}
+
+	private void assertArrayTrue(int note) {
+		// TODO Auto-generated method stub
 		
 	}
 
