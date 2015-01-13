@@ -1,15 +1,20 @@
 package fr.iutinfo.utils;
 
-public class BoostNote extends Effet {
+import java.util.HashMap;
 
-	public BoostNote(byte dD, byte dF) {
-		super(dD, dF);
+public class BoostNote extends Effet {
+	private byte modificateur;
+
+	public BoostNote(byte dD, byte dF, byte modif) {
+		super(dD, dF, (byte) 3);
+		this.modificateur = modif;
 	}
 
 	@Override
-	public void appliqueEffet() {
-		// TODO Auto-generated method stub
-		
+	public void modifNote(Note n) {
+		n.setNote(this.getNote() + this.modificateur);
 	}
 
 }
+
+
