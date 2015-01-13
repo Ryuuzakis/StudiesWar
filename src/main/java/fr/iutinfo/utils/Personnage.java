@@ -22,8 +22,9 @@ public class Personnage {
 	}
 	
 	public Personnage(){
-		this.nom = "RandomGuy";
 		Random r = new Random();
+		this.nom = "RandomGuy"+r.nextInt(100000);
+		
 		this.stats.put("Maths",r.nextInt(20));
 		this.stats.put("Physique",r.nextInt(20));
 		this.stats.put("SVT",r.nextInt(20));
