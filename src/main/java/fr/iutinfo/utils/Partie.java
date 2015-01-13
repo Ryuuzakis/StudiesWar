@@ -1,10 +1,12 @@
 package fr.iutinfo.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Partie {
 
 	private ArrayList<Personnage> personnes;
+	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
 	private int dureeTour;
 	private int id;
 
@@ -37,4 +39,12 @@ public class Partie {
 	public int getNombreDeleveRestant(){
 		return personnes.size();
 	}
+	public ArrayList<Personnage> getPersonnes() {
+		return personnes;
+	}
+	public HashMap<Byte, Controle> getSemaineActuel() {
+		return semaineActuel;
+	}
+	
+	
 }
