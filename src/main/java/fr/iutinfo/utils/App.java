@@ -10,8 +10,12 @@ import javax.ws.rs.core.Application;
 public class App extends Application{
     @Override
     public Set<Class<?>> getClasses() {
+    	
+    	System.setProperty("jersey.config.server.tracing", "ALL");
+    	
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(UserResource.class);
+    	s.add(TestResource.class);
     	return s;
     }
 }

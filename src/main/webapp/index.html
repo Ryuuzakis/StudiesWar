@@ -32,6 +32,7 @@
 					<button id="get" class="btn btn-default">Lire</button>
 					<button id="post" class="btn btn-primary">Sauver</button>
 					<button id="list" class="btn btn-warning">Lister</button>
+					<button id="supprimer" class="btn btn-default">Hello</button>
 				</div>
 			</div>
 			<div class="row">
@@ -40,7 +41,8 @@
 	  				<div class="panel-body" id="reponse">
 	  				</div>
 				</div>
-			</div>	
+			</div>
+			<a href="v1/hello">GET Hello</a>	
 		</div>
 		
 		
@@ -49,6 +51,8 @@
 				$("#get").click(function () {getUser($('#user').val())});
 				$("#post").click(function () {postUser($('#user').val())});
 				$("#list").click(function () {listUsers()});
+				$("#supprimer").click(function () {});
+				
 			});
   		</script>
 	</body>
