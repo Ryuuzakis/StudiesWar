@@ -39,9 +39,11 @@ public class Partie {
 	public int getNombreDeleveRestant(){
 		return personnes.size();
 	}
+	
 	public ArrayList<Personnage> getPersonnes() {
 		return personnes;
 	}
+	
 	public HashMap<Byte, Controle> getSemaineActuel() {
 		return semaineActuel;
 	}
