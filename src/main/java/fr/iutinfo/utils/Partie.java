@@ -62,13 +62,5 @@ public class Partie {
 		p.genererAction();
 		return p.getAction();
 	}
-	public Object getPersonnesNonPriorite1() {
-		ArrayList<Personnage> personneNonP=new ArrayList<Personnage>();
-		for(Personnage p:personnes){
-			
-		}
-		return null;
-	}
-	
 	
 }

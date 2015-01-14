@@ -6,6 +6,10 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import fr.iutinfo.utils.resources.PartieRessource;
+import fr.iutinfo.utils.resources.TestResource;
+import fr.iutinfo.utils.resources.UserResource;
+
 @ApplicationPath("/v1/")
 public class App extends Application{
     @Override

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public abstract class Personnage {
 	
-	private String nom ;
+	private String nom;
 	private int PA;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> ef ;
