@@ -44,7 +44,8 @@ public class Controle {
 			}
 		}
 		for(Personnage p : partie.getPersonnes()){
-			if(this.getNote(p).getNote()>20){
+			if(!p.getEffets(1, this).isEmpty()){
+			}else if(this.getNote(p).getNote()>20){
 				this.getNote(p).setNote(20);
 			}else if(this.getNote(p).getNote()<0){
 				this.getNote(p).setNote(0);
