@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import fr.iutinfo.studiesWar.models.action.Absence;
+import fr.iutinfo.studiesWar.models.action.Action;
+import fr.iutinfo.studiesWar.models.action.Etudier;
+import fr.iutinfo.studiesWar.models.action.Tricher;
+import fr.iutinfo.studiesWar.models.effet.Effet;
+
 
 public abstract class Personnage {
 	
@@ -40,7 +46,7 @@ public abstract class Personnage {
 	public ArrayList<Effet> getEffets(int i,Controle c){
 		ArrayList<Effet> res = new ArrayList<Effet>();
 		for(int cpt=0;cpt<effets.size();cpt++){
-			if(effets.get(cpt).priorite == i && effets.get(cpt).estActif(c)){
+			if(effets.get(cpt).getPriorite() == i && effets.get(cpt).estActif(c)){
 				res.add(effets.get(cpt));
 			}
 		}
@@ -72,16 +78,16 @@ public abstract class Personnage {
 	public void genererActions(Partie partie){
 		actionPosibles.clear();
 		for(Controle c : partie.getSemaineActuel().values()){
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 1));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 2));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 3));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 1,"etudier un peu pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 2,"etudier passinnement pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 3,"etudier a la folie pour le controle de "+c.getMatiere()));
 			
 			for(Personnage personnage :partie.getPersonnes()){
 				if(this!=personnage){
-					actionPosibles.add(new Tricher(this,personnage, c));
+					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()+" pour le controle de "+c.getMatiere()));
 				}
 			}
-			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1)));
+			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1),"simuler une gastro pour le controle de "+c.getMatiere()));
 		}
 		
 	}
