@@ -26,7 +26,7 @@ public class Controle {
 	}
 
 	public void calculerTousLesNotes(){
-		
+
 		for(Personnage p : partie.getPersonnes()){
 			this.getNote(p).calculerNote();
 		}
@@ -59,7 +59,7 @@ public class Controle {
 
 			@Override
 			public int compare(Personnage p1, Personnage p2) {
-				if(getNote(p1).getNote()>getNote(p2).getNote()){
+				if(getNote(p1).getNote()<getNote(p2).getNote()){
 					return 1;
 				}else if(getNote(p1).getNote()>getNote(p2).getNote()){
 					return -1;
