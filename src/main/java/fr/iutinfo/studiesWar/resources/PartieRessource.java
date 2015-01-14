@@ -34,10 +34,11 @@ public class PartieRessource {
 	}
 	
 	@GET
-	@Path("{obj}")
-	public ArrayList<String> obtenirActions(@PathParam("obj") ObjetTransfert obj) {
-		PersonnageJoueur pj = joueurs.get(obj.getIdJoueur());
-		Partie p = parties.get(obj.getIdPartie());
+	@Path("{idPartie}/joueur/{idJoueur}/getaction")
+	public ArrayList<String> obtenirActions(@PathParam("idPartie") int idPartie,
+			@PathParam("idJoueur") int idJoueur) {
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
 		ArrayList<Action> actions = p.getActions(pj);
 		
@@ -48,10 +49,11 @@ public class PartieRessource {
 	}
 	
 	@POST
-	@Path("{obj}/{action}")
-	public void validerAction(@PathParam("action") String action, @PathParam("obj") ObjetTransfert obj) {
-		PersonnageJoueur pj = joueurs.get(obj.getIdJoueur());
-		Partie p = parties.get(obj.getIdPartie());
+	@Path("/{idPartie}/joueur/{idJoueur}/sendaction/{action}")
+	public void validerAction(@PathParam("action") String action, @PathParam("idPartie") int idPartie,
+			@PathParam("idJoueur") int idJoueur) {
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		Partie p = parties.get(idPartie);
 		
 		ArrayList<Action> actions = p.getActions(pj);
 		for (Action a : actions) {
@@ -61,10 +63,15 @@ public class PartieRessource {
 			}
 		}
 		
-		parties.get(obj.getIdPartie()).finDuTour();
+		parties.get(idPartie).finDuTour();
 	}
 	
 	@GET
+	@Path("{idPartie}/resultats")
+	public ArrayList<String> obtenirResultats(@PathParam("idPartie") int idPartie) {
+		Partie p = parties.get(idPartie);
+		return p.getResultats();
+	}
 	@Path("{obj}")
 	public ArrayList<String> obtenirResultats(@PathParam("obj") ObjetTransfert obj) {
 		PersonnageJoueur pj = joueurs.get(obj.getIdJoueur());
