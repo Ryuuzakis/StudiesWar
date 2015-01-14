@@ -20,7 +20,7 @@ public class PartieRessource {
 	private HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
 	private HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
 	
-	@GET
+	@POST
 	@Path("{name}")
 	public ObjetTransfert creerPartie(@PathParam("name") String name ) {
 		int idPartie = parties.size();
@@ -72,12 +72,4 @@ public class PartieRessource {
 		Partie p = parties.get(idPartie);
 		return p.getResultats();
 	}
-	@Path("{obj}")
-	public ArrayList<String> obtenirResultats(@PathParam("obj") ObjetTransfert obj) {
-		PersonnageJoueur pj = joueurs.get(obj.getIdJoueur());
-		Partie p = parties.get(obj.getIdPartie());
-		
-		return p.getResultats();
-	}
-
 }
