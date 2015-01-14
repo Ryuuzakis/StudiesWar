@@ -101,8 +101,16 @@ public abstract class Personnage {
 	}
 
 	public void setMatieres(ArrayList<String> matieres) {
-		for (String m : matieres)
+		for (String m : matieres){
 			setStat(m, new Random().nextInt(20));
+		}
+		int iPlus = new Random().nextInt(matieres.size());
+		int iMoins=iPlus;
+		while(iMoins==iPlus){
+			iMoins = new Random().nextInt(matieres.size());
+		}
+		setStat(matieres.get(iPlus),new Random().nextInt(7)+14);
+		setStat(matieres.get(iMoins),new Random().nextInt(7));
 	}
 	
 }

@@ -62,8 +62,12 @@ public class PartieRessource {
 				break;
 			}
 		}
-		
-		parties.get(idPartie).finDuTour();
+		if(parties.get(idPartie).finDuTour()){
+			//TODO : Gerer la fin de la partie
+		}
+		else{
+			
+		}
 	}
 	
 	@GET
