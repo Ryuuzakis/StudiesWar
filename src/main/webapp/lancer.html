@@ -50,13 +50,16 @@
 							contentType : 'application/json',
 							url : "v1/partie/"+$('#user').val(),
 							success : function(data, textStatus, jqXHR) {
-								alert('GG !!');	
+							alert('GG !!');	
+							window.location.href = "jouer.html"
+								
 							},
 							error : function(jqXHR, textStatus, errorThrown) {
 								alert('postUser error: ' + textStatus);
 							}
 							});
 						}
+						
   		</script>
 	</body>
 </html>
