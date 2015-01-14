@@ -1,14 +1,18 @@
 package fr.iutinfo.studiesWar.models;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.iutinfo.studiesWar.event.Evenement;
+
 public class Controle {
 
 	private String matiere;
 	private Map<Personnage, Note> notes=new HashMap<Personnage, Note>();
+	private ArrayList<Evenement> events=new ArrayList<Evenement>();
 	private Partie partie;
 	private byte date;
 	
@@ -67,6 +71,10 @@ public class Controle {
 				return 0;
 			}
 		});
+	}
+	
+	public void GenereEvent(){
+		events.add(Parametre.gestionEvent());
 	}
 
 	public String getMatiere() {
