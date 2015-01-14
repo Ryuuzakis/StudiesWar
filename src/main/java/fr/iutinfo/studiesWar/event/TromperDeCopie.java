@@ -6,28 +6,26 @@ import java.util.Random;
 import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.Personnage;
+import fr.iutinfo.studiesWar.models.effet.EchangeCopie;
 import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 
-public class NoteOfficeEvent extends Evenement{
+public class TromperDeCopie extends Evenement{
+
+	private Controle controle;
 	private int note;
 
-	public NoteOfficeEvent(Partie p,String s,int note) {
+	public TromperDeCopie(Partie p,String s,int note,Controle c) {
 		super(p,s);
 		this.note=note;
-		
+		this.controle=c;
 	}
 
-	@Override
-	public boolean alieu() {
-		if(!partie.getPersonnes().isEmpty()){
+	public boolean alieu(){
+		if(partie.getPersonnes().size()>=2){
 			Collections.shuffle(partie.getPersonnes());
-			Personnage cible=partie.getPersonnes().get(0);
-			byte date=(byte)(new Random().nextInt(5)+1);
-			cible.addEffect(new NoteOffice(date, (byte)(date+1), note));
+			partie.getPersonnes().get(0).addEffect(new EchangeCopie(controle.getDate(),(byte)(controle.getDate()+1),partie.getPersonnes().get(1)));
 			return true;
 		}
 		return false;
 	}
-	
-	
 }
