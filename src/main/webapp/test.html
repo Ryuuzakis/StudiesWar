@@ -1,30 +1,85 @@
-<!doctype html>
 <html>
-<head>
-<title></title>
-<script type="text/javascript">
-function Hide (addr) { document.getElementById(addr).style.visibility = "hidden";	}
-function Show (addr) { document.getElementById(addr).style.visibility = "visible";	}
+	<head>
+		<title>Jersey Skeleton - Studies War</title>
+		<meta charset='utf-8'>
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
-function toggle(anId)
-{
-	if (document.getElementById(anId).style.visibility == "hidden")	{
-		Show(anId);
-	}else{	
-		Hide(anId);
-	}
-}
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 
-window.onload = function () { Hide("foo");	};
-</script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+				
+		
+		
+		<!-- Code local -->
+		<script src="all.js"></script>
+	</head>
 
-</head>
 
-<body>
-	<h1>Titre</h1>
-	<p>Contenu précédant </p>
-	<a href="#" onclick = "toggle('foo');">Cliquer pour basculer l'état du div suivant</a>
-	<div id="foo">Ce contenu est visible ou non selon le cas</div>
-	<p>Contenu suivant </p>
-</body>
-</html>
+
+  		<h1 style="text-align: center">Lancer une partie</h1>
+
+		<h3 style="text-align: center">Choisir vos paramètres</h3>
+
+		<div style="text-align: center">
+			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
+			<button id="sub">Créer Partie</button>
+		</div>
+		
+		
+		<script type="text/javascript">
+			var element = document.getElementById('sub');
+			var nom = $('#user').val();
+			var idJoueur;
+			var idPartie;
+   			 element.onclick = function() {
+							$.ajax({
+							type : 'POST',
+							contentType : 'application/json',
+							url : "v1/partie/"+$('#user').val(),
+							success : function(data, textStatus, jqXHR) {
+								idJoueur = data.idJoueur;
+								idPartie = data.idPartie;
+								alert('IdJoueur :' + data.idJoueur + ' | IdPartie :'+ data.idPartie);
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert('postUser error: ' + textStatus);
+							}
+							});
+						}
+						
+  		</script>
+  		
+  		
+  		<div style="text-align: center">
+			
+			<button id="action">Lancer action</button>
+			
+			<script type="text/javascript">
+			var element = document.getElementById('action');
+			var nom = $('#user').val();
+   			 element.onclick = function() {
+							$.ajax({
+							type : 'GET',
+							contentType : 'application/json',
+							url : "v1/partie/"+idPartie+"/joueur/"+idJoueur+"/getaction",
+							success : function(data, textStatus, jqXHR) {
+								alert('GG');
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert('postUser error: ' + idPartie +'|'+idJoueur);
+							}
+							});
+						}
+						
+  		</script>
+			
+			
+		</div>
+  		</html>
