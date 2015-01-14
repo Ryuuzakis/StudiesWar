@@ -6,9 +6,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import fr.iutinfo.exemple.UserResource;
 import fr.iutinfo.studiesWar.resources.PartieRessource;
-import fr.iutinfo.studiesWar.resources.TestResource;
-import fr.iutinfo.studiesWar.resources.UserResource;
 
 @ApplicationPath("/v1/")
 public class App extends Application{
@@ -19,7 +18,6 @@ public class App extends Application{
     	
     	Set<Class<?>> s = new HashSet<Class<?>>();
     	s.add(UserResource.class);
-    	s.add(TestResource.class);
     	s.add(PartieRessource.class);
     	return s;
     }

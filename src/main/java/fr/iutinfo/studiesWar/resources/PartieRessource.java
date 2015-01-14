@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import fr.iutinfo.studiesWar.models.Factory;
+import fr.iutinfo.studiesWar.models.ObjetTransfert;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 
@@ -19,7 +20,7 @@ public class PartieRessource {
 	
 	@GET
 	@Path("{name}")
-	public void creerPartie(@PathParam("name") String name ) {
+	public ObjetTransfert creerPartie(@PathParam("name") String name ) {
 		System.out.println("creation de la partie pour "+name);
 		int idPartie = parties.size();
 		parties.put(idPartie, (Partie) Factory.getResource(Factory.PARTIE, idPartie));
@@ -27,6 +28,7 @@ public class PartieRessource {
 		PersonnageJoueur pj = new PersonnageJoueur();
 		pj.setNom(name);
 		parties.get(idPartie).rejoinPartie(pj);
+		return new ObjetTransfert(idPartie, idJoueur);
 	}
 	
 	
