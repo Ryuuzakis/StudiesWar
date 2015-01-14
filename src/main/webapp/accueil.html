@@ -22,15 +22,8 @@
 		<script src="all.js"></script>
 	</head>
 	<body style="background-image:url(fond.jpg);">
-
-	<p>Contenu précédant </p>
-
-	<a href="#" onclick = "toggle('foo')">Cliquer pour basculer l'état du div suivant</a>
-
-	<!-- L'identificateur id du div doit être unique. Içi, "foo" ou "bar" ou autre, mais unique dans le document-->
-	<div id="foo">Ce contenu est visible ou non selon le cas</div>
-
-	<p>Contenu suivant </p>
+	<!-- background-repeat:no-repeat;-->
+	
 
 	<div id="accueil">
 		<h1 style="text-align: center">Studies War</h1>
@@ -51,7 +44,6 @@
 
 			
 			window.onload = function () {
-				Hide("foo");
 				Hide("partie");
 			};
 			$(document).ready(function() {
@@ -67,14 +59,14 @@
   		
  	 </div>
   	 <div id="partie">
-  
-  		<h1 style="text-align: center">Lancer une partie</h1>
+	
+  		<h1 style="text-align: center"> Lancer une partie</h1>
 
 		<h3 style="text-align: center">Choisir vos paramètres</h3>
 
 		<div style="text-align: center">
 			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
-			<button id="sub">Valider</button>
+			<a href="#" onclick = "toggle('accueil','partie')"><button id="sub">Valider</button>
 		</div>
 
 
