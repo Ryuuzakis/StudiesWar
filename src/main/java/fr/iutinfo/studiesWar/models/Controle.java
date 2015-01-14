@@ -82,4 +82,7 @@ public class Controle {
 		return notes.get(p);
 	}
 	
+	public Map<Personnage, Note> getNotes(){
+		return notes;
+	}
 }
