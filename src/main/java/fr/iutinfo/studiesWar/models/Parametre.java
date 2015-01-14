@@ -10,7 +10,8 @@ public class Parametre {
 	public static Evenement gestionEvent(Controle c,Partie p) {
 		
 		if(new Random().nextInt(100)<1){
-			new ControleBoost(p, "", modif, c)
+			//TODO : corriger l'erreur
+			//new ControleBoost(p, "", modif, c)
 		}
 		return null;
 	}

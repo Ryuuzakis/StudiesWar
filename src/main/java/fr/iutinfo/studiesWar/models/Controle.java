@@ -74,7 +74,8 @@ public class Controle {
 	}
 	
 	public void GenereEvent(){
-		events.add(Parametre.gestionEvent());
+		//TODO : Corriger l'erreur
+		//events.add(Parametre.gestionEvent());
 	}
 
 	public String getMatiere() {
