@@ -17,17 +17,17 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
-	private ArrayList<Action> actionPosibles ;
+	private ArrayList<Action> actionPosibles;
 	
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
+		actionPosibles = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
-		this.effets = new ArrayList<Effet>();
-		Random r = new Random();
+		this("");
 	}
 	
 	public Integer getStat(String s){
