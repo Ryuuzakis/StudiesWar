@@ -21,14 +21,24 @@
 		<!-- Code local -->
 		<script src="all.js"></script>
 	</head>
-	<body>
+	<body style="background-image:url(fond.jpg);">
+
+	<p>Contenu précédant </p>
+
+	<a href="#" onclick = "toggle('foo')">Cliquer pour basculer l'état du div suivant</a>
+
+	<!-- L'identificateur id du div doit être unique. Içi, "foo" ou "bar" ou autre, mais unique dans le document-->
+	<div id="foo">Ce contenu est visible ou non selon le cas</div>
+
+	<p>Contenu suivant </p>
+
 	<div id="accueil">
 		<h1 style="text-align: center">Studies War</h1>
 
 		<h3 style="text-align: center"> Menu </h3>
 		<p style="text-align: center">
 			</br>
-			<a href="#"><button id="lancerPartie">Lancer la partie</button> </a></br>
+			<a href="#" onclick = "toggle('partie','accueil')"><button id="lancerPartie">Lancer la partie</button> </a></br>
 			</br>
 			</br>
 			</br>
@@ -37,6 +47,13 @@
 		
 		
 		<script type="text/javascript">
+			
+
+			
+			window.onload = function () {
+				Hide("foo");
+				Hide("partie");
+			};
 			$(document).ready(function() {
 				$("#partie").hide();
 				$("#get").click(function () {getUser($('#user').val())});
@@ -45,10 +62,11 @@
 				$("#lancerPartie").click(function (){$("#partie").slideToggle()});
 				$("#lancerPartie").click(function (){$("#accueil").slideToggle()});
 			});
+			
   		</script>
   		
-  </div>
-  <div id="partie">
+ 	 </div>
+  	 <div id="partie">
   
   		<h1 style="text-align: center">Lancer une partie</h1>
 
@@ -84,7 +102,7 @@
 						
   		</script>
   
-  </div>
+  	</div>
   
   		<div class="container" >
 			
