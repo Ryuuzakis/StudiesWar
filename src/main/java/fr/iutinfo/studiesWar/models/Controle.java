@@ -44,7 +44,6 @@ public class Controle {
 			}
 		}
 		for(Personnage p : partie.getPersonnes()){
-			System.out.println("youpi");
 			if(!p.getEffets(1, this).isEmpty()){
 			}else if(this.getNote(p).getNote()>20){
 				this.getNote(p).setNote(20);

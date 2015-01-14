@@ -126,33 +126,8 @@ public class ControleTest {
 
 		}
 	}
-	/*
 
 	@Test
-	public void test5() {
-		do{
-		Partie p=new Partie(0, 0);
-
-		Personnage p1=new PersonnageJoueur();
-
-		p.rejoinPartie(p1);
-
-		Action a1 = new Etudier(p1,"Maths",3);
-
-		a1.agit();
-
-		Controle c1=new Controle("Maths",p,(byte)1);
-
-		c1.calculerTousLesNotes();
-
-		assertTrue(p1.getPA()==2);
-
-		}while(c1.getNote(p1).getNote());
-
-	}}*/
-
-	/*	@Test
->>>>>>> efa05a061c575c90fd10559b6015176980203d7d
 	public void test6() {
 		int i =0;
 		Partie p;
@@ -183,7 +158,6 @@ public class ControleTest {
 		a4.agit();
 
 		c1.calculerTousLesNotes();
-<<<<<<< HEAD
 		assertTrue(c1.getNote(p2).getNote()>= c1.getNote(p3).getNote());
 
 
@@ -191,17 +165,5 @@ public class ControleTest {
 		}
 
 	} 
-
-
-
-=======
-		//System.out.println(c1.getNote(p1).getNote()+ "," + c1.getNote(p2).getNote() + "," + c1.getNote(p3).getNote());
-		assertTrue(c1.getNote(p1).getNote()>= c1.getNote(p2).getNote());
-
-
-		i++;
-		}
-
-	} */
 
 }
