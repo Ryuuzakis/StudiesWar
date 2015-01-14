@@ -48,6 +48,7 @@ public class Partie {
 		}
 		byte date=(byte) (new Random().nextInt(6)+1);
 		Controle controle;
+		//TODO: Tester si la boucle permet bien de ne pas avoir de doublons dans la map
 		do {
 			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
 		} while (semaineActuel.containsValue(controle));
