@@ -62,10 +62,16 @@ public class Partie {
 		}
 		for(Personnage p : this.personnes){
 			Double moyen = 0.0 ;
+			int coef = semaineActuel.size();
 			for(Controle c : semaineActuel.values()){
+				if(c.getNote(p).getNote()!=-1){
 				moyen = moyen + c.getNote(p).getNote();
+				}
+				else{
+					coef--;
+				}
 			}
-			moyen = moyen / semaineActuel.size();
+			moyen = moyen / coef;
 			moy.put(p,moyen);
 		}
 		ArrayList<Map.Entry<Personnage,Double>> list=new ArrayList<Map.Entry<Personnage,Double>>();
@@ -86,12 +92,10 @@ public class Partie {
 		});
 		
 		this.elimine(list.get(0).getKey());
-		if(personnes.size()>1){
-		return false;
+		if (personnes.size() > 1) {
+			return false;
 		}
-		else{
-			return true;
-		}
+		return true;
 	}
 	
 	
