@@ -7,8 +7,8 @@ import javax.ws.rs.core.Application;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import fr.iutinfo.utils.App;
-import fr.iutinfo.utils.PartieRessource;
+import fr.iutinfo.studiesWar.App;
+import fr.iutinfo.studiesWar.resources.PartieRessource;
 
 public class PartieTest extends JerseyTest {
 	@Override

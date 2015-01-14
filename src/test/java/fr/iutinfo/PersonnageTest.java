@@ -6,8 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.iutinfo.utils.Personnage;
-import fr.iutinfo.utils.PersonnageJoueur;
+import fr.iutinfo.studiesWar.models.Personnage;
+import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 
 public class PersonnageTest {
 

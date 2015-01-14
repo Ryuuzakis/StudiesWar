@@ -1,4 +1,4 @@
-package fr.iutinfo.utils;
+package fr.iutinfo.studiesWar.models;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,9 +6,9 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-import fr.iutinfo.utils.resources.PartieRessource;
-import fr.iutinfo.utils.resources.TestResource;
-import fr.iutinfo.utils.resources.UserResource;
+import fr.iutinfo.studiesWar.resources.PartieRessource;
+import fr.iutinfo.studiesWar.resources.TestResource;
+import fr.iutinfo.studiesWar.resources.UserResource;
 
 @ApplicationPath("/v1/")
 public class App extends Application{

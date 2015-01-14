@@ -18,8 +18,8 @@ import javax.ws.rs.core.Response.Status;
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
-import fr.iutinfo.utils.App;
-import fr.iutinfo.utils.User;
+import fr.iutinfo.exemple.User;
+import fr.iutinfo.studiesWar.App;
 
 
 public class UserTest extends JerseyTest {

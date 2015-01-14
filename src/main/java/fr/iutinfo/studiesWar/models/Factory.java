@@ -1,4 +1,4 @@
-package fr.iutinfo.utils;
+package fr.iutinfo.studiesWar.models;
 
 import java.util.HashMap;
 
