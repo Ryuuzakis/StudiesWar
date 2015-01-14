@@ -61,7 +61,6 @@ public class TestPartieRessource extends JerseyTest {
 		for (String ch : resultats) {
 			System.out.println(ch);
 		}
-		//TODO : verifier l'affichage de obtenirResultats
 	}
 	
 

@@ -41,10 +41,11 @@ public class Partie {
 	 */
 	public void DebutDuTour(){
 		byte date=(byte) (new Random().nextInt(6)+1);
-		Controle controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+		Controle controle;
+		do {
+			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+		} while (semaineActuel.containsValue(controle));
 		semaineActuel.put(date,controle);
-		
-		
 	}
 	/**
 	 * methode appelé a chaque fin de tour
