@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fr.iutinfo.utils.Absence;
-import fr.iutinfo.utils.Action;
-import fr.iutinfo.utils.Controle;
-import fr.iutinfo.utils.Etudier;
-import fr.iutinfo.utils.Partie;
-import fr.iutinfo.utils.Personnage;
-import fr.iutinfo.utils.PersonnageJoueur;
-import fr.iutinfo.utils.Tricher;
+import fr.iutinfo.studiesWar.models.Absence;
+import fr.iutinfo.studiesWar.models.Action;
+import fr.iutinfo.studiesWar.models.Controle;
+import fr.iutinfo.studiesWar.models.Etudier;
+import fr.iutinfo.studiesWar.models.Partie;
+import fr.iutinfo.studiesWar.models.Personnage;
+import fr.iutinfo.studiesWar.models.PersonnageJoueur;
+import fr.iutinfo.studiesWar.models.Tricher;
 
 public class ControleTest {
 
