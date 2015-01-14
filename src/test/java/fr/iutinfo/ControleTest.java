@@ -68,14 +68,15 @@ public class ControleTest {
 		ArrayList<Personnage> per = p.getPersonnes();
 		assertTrue(c1.getNote(per.get(0)).getNote() >= c1.getNote(per.get(1)).getNote());
 		assertTrue(c1.getNote(per.get(1)).getNote() >= c1.getNote(per.get(2)).getNote());
-		//System.out.println();
+
 		i++;
 		}
 		
 	}
 	
-/*	@Test
+	@Test
 	public void test2() {
+
 		int i =0;
 		while(i<25){
 		
@@ -99,9 +100,8 @@ public class ControleTest {
 		a2.agit();
 		a3.agit();
 		a4.agit();
-		System.out.println(c1.getNote(p3).getNote());
+
 		c1.calculerTousLesNotes();
-		System.out.println(c1.getNote(p3).getNote());
 		
 		
 		i++;
@@ -110,7 +110,7 @@ public class ControleTest {
 		
 		}
 		
-	} */
+	} 
 	
 	/**
 	 * Verifie que le tricheur a au moins la meme note que la personne qu'il a copie
@@ -192,7 +192,7 @@ public class ControleTest {
 	
 	
 	
-/*	@Test
+	@Test
 	public void test6() {
 		int i =0;
 		Partie p;
@@ -223,14 +223,13 @@ public class ControleTest {
 		a4.agit();
 		
 		c1.calculerTousLesNotes();
-		//System.out.println(c1.getNote(p1).getNote()+ "," + c1.getNote(p2).getNote() + "," + c1.getNote(p3).getNote());
-		assertTrue(c1.getNote(p1).getNote()>= c1.getNote(p2).getNote());
+		assertTrue(c1.getNote(p2).getNote()>= c1.getNote(p3).getNote());
 		
 		
 		i++;
 		}
 		
-	} */
+	} 
 	
 	
 	

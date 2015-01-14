@@ -9,7 +9,7 @@ public class BoostNote extends Effet {
 	private String matiere;
 
 	public BoostNote(byte dD, byte dF, int modif,String matiere) {
-		super(dD, dF, (byte) 3);
+		super(dD, dF, (byte) 2);
 		this.modificateur = modif;
 		this.matiere = matiere;
 	}
