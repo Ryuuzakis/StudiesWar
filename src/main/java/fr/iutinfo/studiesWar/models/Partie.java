@@ -10,7 +10,7 @@ public class Partie {
 
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
-	private ArrayList<String> matieres;
+	private ArrayList<String> matieres = new ArrayList<String>();
 	private int dureeTour;
 	private int id;
 
