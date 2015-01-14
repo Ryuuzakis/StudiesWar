@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import fr.iutinfo.studiesWar.models.action.Action;
+
 public class Partie {
 
 	private ArrayList<Personnage> personnes;

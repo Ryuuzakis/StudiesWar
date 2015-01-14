@@ -2,6 +2,8 @@ package fr.iutinfo.studiesWar.models;
 
 import java.util.Random;
 
+import fr.iutinfo.studiesWar.models.effet.Effet;
+
 public class Note {
 	
 	private Controle controle;
