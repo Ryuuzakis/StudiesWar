@@ -6,15 +6,16 @@ import java.util.Random;
 import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.Personnage;
+import fr.iutinfo.studiesWar.models.effet.BoostNote;
 import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 
-public class NoteOfficeEvent extends Evenement{
-	private int note;
+public class ControleBoost extends Evenement{
 
-	public NoteOfficeEvent(Partie p,String s,int note) {
+	private Controle controle;
+	private int modif;
+	
+	public ControleBoost(Partie p,String s,int modif,Controle c) {
 		super(p,s);
-		this.note=note;
-		
 	}
 
 	@Override
@@ -22,8 +23,9 @@ public class NoteOfficeEvent extends Evenement{
 		if(!partie.getPersonnes().isEmpty()){
 			Collections.shuffle(partie.getPersonnes());
 			Personnage cible=partie.getPersonnes().get(0);
-			byte date=(byte)(new Random().nextInt(5)+1);
-			cible.addEffect(new NoteOffice(date, (byte)(date+1), note));
+			for(Personnage personnage : partie.getPersonnes()){
+				cible.addEffect(new BoostNote(controle.getDate(), (byte) (controle.getDate()+1), modif, controle.getMatiere()));
+			}
 			return true;
 		}
 		return false;

@@ -57,12 +57,11 @@ public class TestPartieRessource extends JerseyTest {
 		pr.creerPartie("toto");
 		ArrayList<String> actions = pr.obtenirActions(0, 0);
 		pr.validerAction(actions.get(0), 0, 0);
-		System.out.println("toto");
 		ArrayList<String> resultats = pr.obtenirResultats(0);
-		System.out.println("tata");
 		for (String ch : resultats) {
 			System.out.println(ch);
 		}
+		//TODO : verifier l'affichage de obtenirResultats
 	}
 	
 

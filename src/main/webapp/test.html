@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<title></title>
+<script type="text/javascript">
+function Hide (addr) { document.getElementById(addr).style.visibility = "hidden";	}
+function Show (addr) { document.getElementById(addr).style.visibility = "visible";	}
+
+function toggle(anId)
+{
+	if (document.getElementById(anId).style.visibility == "hidden")	{
+		Show(anId);
+	}else{	
+		Hide(anId);
+	}
+}
+
+window.onload = function () { Hide("foo");	};
+</script>
+
+</head>
+
+<body>
+	<h1>Titre</h1>
+	<p>Contenu précédant </p>
+	<a href="#" onclick = "toggle('foo');">Cliquer pour basculer l'état du div suivant</a>
+	<div id="foo">Ce contenu est visible ou non selon le cas</div>
+	<p>Contenu suivant </p>
+</body>
+</html>

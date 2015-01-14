@@ -15,40 +15,68 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-				
 		
+		<!-- NOTRE CSS, qui fixe les elements sur l'image -->		
+		<link rel="stylesheet" href="style.css" />
 		
 		<!-- Code local -->
 		<script src="all.js"></script>
 	</head>
 	<body>
-	<div id="accueil">
-		<h1 style="text-align: center">Studies War</h1>
+	<div>
 
-		<h3 style="text-align: center"> Menu </h3>
-		<p style="text-align: center">
-			</br>
-			<a href="#"><button id="lancerPartie">Lancer la partie</button> </a></br>
-			</br>
-			</br>
-			</br>
-		</p>
+		<img src="fond.jpg"  id="img">
+		</img>
+		<div id="accueil">
+			<titre>Studies War</titre>
+
+			<titre2> Menu </titre2>
+			<p style="text-align: center">
+				</br>
+				<a href="#" onclick = "toggle('partie','accueil')"><button id="lancerPartie">Lancer la partie</button> </a></br>
+				</br>
+				</br>
+				</br>
+			</p>
 
 		
 		
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#partie").hide();
-				$("#get").click(function () {getUser($('#user').val())});
-				$("#post").click(function () {postUser($('#user').val())});
-				$("#list").click(function () {listUsers()});
-				$("#lancerPartie").click(function (){$("#partie").slideToggle()});
-				$("#lancerPartie").click(function (){$("#accueil").slideToggle()});
-			});
-  		</script>
+			<script type="text/javascript">
+			
+
+			
+				window.onload = function () {
+					Hide("foo");
+					Hide("partie");
+				};
+				$(document).ready(function() {
+					$("#partie").hide();
+					$("#get").click(function () {getUser($('#user').val())});
+					$("#post").click(function () {postUser($('#user').val())});
+					$("#list").click(function () {listUsers()});
+					$("#lancerPartie").click(function (){$("#partie").slideToggle()});
+					$("#lancerPartie").click(function (){$("#accueil").slideToggle()});
+				});
+			
+	  		</script>
   		
-  </div>
-  <div id="partie">
+ 	 	</div>
+
+
+
+	</div>
+
+	<p>Contenu précédant </p>
+
+	<a href="#" onclick = "toggle('foo')">Cliquer pour basculer l'état du div suivant</a>
+
+	<!-- L'identificateur id du div doit être unique. Içi, "foo" ou "bar" ou autre, mais unique dans le document-->
+	<div id="foo">Ce contenu est visible ou non selon le cas</div>
+
+	<p>Contenu suivant </p>
+
+	
+  	 <div id="partie">
   
   		<h1 style="text-align: center">Lancer une partie</h1>
 
@@ -65,26 +93,29 @@
 		<script type="text/javascript">
 			var element = document.getElementById('sub');
 			var nom = $('#user').val();
+			var idJoueur;
+			var idPartie;
 
    			 element.onclick = function() {
 							$.ajax({
-							type : 'GET',
+							type : 'POST',
 							contentType : 'application/json',
 							url : "v1/partie/"+$('#user').val(),
 							success : function(data, textStatus, jqXHR) {
-							alert('GG !!');	
-							window.location.href = "jouer.html"
-								
+							idJoueur = data.idJoueur;
+							idPartie = data.idPartie;
+							alert(idJoueur + "/" + idPartie);	
 							},
 							error : function(jqXHR, textStatus, errorThrown) {
 								alert('postUser error: ' + textStatus);
 							}
 							});
 						}
+			
 						
   		</script>
   
-  </div>
+  	</div>
   
   		<div class="container" >
 			
