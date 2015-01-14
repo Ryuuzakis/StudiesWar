@@ -1,16 +1,17 @@
 package fr.iutinfo.studiesWar.models;
 
+import java.security.KeyStore.Entry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
-
 import fr.iutinfo.studiesWar.models.action.Action;
 
 public class Partie {
 
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
-	private ArrayList<String> matieres;
+	private ArrayList<String> matieres=new ArrayList<String>();
 	private int dureeTour;
 	private int id;
 
@@ -48,7 +49,9 @@ public class Partie {
 	 * methode appelé a chaque fin de tour
 	 */
 	public void finDuTour(){
-		
+		for(Controle c : semaineActuel.values()){
+			c.calculerTousLesNotes();
+		}
 	}
 	/**
 	 * @return nb de joueur restant dans la partie
@@ -69,9 +72,17 @@ public class Partie {
 		p.genererActions(this);
 		return p.getAction();
 	}
-	public ArrayList<String> getResultats() {
-		// TODO Auto-generated method stub
-		return null;
+	public HashMap<String, HashMap<String, String>> getResultats() {
+		HashMap<String, HashMap<String, String>> res =new HashMap<String, HashMap<String, String>>();
+		HashMap<String, String> notesString=new HashMap<String, String>();
+		for(Controle c : semaineActuel.values()){
+			
+			for(java.util.Map.Entry<Personnage, Note> notes : c.getNotes().entrySet()){
+				notesString.put(notes.getKey().getNom(), ""+notes.getValue().getNote());
+			}
+			res.put( c.getMatiere(), notesString);
+		}
+		return res;
 	}
 	
 }
