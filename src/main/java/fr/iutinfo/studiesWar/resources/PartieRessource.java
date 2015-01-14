@@ -8,11 +8,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import fr.iutinfo.studiesWar.models.Action;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.ObjetTransfert;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
+import fr.iutinfo.studiesWar.models.action.Action;
 
 @Path("/partie")
 public class PartieRessource {
@@ -70,6 +70,13 @@ public class PartieRessource {
 	@Path("{idPartie}/resultats")
 	public ArrayList<String> obtenirResultats(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
+		return p.getResultats();
+	}
+	@Path("{obj}")
+	public ArrayList<String> obtenirResultats(@PathParam("obj") ObjetTransfert obj) {
+		PersonnageJoueur pj = joueurs.get(obj.getIdJoueur());
+		Partie p = parties.get(obj.getIdPartie());
+		
 		return p.getResultats();
 	}
 

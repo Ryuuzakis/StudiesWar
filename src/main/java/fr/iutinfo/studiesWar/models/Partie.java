@@ -1,16 +1,17 @@
 package fr.iutinfo.studiesWar.models;
 
+import java.security.KeyStore.Entry;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
-
 import fr.iutinfo.studiesWar.models.action.Action;
 
 public class Partie {
 
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
-	private ArrayList<String> matieres;
+	private ArrayList<String> matieres=new ArrayList<String>();
 	private int dureeTour;
 	private int id;
 
@@ -48,7 +49,9 @@ public class Partie {
 	 * methode appelé a chaque fin de tour
 	 */
 	public void finDuTour(){
-		
+		for(Controle c : semaineActuel.values()){
+			c.calculerTousLesNotes();
+		}
 	}
 	/**
 	 * @return nb de joueur restant dans la partie
@@ -70,8 +73,15 @@ public class Partie {
 		return p.getAction();
 	}
 	public ArrayList<String> getResultats() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> results = new ArrayList<String>();
+		for (Controle c : semaineActuel.values()) {
+			String ch = c.getMatiere() + " : \n";
+			for (Map.Entry<Personnage, Note> res : c.getNotes().entrySet()) {
+				ch += "\t" + res.getKey().getNom() + " : " + res.getValue().getNote() + "\n";
+			}
+			results.add(ch);
+		}
+		return results;
 	}
 	
 }
