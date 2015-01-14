@@ -10,17 +10,17 @@ public abstract class Personnage {
 	private String nom ;
 	private int PA;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
-	private ArrayList<Effet> ef ;
-	
+	private ArrayList<Effet> effets ;
+	private ArrayList<Action> actionPosibles ;
 	
 	public Personnage(String s){
 		this.nom = s;
-		this.ef = new ArrayList<Effet>();
+		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
 	}
 	
 	public Personnage(){
-		this.ef = new ArrayList<Effet>();
+		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
 	}
 	
@@ -39,9 +39,9 @@ public abstract class Personnage {
 	
 	public ArrayList<Effet> getEffets(int i,Controle c){
 		ArrayList<Effet> res = new ArrayList<Effet>();
-		for(int cpt=0;cpt<ef.size();cpt++){
-			if(ef.get(cpt).priorite == i && ef.get(cpt).estActif(c)){
-				res.add(ef.get(cpt));
+		for(int cpt=0;cpt<effets.size();cpt++){
+			if(effets.get(cpt).priorite == i && effets.get(cpt).estActif(c)){
+				res.add(effets.get(cpt));
 			}
 		}
 		return res;
@@ -57,7 +57,7 @@ public abstract class Personnage {
 	}
 
 	public void clearEffet(Effet e){
-		ef.remove(e);
+		effets.remove(e);
 	}
 
 	public int getPA() {
@@ -65,19 +65,33 @@ public abstract class Personnage {
 	}
 
 	public void setPA(int pA) {
+		
 		PA = pA;
 	}
 	
-	public void genererAction(){
+	public void genererActions(Partie partie){
+		actionPosibles.clear();
+		for(Controle c : partie.getSemaineActuel().values()){
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 1));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 2));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 3));
+			
+			for(Personnage personnage :partie.getPersonnes()){
+				if(this!=personnage){
+					actionPosibles.add(new Tricher(this,personnage, c));
+				}
+			}
+			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1)));
+		}
 		
 	}
 
 	public ArrayList<Action> getAction() {
-		return null;
+		return actionPosibles;
 	}
 	
 	public void addEffect(Effet e){
-		ef.add(e);
+		effets.add(e);
 	}
 
 	public void setMatieres(ArrayList<String> matieres) {

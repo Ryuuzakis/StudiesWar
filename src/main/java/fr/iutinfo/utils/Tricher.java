@@ -3,19 +3,19 @@ package fr.iutinfo.utils;
 import java.util.Random;
 
 public class Tricher extends Action{
-	byte eff ;
-	Personnage c;
 	
-	public Tricher(Personnage p,Personnage c){
+	private Personnage destPersonnage;
+	private Controle controle;
+	
+	public Tricher(Personnage p,Personnage destPersonnage,Controle controle){
 		super(p);
-		Random r = new Random();
-		this.eff = (byte) r.nextInt(4);
-		this.c = c;
+		this.destPersonnage = destPersonnage;
+		this.controle=controle;
 	}
 
 	@Override
 	public void agit() {
-		p.addEffect(new CopieNote((byte)1,(byte)2,this.c));
+		p.addEffect(new CopieNote(controle.getDate(),(byte)(controle.getDate()+1),this.destPersonnage));
 	}
 	
 

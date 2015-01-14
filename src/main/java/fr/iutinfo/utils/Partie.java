@@ -2,6 +2,7 @@ package fr.iutinfo.utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Partie {
 
@@ -35,6 +36,10 @@ public class Partie {
 	 * methode appelé a chaque debut de tour
 	 */
 	public void DebutDuTour(){
+		byte date=(byte) (new Random().nextInt(6)+1);
+		Controle controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+		semaineActuel.put(date,controle);
+		
 		
 	}
 	/**
@@ -59,16 +64,8 @@ public class Partie {
 	}
 	
 	public ArrayList<Action> getActions(Personnage p){
-		p.genererAction();
+		p.genererActions(this);
 		return p.getAction();
 	}
-	public Object getPersonnesNonPriorite1() {
-		ArrayList<Personnage> personneNonP=new ArrayList<Personnage>();
-		for(Personnage p:personnes){
-			
-		}
-		return null;
-	}
-	
 	
 }
