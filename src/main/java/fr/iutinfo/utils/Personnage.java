@@ -17,23 +17,11 @@ public abstract class Personnage {
 		this.nom = s;
 		this.ef = new ArrayList<Effet>();
 		Random r = new Random();
-		this.stats.put("Maths", r.nextInt(19));
-		this.stats.put("Physique", r.nextInt(19));
-		this.stats.put("SVT", r.nextInt(19));
-		this.stats.put("Etudier", r.nextInt(19));
-		this.stats.put("Triche", r.nextInt(19));
 	}
 	
 	public Personnage(){
 		this.ef = new ArrayList<Effet>();
 		Random r = new Random();
-		
-		this.nom = "RandomGuy" + r.nextInt(10000);
-		this.stats.put("Maths",r.nextInt(19));
-		this.stats.put("Physique", r.nextInt(19));
-		this.stats.put("SVT", r.nextInt(19));
-		this.stats.put("Etudier", r.nextInt(19));
-		this.stats.put("Triche", r.nextInt(19));
 	}
 	
 	public Integer getStat(String s){
@@ -91,9 +79,10 @@ public abstract class Personnage {
 	public void addEffect(Effet e){
 		ef.add(e);
 	}
-	
-	
-	
-	
 
+	public void setMatieres(ArrayList<String> matieres) {
+		for (String m : matieres)
+			setStat(m, (int) Math.random() * 20);
+	}
+	
 }

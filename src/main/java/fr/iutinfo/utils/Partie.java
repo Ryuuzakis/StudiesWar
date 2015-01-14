@@ -7,6 +7,7 @@ public class Partie {
 
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
+	private ArrayList<String> matieres;
 	private int dureeTour;
 	private int id;
 
@@ -14,11 +15,20 @@ public class Partie {
 		this.id=id;
 		this.dureeTour=dureeTour;
 		this.personnes=new ArrayList<Personnage>();
+		initMatieres();
+	}
+	private void initMatieres() {
+		matieres.add("Maths");
+		matieres.add("Physique");
+		matieres.add("SVT");
+		matieres.add("Etudier");
+		matieres.add("Triche");
 	}
 	/**
 	 * methode appelé quand un joueur rejoin la partie
 	 */
 	public void rejoinPartie(Personnage p){
+		p.setMatieres(matieres);
 		personnes.add(p);
 	}
 	/**
