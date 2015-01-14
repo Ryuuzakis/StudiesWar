@@ -1,6 +1,8 @@
 package fr.iutinfo.utils;
 
 
+import java.util.ArrayList;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -9,6 +11,7 @@ import javax.ws.rs.PathParam;
 public class PartieRessource {
 	
 	private Partie partie;
+	PersonnageJoueur pj;
 	
 	@GET
 	@Path("{name}")
@@ -16,11 +19,15 @@ public class PartieRessource {
 		System.out.println("creation de la partie pour "+name);
 		
 		partie = (Partie) Factory.getResource(Factory.PARTIE);
-		PersonnageJoueur p = new PersonnageJoueur();
-		p.setNom(name);
-		partie.rejoinPartie(p);
-		partie.DebutDuTour();
+		pj = new PersonnageJoueur();
+		pj.setNom(name);
+		partie.rejoinPartie(pj);
 	}
+	
+	public ArrayList<String> choisirActions() {
+		return null;
+	}
+	
 	
 
 }
