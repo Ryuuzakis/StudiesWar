@@ -26,8 +26,9 @@ public class PartieRessource {
 		int idPartie = parties.size();
 		parties.put(idPartie, (Partie) Factory.getResource(Factory.PARTIE, idPartie));
 		int idJoueur = joueurs.size();
-		PersonnageJoueur pj = new PersonnageJoueur();
+		PersonnageJoueur pj = (PersonnageJoueur) Factory.getResource(Factory.JOUEUR, idJoueur);
 		pj.setNom(name);
+		joueurs.put(idJoueur, pj);
 		parties.get(idPartie).rejoinPartie(pj);
 		parties.get(idPartie).DebutDuTour();
 		return new ObjetTransfert(idPartie, idJoueur);
@@ -54,7 +55,6 @@ public class PartieRessource {
 			@PathParam("idJoueur") int idJoueur) {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
-		
 		ArrayList<Action> actions = p.getActions(pj);
 		for (Action a : actions) {
 			if (action.equals(a.toString())) {
@@ -72,4 +72,5 @@ public class PartieRessource {
 		Partie p = parties.get(idPartie);
 		return p.getResultats();
 	}
+
 }
