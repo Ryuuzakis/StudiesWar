@@ -57,7 +57,7 @@ public class ControleTest {
 		Action a1 = new Etudier(p1,"Maths",3);
 		Action a2 = new Tricher(p2,p1);
 		Action a3 = new Absence(p3,(byte)1,(byte)7);
-		Action a4 = new Tricher(p3,p1);
+		Action a4 = new Tricher(p3,p1,);
 		a1.agit();
 		a2.agit();
 		a3.agit();
