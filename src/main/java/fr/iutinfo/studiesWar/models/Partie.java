@@ -11,7 +11,8 @@ public class Partie {
 
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
-	private ArrayList<String> matieres=new ArrayList<String>();
+	private ArrayList<String> matieres = new ArrayList<String>();
+
 	private int dureeTour;
 	private int id;
 
@@ -72,17 +73,16 @@ public class Partie {
 		p.genererActions(this);
 		return p.getAction();
 	}
-	public HashMap<String, HashMap<String, String>> getResultats() {
-		HashMap<String, HashMap<String, String>> res =new HashMap<String, HashMap<String, String>>();
-		HashMap<String, String> notesString=new HashMap<String, String>();
-		for(Controle c : semaineActuel.values()){
-			
-			for(java.util.Map.Entry<Personnage, Note> notes : c.getNotes().entrySet()){
-				notesString.put(notes.getKey().getNom(), ""+notes.getValue().getNote());
+	public ArrayList<String> getResultats() {
+		ArrayList<String> results = new ArrayList<String>();
+		for (Controle c : semaineActuel.values()) {
+			String ch = c.getMatiere() + " : \n";
+			for (Map.Entry<Personnage, Note> res : c.getNotes().entrySet()) {
+				ch += "\t" + res.getKey().getNom() + " : " + res.getValue().getNote() + "\n";
 			}
-			res.put( c.getMatiere(), notesString);
+			results.add(ch);
 		}
-		return res;
+		return results;
 	}
 	
 }

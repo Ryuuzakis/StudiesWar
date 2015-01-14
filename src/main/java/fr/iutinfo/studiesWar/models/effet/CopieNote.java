@@ -7,7 +7,7 @@ public class CopieNote extends Effet{
 	private Personnage personnage;
 
 	public CopieNote(byte dD, byte dF,Personnage p) {
-		super(dD, dF, (byte) 2);
+		super(dD, dF, (byte) 3);
 		this.personnage = p;
 	}
 

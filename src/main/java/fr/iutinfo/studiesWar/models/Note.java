@@ -33,7 +33,7 @@ public class Note {
 	}
 	
 	public void calculNoteRelation(){
-		if(personne.getEffets(3,controle).isEmpty()){
+		if(personne.getEffets(1,controle).isEmpty()){
 			for(int i=0;i<personne.getEffets(3,controle).size();i++){
 				personne.getEffets(3,controle).get(i).modifNote(this);
 			}

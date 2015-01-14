@@ -26,7 +26,7 @@ public class Controle {
 	}
 
 	public void calculerTousLesNotes(){
-		
+
 		for(Personnage p : partie.getPersonnes()){
 			this.getNote(p).calculerNote();
 		}
@@ -44,6 +44,7 @@ public class Controle {
 			}
 		}
 		for(Personnage p : partie.getPersonnes()){
+			System.out.println("youpi");
 			if(!p.getEffets(1, this).isEmpty()){
 			}else if(this.getNote(p).getNote()>20){
 				this.getNote(p).setNote(20);
@@ -59,7 +60,7 @@ public class Controle {
 
 			@Override
 			public int compare(Personnage p1, Personnage p2) {
-				if(getNote(p1).getNote()>getNote(p2).getNote()){
+				if(getNote(p1).getNote()<getNote(p2).getNote()){
 					return 1;
 				}else if(getNote(p1).getNote()>getNote(p2).getNote()){
 					return -1;
@@ -80,11 +81,5 @@ public class Controle {
 	public Note getNote(Personnage p){
 		return notes.get(p);
 	}
-
-	public Map<Personnage, Note> getNotes() {
-		return notes;
-	}
-
-	
 	
 }

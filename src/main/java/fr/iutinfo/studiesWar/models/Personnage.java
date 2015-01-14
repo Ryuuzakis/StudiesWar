@@ -14,20 +14,20 @@ import fr.iutinfo.studiesWar.models.effet.Effet;
 public abstract class Personnage {
 	
 	private String nom;
-	private int PA;
+	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
-	private ArrayList<Action> actionPosibles ;
+	private ArrayList<Action> actionPosibles;
 	
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
+		actionPosibles = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
-		this.effets = new ArrayList<Effet>();
-		Random r = new Random();
+		this("");
 	}
 	
 	public Integer getStat(String s){
@@ -102,7 +102,7 @@ public abstract class Personnage {
 
 	public void setMatieres(ArrayList<String> matieres) {
 		for (String m : matieres)
-			setStat(m, (int) Math.random() * 20);
+			setStat(m, new Random().nextInt(20));
 	}
 	
 }
