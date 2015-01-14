@@ -2,6 +2,9 @@ package fr.iutinfo.studiesWar.models;
 
 import java.security.KeyStore.Entry;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -30,30 +33,74 @@ public class Partie {
 		matieres.add("Triche");
 	}
 	/**
-	 * methode appelé quand un joueur rejoin la partie
+	 * methode appelee quand un joueur rejoin la partie
 	 */
 	public void rejoinPartie(Personnage p){
 		p.setMatieres(matieres);
 		personnes.add(p);
 	}
 	/**
-	 * methode appelé a chaque debut de tour
+	 * methode appelee a chaque debut de tour
 	 */
 	public void DebutDuTour(){
+		for(Personnage p : this.personnes){
+			p.setPA(p.getPA()/2+5);
+		}
 		byte date=(byte) (new Random().nextInt(6)+1);
-		Controle controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+		Controle controle;
+		do {
+			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+		} while (semaineActuel.containsValue(controle));
 		semaineActuel.put(date,controle);
-		
-		
 	}
 	/**
-	 * methode appelé a chaque fin de tour
+	 * methode appelee a chaque fin de tour
 	 */
-	public void finDuTour(){
+	public boolean finDuTour(){
+		Map<Personnage,Double>moy = new HashMap<Personnage,Double>();
 		for(Controle c : semaineActuel.values()){
 			c.calculerTousLesNotes();
 		}
+		for(Personnage p : this.personnes){
+			Double moyen = 0.0 ;
+			int coef = semaineActuel.size();
+			for(Controle c : semaineActuel.values()){
+				if(c.getNote(p).getNote()!=-1){
+				moyen = moyen + c.getNote(p).getNote();
+				}
+				else{
+					coef--;
+				}
+			}
+			moyen = moyen / coef;
+			moy.put(p,moyen);
+		}
+		ArrayList<Map.Entry<Personnage,Double>> list=new ArrayList<Map.Entry<Personnage,Double>>();
+		for(Map.Entry<Personnage,Double> entry : moy.entrySet()){
+			list.add(entry);
+		}
+		
+		Collections.sort(list,new Comparator<Map.Entry<Personnage,Double>>() {
+			@Override
+			public int compare(Map.Entry<Personnage, Double> e1,Map.Entry<Personnage, Double> e2) {
+				if(e1.getValue()>e2.getValue()){
+					return 1;
+				}else if(e1.getValue()<e2.getValue()) {
+					return -1;
+				}	
+				return 0;
+			}
+		});
+		
+		this.elimine(list.get(0).getKey());
+		if (personnes.size() > 1) {
+			return false;
+		}
+		return true;
 	}
+	
+	
+	
 	/**
 	 * @return nb de joueur restant dans la partie
 	 */
@@ -83,6 +130,19 @@ public class Partie {
 			results.add(ch);
 		}
 		return results;
+	}
+	
+	public void elimine(Personnage p){
+		this.personnes.remove(p);
+	}
+	
+	public boolean joueurElimine(Personnage p){
+		for(Personnage p2 : this.personnes){
+			if(p2.equals(p)){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 }
