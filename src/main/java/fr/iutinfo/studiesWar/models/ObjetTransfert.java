@@ -6,6 +6,11 @@ public class ObjetTransfert {
 	private int idJoueur;
 	
 	public ObjetTransfert() { }
+	
+	public ObjetTransfert(int idPartie, int idJoueur) {
+		this.idPartie = idPartie;
+		this.idJoueur = idJoueur;
+	}
 
 	public int getIdPartie() {
 		return idPartie;
