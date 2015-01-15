@@ -33,6 +33,22 @@ function listUsers() {
 		afficheListUsers(data)
 	});
 }
+function getActions(idJoueur, idPartie) {
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur;
+	$.getJSON(path, function(data) {
+		afficheListActions(data)
+	});
+}
+
+function afficheListActions(data) {
+	var html ='<ul>';
+	var index = 0;
+	for (index = 0; index < data.actions.length; ++index) {
+		html = html + "<li>" + data.actions.[index] + "</li>";
+	}
+	html = html + "</ul>";
+	$("#actionsdiv").html(html);
+}
 
 function afficheListUsers(data) {
 	var html = '<ul>';
