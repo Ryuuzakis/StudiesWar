@@ -19,8 +19,8 @@ import fr.iutinfo.studiesWar.models.action.Action;
 @Path("/partie")
 public class PartieRessource {
 	
-	private static HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
-	private static HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
+	public static HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
+	public static HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
 	
 	@GET
 	@Path("{name}/creer")
@@ -32,13 +32,19 @@ public class PartieRessource {
 		PersonnageJoueur pj = (PersonnageJoueur) Factory.getResource(Factory.JOUEUR, idJoueur);
 		pj.setNom(name);
 		joueurs.put(idJoueur, pj);
-		parties.get(idPartie).rejoinPartie(pj);
-		parties.get(idPartie).DebutDuTour();
+		parties.get(idPartie).rejoindrePartie(pj);
 		
 		ObjetTransfert obj = new ObjetTransfert();
 		obj.setIdPartie(idPartie);
 		obj.setIdJoueur(idJoueur);
 		return obj;
+	}
+	
+	@GET
+	@Path("{idPartie}/lancer")
+	public void lancerPartie(@PathParam("idPartie") int idPartie) {
+		Partie p = parties.get(idPartie);
+		p.lancerPartie();
 	}
 	
 	@GET
@@ -48,7 +54,9 @@ public class PartieRessource {
 		Partie p = parties.get(idPartie);
 		ArrayList<String> controles = new ArrayList<String>();
 		for(byte i = 1 ; i <= 5; i++){
-			Controle c = p.getSemaineActuel().get(i);
+			Controle c = p.getSemaineActuelle().get(i);
+			System.out.println(p.getSemaineActuelle());
+			System.out.println(c);
 			if (c != null)
 				controles.add(c.getMatiere());
 			else
@@ -69,7 +77,7 @@ public class PartieRessource {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
-		Controle controleDuJour = p.getSemaineActuel().get(idJour);
+		Controle controleDuJour = p.getSemaineActuelle().get(idJour);
 		
 		ArrayList<Action> actions = p.getActions(controleDuJour, pj);
 		for (Action a : actions) {
@@ -98,7 +106,7 @@ public class PartieRessource {
 			@PathParam("idJoueur") int idJoueur) {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
-		ArrayList<Action> actions = p.getActions(pj);
+		ArrayList<Action> actions = p.getActionsPossibles(pj);
 		for (Action a : actions) {
 			if (action.equals(a.toString())) {
 				a.agit();

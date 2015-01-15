@@ -20,7 +20,8 @@ public class Tricher extends Action{
 	public void agit() {
 		//int test = new Random().nextInt(20) * p.getStat("Triche");
 		if(new Random().nextInt(100) + p.getStat("Triche") >= 24){
-			p.addEffect(new CopieNote(controle.getDate(),(byte)(controle.getDate()+1),this.destPersonnage));
+			p.addEffect(new CopieNote(controle.getDate(),(controle.getDate()+1),
+					this.destPersonnage));
 		}
 		else{
 			p.addEffect(new NoteOffice(controle.getDate(),(byte)(controle.getDate()+1),0));

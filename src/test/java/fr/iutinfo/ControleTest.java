@@ -26,11 +26,11 @@ public class ControleTest {
 		int i =0;
 		while(i<25){
 
-			Partie p=new Partie(0, 0);
+			Partie p=new Partie(0);
 
 			Personnage p1=new PersonnageJoueur();
 
-			p.rejoinPartie(p1);
+			p.rejoindrePartie(p1);
 			
 			Controle c1=new Controle("Maths",p,(byte)1);
 
@@ -50,15 +50,15 @@ public class ControleTest {
 		int i =0;
 		while(i<25){
 
-			Partie p=new Partie(0, 0);
+			Partie p=new Partie(0);
 
 			Personnage p1=new PersonnageJoueur();
 			Personnage p2=new PersonnageJoueur();
 			Personnage p3=new PersonnageJoueur();
 
-			p.rejoinPartie(p1);
-			p.rejoinPartie(p2);
-			p.rejoinPartie(p3);
+			p.rejoindrePartie(p1);
+			p.rejoindrePartie(p2);
+			p.rejoindrePartie(p3);
 
 			Controle c1=new Controle("Maths",p,(byte)1);
 

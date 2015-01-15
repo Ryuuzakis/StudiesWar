@@ -20,15 +20,15 @@ public class PartieTest {
 	public void test() {
 		int i = 0;
 		while(i<25){
-			Partie p = new Partie(2, 12);
+			Partie p = new Partie(12);
 			Personnage p1 = new PersonnageJoueur();
-			p.rejoinPartie(p1);
-			p.DebutDuTour();
-			HashMap<Byte,Controle> h = p.getSemaineActuel();
+			p.rejoindrePartie(p1);
+			p.demarrerTour();
+			HashMap<Integer,Controle> h = p.getSemaineActuelle();
 			ArrayList<Controle> l = new ArrayList<Controle>();
-			Iterator iterator = h.entrySet().iterator();
+			Iterator<Map.Entry<Integer, Controle>> iterator = h.entrySet().iterator();
 			while (iterator.hasNext()) {
-				Map.Entry entry = (Map.Entry) iterator.next();
+				Map.Entry<Integer, Controle> entry = iterator.next();
 				l.add((Controle) entry.getValue());
 			}
 			ArrayList<String> a = new ArrayList<String>();

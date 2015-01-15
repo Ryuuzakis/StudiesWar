@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import org.eclipse.persistence.internal.jaxb.many.MapEntry;
-
 import fr.iutinfo.studiesWar.models.action.Absence;
 import fr.iutinfo.studiesWar.models.action.Action;
 import fr.iutinfo.studiesWar.models.action.Etudier;
@@ -28,7 +26,6 @@ public abstract class Personnage {
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
-		Random r = new Random();
 		actions = new ArrayList<Action>();
 		actionPosibles = new ArrayList<Action>();
 	}
@@ -95,7 +92,7 @@ public abstract class Personnage {
 	public void genererActions(Partie partie){
 		actionPosibles.clear();
 		
-		for(Controle c : partie.getSemaineActuel().values()){
+		for(Controle c : partie.getSemaineActuelle().values()){
 
 			//if (this.getPA() >= 1) {
 			actionPosibles.add(new Etudier(this, c, 1,"etudier un peu"));
@@ -125,11 +122,14 @@ public abstract class Personnage {
 	public ArrayList<Action> getActionduControle(Controle c){
 		ArrayList<Action> actionControl=new ArrayList<Action>();
 		if (c != null) {
+			System.out.println("Mon contrôle il est pas nul d'abord !");
 			for (Action a : actionPosibles) {
 				if (a.getControle().getMatiere().equals(c.getMatiere())) {
 					actionControl.add(a);
 				}
 			}
+		} else {
+			System.out.println("trop null ce contrôle :'(");
 		}
 		actionControl.add(new NeRienFaire(this, "ne rien faire", c));
 		return actionControl;
@@ -143,7 +143,7 @@ public abstract class Personnage {
 		effets.add(e);
 	}
 
-	public void setMatieres(ArrayList<String> matieres) {
+	public void setCaracteristiques(ArrayList<String> matieres) {
 		int somme=0;
 		int iPlus;
 		int iMoins;

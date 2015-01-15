@@ -1,8 +1,5 @@
 package fr.iutinfo.studiesWar.event;
 
-import java.util.Collections;
-import java.util.Random;
-
 import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.Personnage;
@@ -21,7 +18,7 @@ public class NoteOfficeEvent extends Evenement{
 	@Override
 	public boolean alieu() {
 		for(Personnage cible : partie.getPersonnes())
-			cible.addEffect(new NoteOffice(c.getDate(), (byte)(c.getDate()+1), note));
+			cible.addEffect(new NoteOffice(c.getDate(), (c.getDate() + 1), note));
 		return true;
 		
 	}
