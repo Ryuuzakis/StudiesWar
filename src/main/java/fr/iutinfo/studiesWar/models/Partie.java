@@ -26,7 +26,7 @@ public class Partie {
 		this.personnes=new ArrayList<Personnage>();
 		initMatieres();
 		for(int i=0;i<nbJ;i++){
-			personnes.add(new PersonnageIA("Random Guy " + i + 1));
+			personnes.add(new PersonnageIA("Random Guy " + (i + 1)));
 			personnes.get(i).setMatieres(matieres);
 		}
 	}
