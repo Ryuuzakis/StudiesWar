@@ -5,6 +5,7 @@ import java.util.Random;
 import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.effet.CopieNote;
+import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 
 public class Tricher extends Action{
 	
@@ -19,7 +20,13 @@ public class Tricher extends Action{
 
 	@Override
 	public void agit() {
-		p.addEffect(new CopieNote(controle.getDate(),(byte)(controle.getDate()+1),this.destPersonnage));
+		//int test = new Random().nextInt(20) * p.getStat("Triche");
+		if(new Random().nextInt(100) + p.getStat("Triche") >= 24){
+			p.addEffect(new CopieNote(controle.getDate(),(byte)(controle.getDate()+1),this.destPersonnage));
+		}
+		else{
+			p.addEffect(new NoteOffice(controle.getDate(),(byte)(controle.getDate()+1),0));
+		}
 	}
 	
 

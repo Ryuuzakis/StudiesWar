@@ -121,6 +121,7 @@ public class Partie {
 		p.genererActions(this);
 		return p.getAction();
 	}
+	
 	public ArrayList<String> getResultats() {
 		ArrayList<String> results = new ArrayList<String>();
 		for (Controle c : semaineActuel.values()) {

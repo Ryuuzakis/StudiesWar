@@ -14,6 +14,7 @@ public class NoteOffice extends Effet {
 	@Override
 	public void modifNote(Note n) {
 		n.setNote(this.note);
+
 	}
 
 }
