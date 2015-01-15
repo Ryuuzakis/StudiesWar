@@ -115,12 +115,15 @@ public class Controle {
 	@Override
 	public boolean equals(Object obj) {
 		Controle other = (Controle) obj;
-		if (date != other.date)
-			return false;
+		if (obj == null)
+			if (this == null)
+				return true;
 		if (matiere == null) {
 			if (other.matiere != null)
 				return false;
 		} else if (!matiere.equals(other.matiere))
+			return false;
+		if (date != other.date)
 			return false;
 		return true;
 	}

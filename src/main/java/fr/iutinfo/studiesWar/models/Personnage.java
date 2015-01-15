@@ -107,7 +107,7 @@ public abstract class Personnage {
 	public ArrayList<Action> getAction(Controle c){
 		ArrayList<Action> actionControl=new ArrayList<Action>();
 		for(Action a : actionPosibles){
-			if(a.getControle().equals(c)){
+			if(a.getControle().getMatiere().equals(c.getMatiere())){
 				actionControl.add(a);
 			}
 		}

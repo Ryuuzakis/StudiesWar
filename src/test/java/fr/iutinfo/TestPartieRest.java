@@ -23,27 +23,37 @@ public class TestPartieRest extends JerseyTest {
 	@Test 
 	public void testCreerPartie() {
 		String name = "Clavier";
-	    Entity<String> userEntity = Entity.entity(name, MediaType.TEXT_HTML);
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
 		
 		assertTrue(obj != null);
 	}
 	
+	@Test
+	public void testObtenirControles() {
+		String name = "Clavier";
+		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
+		
+		ObjetTransfert obj2 = target("/partie/" + obj.getIdPartie() + "/controles").request().get(ObjetTransfert.class);
+		
+		assertTrue(obj2.getControles() != null);
+		assertTrue(obj2.getControles().size() > 0);
+		
+	}
 	@Test 
 	public void testObtenirActions() {
 		String name = "Clavier";
-	    Entity<String> userEntity = Entity.entity(name, MediaType.TEXT_HTML);
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
-		System.out.println(obj.getIdPartie());
-		System.out.println(obj.getIdJoueur());
+		ObjetTransfert obj2 = target("/partie/" + obj.getIdPartie() + "/controles").request().get(ObjetTransfert.class);
 
-		ObjetTransfert actions = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()).request().get(ObjetTransfert.class);
+		ObjetTransfert obj3 = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()
+				+"/jour/" + 1).request().get(ObjetTransfert.class);
 		//String json = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()).request().get(String.class);;
 		//assertEquals("",json);
 		
-		assertTrue(actions != null);
-		assertTrue(actions.getActions().size() > 0);
+		assertTrue(obj3 != null);
+		assertTrue(obj3.getActions().size() > 0);
 		
+		//TODO : Tester
 	}
 	
 
