@@ -185,14 +185,13 @@ function Show (addr) {
 
 
 function lancerPartie() {
-	alert('Methode lancerPartie');
 	nom = $('#user').val();
 	
 	/*Fonction qui cree la partie*/
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
-		url : "v1/partie/"+$('#user').val()+"/creer",
+		url : "v1/partie/"+nom+"/creer",
 		success : function(data, textStatus, jqXHR) {
 			idJoueur = data.idJoueur;
 			idPartie = data.idPartie;
@@ -201,7 +200,7 @@ function lancerPartie() {
 			Hide("identification");	
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
+			alert('postUser error creer: ' + textStatus);
 		}
 	});
 	
@@ -212,7 +211,7 @@ function lancerPartie() {
 		success : function(data, textStatus, jqXHR) {
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
+			alert('postUser error lancer: ' + textStatus);
 		}
 	});
 	
