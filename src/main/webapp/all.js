@@ -1,4 +1,4 @@
-﻿	var idJoueur;
+	var idJoueur;
 	var idPartie;
 	var jour;
 	var choix = [-1, -1, -1, -1, -1];
@@ -39,10 +39,12 @@ function listUsers() {
 	});
 }
 function getActions(idJour) {
+	alert('getActions ' + idJour);
 	jour=idJour;
 	
 	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
+		alert(JSON.stringify(data, null, 4));
 		afficheListActions(data, idJour)
 	});
 }
@@ -183,6 +185,7 @@ function Show (addr) {
 
 
 function lancerPartie() {
+	alert('Id partie' + idPartie);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
@@ -201,6 +204,7 @@ function lancerPartie() {
 
 /*Fonction qui cree la partie*/
 function creerPartie(data) {
+	alert(nom);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
