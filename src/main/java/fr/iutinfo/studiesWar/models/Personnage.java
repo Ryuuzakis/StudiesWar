@@ -27,7 +27,9 @@ public abstract class Personnage {
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
+		actions = new ArrayList<Action>();
 		actionDispo = new ArrayList<Action>();
+		actionPosibles = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
