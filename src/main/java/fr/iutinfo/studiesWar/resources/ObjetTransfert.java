@@ -19,6 +19,7 @@ public class ObjetTransfert {
 	private int idJoueur;
 	private List<String> actions;
 	private List<String> resultats;
+	private List<String> controles;
 	
 	public List<String> getActions() {
 		return actions;
@@ -57,6 +58,14 @@ public class ObjetTransfert {
 
 	public void setResultats(List<String> resultats) {
 		this.resultats = resultats;
+	}
+
+	public List<String> getControles() {
+		return controles;
+	}
+
+	public void setControles(List<String> controles) {
+		this.controles = controles;
 	}
 	
 }
