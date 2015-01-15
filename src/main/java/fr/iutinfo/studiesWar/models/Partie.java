@@ -26,7 +26,7 @@ public class Partie {
 		this.personnes=new ArrayList<Personnage>();
 		initMatieres();
 		for(int i=0;i<nbJ;i++){
-			personnes.add(new PersonnageIA());
+			personnes.add(new PersonnageIA("Random Guy " + i + 1));
 			personnes.get(i).setMatieres(matieres);
 		}
 	}
@@ -74,7 +74,7 @@ public class Partie {
 	public boolean finDuTour(){
 		
 		for(Personnage p : personnes){
-			for(Action a : p.getAction()){
+			for(Action a : p.getActionPossibles()){
 				a.agit();
 			}
 		}
@@ -141,7 +141,7 @@ public class Partie {
 	
 	public ArrayList<Action> getActions(Personnage p){
 		p.genererActions(this);
-		return p.getAction();
+		return p.getActionPossibles();
 	}
 	
 	public ArrayList<String> getResultats() {
