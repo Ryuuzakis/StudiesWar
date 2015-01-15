@@ -203,7 +203,9 @@ function lancerPartie() {
 			alert('postUser error creer: ' + textStatus);
 		}
 	});
-	
+}
+
+function creerPartie() {
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
@@ -214,7 +216,6 @@ function lancerPartie() {
 			alert('postUser error lancer: ' + textStatus);
 		}
 	});
-	
 }
 
 function afficherEdt () {
