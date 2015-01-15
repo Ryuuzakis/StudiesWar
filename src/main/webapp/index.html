@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<title>Jersey Skeleton</title>
+		<title>Jersey Skeleton - Studies War</title>
 		<meta charset='utf-8'>
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -15,43 +15,140 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-				
 		
+		<!-- NOTRE CSS, qui fixe les elements sur l'image -->		
+		<link rel="stylesheet" href="style.css" />
 		
 		<!-- Code local -->
 		<script src="all.js"></script>
 	</head>
+	
+	
 	<body>
-		<div class="container">
-			<p> Modèle de page donnée par les professeurs.</p>
-			<div class="row">
-				<input type="text" name="user" id="user" placeholder="Nom ?"/>
-				<div class="btn-group" role="group">
-					<button id="get" class="btn btn-default">Lire</button>
-					<button id="post" class="btn btn-primary">Sauver</button>
-					<button id="list" class="btn btn-warning">Lister</button>
+
+		<h1>Studies War</h1>
+		<div id="identification">
+				
+			
+			<div id="auteur">
+				<p style="text-align: center">
+					Par</br>
+					</br>
+					BRICOUT Eliott</br>
+					CHEVALIER Benjamin</br>
+					CUVILLIERS Christophe</br>
+					DAUCHY Robin</br>
+					EL YAGOUBI Ayoub</br>
+					GUILBERT Florian</br>
+					LECOINTE Jonathan</br>
+				</p>
+			</div>
+				
+				
+				<div id="b2">
+					<p id="text"> Imaginez votre vie de tous les jours mais de façon beaucoup moins ... conventionnelle.</br>
+						Dans Studies War, vous incarnez un étudiant qui a, à chaque fin de semaine plusieurs de DS.</br>
+						Le but du jeu est d'être le dernier survivant de votre classe car a chaque fin de tour, un eleve quitte l'ecole. </br>
+						Vous etes le maillon faible, au revoir !</br>
+						Dans une partie, le joueur peut choisir de réviser pour ses cours ou ... tricher.</br>
+						Des evenements exceptionnels peuvent survenir tel que "le prof s'est fait renverser par un bus, le ds est annule".</br>
+						</br>
+						Si vous avez des questions ou des suggestions, cliquez sur le bouton "Contact" ci-dessous.</br>
+						</br>
+						Nom : 
+					</p><input type="text" name="user" id="user" placeholder="Nom ?"/></br>
+					<button  id="sub">Lancer une partie</button>
+					<button  onclick="toggle('contacts')">Contacts</button>
 				</div>
-			</div>
-			<div class="row">
-				<div class="panel panel-info">
-					<div class="panel-heading">Réponse</div>
-	  				<div class="panel-body" id="reponse">
-	  				</div>
+			
+				<script type="text/javascript">
+		
+					var element = document.getElementById('sub');
+					var nom = $('#user').val();
+					var idJoueur;
+					var idPartie;
+	
+	   				element.onclick = lancerPartie; 
+	   				
+	  			</script>
+  		
+ 	 		</div>   <!-- fin de la division d'authentification -->
+
+
+			<section id="contacts">
+				<h2>Contacts </h2>
+				<p id="text">
+					Par</br>
+					</br>
+					BRICOUT Eliott : </br>
+					CHEVALIER Benjamin</br>
+					CUVILLIERS Christophe</br>
+					DAUCHY Robin : dauchyrobin@gmail.com</br>
+					EL YAGOUBI Ayoub</br>
+					GUILBERT Florian : floguilbert@gmail.com </br>
+					LECOINTE Jonathan :  </br>
+				</p>
+				<button onclick="toggle('identification')">Retour a l'accueil</button>
+ 		 	</section>   <!-- fin de la division des contacts1 -->
+
+	
+			<nav id="nav">
+					<button onclick="retourAccueil()">Se deconnecter</button></br>
+					</br>
+					<button onclick="toggle('partie')">Lancer une partie</button></br>
+					<button onclick="toggle('edt')">Emploi du temps</button></br>
+					<button onclick="toggle('bulletins')">Bulletins</button></br>
+					<button onclick="toggle('contacts2')">Contacts</button></br>
+			</nav>
+			
+			<section id="edt">
+				<h1>Emplois du temps</h1>
+
+	  		</section>
+	
+	
+	
+	  		<section id="partie">
+	  
+			<h2>Choisir vos parametres</h2>
+					
+				
+	
+	
+			
+			
+				
+	  
+	  		</section>
+			<!-- fin de la division de parametres de partie --> 
+	
+		
+
+
+			<section id="bulletins">
+				<titre>Bulletins</titre>
+
+				<div id="b2">
+					<button onclick="toggle('partie','bulletins')">Voir les resultats</button>
 				</div>
-			</div>
-			<a href="v1/hello">GET Hello</a>	
-			<div>
-				<a href="accueil.html"><button id="accueil">Accueil</button> </a>
-			</div>
-		</div>
 		
-		
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#get").click(function () {getUser($('#user').val())});
-				$("#post").click(function () {postUser($('#user').val())});
-				$("#list").click(function () {listUsers()});
-			});
-  		</script>
+				<script type="text/javascript">
+			
+				</script>
+  		
+ 	 		</section>   <!-- fin de la division des bulletins -->
+
+			<section id="contacts2">
+				<titre>Contacts</titre>
+
+				<script type="text/javascript">
+			
+		  		</script>
+  		
+	 	 	</section>   <!-- fin de la division des contacts2 -->
+
+			<footer>
+				<a href="www.dangerecole.blogspot.com">www.dangerecole.blogspot.com</a>
+			</footer>
 	</body>
 </html>

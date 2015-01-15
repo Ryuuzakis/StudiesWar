@@ -3,6 +3,7 @@ package fr.iutinfo;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.core.Application;
 
@@ -64,7 +65,10 @@ public class TestPartieRessource extends JerseyTest {
 		pr.creerPartie("toto");
 		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(0, 0).getActions();
 		pr.validerAction(actions.get(0), 0, 0);
-		ArrayList<String> resultats = pr.obtenirResultats(0);
+		ObjetTransfert obj = pr.obtenirResultats(0);
+		List<String> resultats = obj.getResultats();
+		
+		assertTrue(resultats.size() > 0 );
 		
 		//TODO : Tester
 	}

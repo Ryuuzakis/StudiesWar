@@ -17,10 +17,14 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
+<<<<<<< HEAD
 	//Ensemble des actions disponibles
 	private ArrayList<Action> actionDispo;
 	//Actions choisies 
 	private ArrayList<Action> actions;
+=======
+	protected ArrayList<Action> actionPosibles;
+>>>>>>> d49f478af65fc1335cd38ff53b33efb4f4baecdc
 	
 	public Personnage(String s){
 		this.nom = s;
@@ -78,6 +82,7 @@ public abstract class Personnage {
 		PA = pA;
 	}
 	
+<<<<<<< HEAD
 	public void genererActions(Partie partie) {
 		actionDispo.clear();
 		for (Controle c : partie.getSemaineActuel().values()) {
@@ -104,6 +109,19 @@ public abstract class Personnage {
 									"tricher sur " + personnage.getNom()
 											+ " pour le controle de "
 											+ c.getMatiere()));
+=======
+	public void genererActions(Partie partie){
+		actionPosibles.clear();
+		
+		for(Controle c : partie.getSemaineActuel().values()){
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 1,"etudier un peu pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 2,"etudier passinnement pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c.getMatiere(), 3,"etudier a la folie pour le controle de "+c.getMatiere()));
+			
+			for(Personnage personnage :partie.getPersonnes()){
+				if(!this.equals(personnage)){
+					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()+" pour le controle de "+c.getMatiere()));
+>>>>>>> d49f478af65fc1335cd38ff53b33efb4f4baecdc
 				}
 			}
 			actionDispo
@@ -112,6 +130,7 @@ public abstract class Personnage {
 							"simuler une gastro pour le controle de "
 									+ c.getMatiere()));
 		}
+<<<<<<< HEAD
 		if (this instanceof PersonnageIA) {
 			Action tmp = actionDispo.get(new Random().nextInt(actionDispo
 					.size()));
@@ -122,6 +141,8 @@ public abstract class Personnage {
 	
 	public void addAction(Action a) {
 		actions.add(a);
+=======
+>>>>>>> d49f478af65fc1335cd38ff53b33efb4f4baecdc
 	}
 
 	public ArrayList<Action> getAction() {
@@ -143,6 +164,12 @@ public abstract class Personnage {
 		}
 		setStat(matieres.get(iPlus),new Random().nextInt(7)+14);
 		setStat(matieres.get(iMoins),new Random().nextInt(7));
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		//TODO : faire une methode equals
+		return false;
 	}
 	
 }
