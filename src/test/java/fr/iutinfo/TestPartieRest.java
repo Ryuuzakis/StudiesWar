@@ -21,12 +21,22 @@ public class TestPartieRest extends JerseyTest {
     }
 	
 	@Test 
+	public void testCreerPartie() {
+		String name = "Clavier";
+	    Entity<String> userEntity = Entity.entity(name, MediaType.TEXT_HTML);
+		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
+		
+		assertTrue(obj != null);
+	}
+	
+	@Test 
 	public void testObtenirActions() {
 		String name = "Clavier";
 	    Entity<String> userEntity = Entity.entity(name, MediaType.TEXT_HTML);
-		ObjetTransfert obj = target("/partie/"+name).request().post(userEntity).readEntity(ObjetTransfert.class);
+		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
+		System.out.println(obj.getIdPartie());
+		System.out.println(obj.getIdJoueur());
 
-		
 		ObjetTransfert actions = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()).request().get(ObjetTransfert.class);
 		//String json = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()).request().get(String.class);;
 		//assertEquals("",json);
