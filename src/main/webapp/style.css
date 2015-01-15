@@ -6,20 +6,35 @@ img{
 
 titre{
 	position:absolute;
-	left:570px;
-	top:70px;
+	left:610px;
+	top:48px;
 	text-align: center;
+	color:black;
+	font-family:arial, sans-serif;
+	font-size:350%;
+	font-style: italic;
 }
 
-titre{
+titre2{
 	position:absolute;
-	left:570px;
-	top:370px;
+	left:700px;
+	top:170px;
 	text-align: center;
+	color:white;
+	font-family:arial, sans-serif;
+	font-size:250%;
+	font-style: italic;
 }
 
 menu{
-
+	position:absolute;
+	left:50px;
+	top:170px;
+	text-align: center;
+	color:black;
+	font-family:arial, sans-serif;
+	font-size:110%;
+	font-style: italic;
 }
 
 timer{
