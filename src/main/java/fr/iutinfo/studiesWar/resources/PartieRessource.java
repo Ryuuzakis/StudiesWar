@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.iutinfo.studiesWar.models.Factory;
-import fr.iutinfo.studiesWar.models.ObjetTransfert;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 import fr.iutinfo.studiesWar.models.action.Action;

@@ -44,7 +44,7 @@ function afficheListActions(data) {
 	var html ='<ul>';
 	var index = 0;
 	for (index = 0; index < data.actions.length; ++index) {
-		/*html = html + "<li>" + data.actions.[index] + "</li>";*/
+		html = html + "<li>" + data.actions[index] + "</li>";
 	}
 	html = html + "</ul>";
 	$("#actionsdiv").html(html);

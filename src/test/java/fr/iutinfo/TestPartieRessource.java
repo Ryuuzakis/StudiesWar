@@ -11,9 +11,9 @@ import org.junit.Test;
 
 import fr.iutinfo.studiesWar.App;
 import fr.iutinfo.studiesWar.models.Factory;
-import fr.iutinfo.studiesWar.models.ObjetTransfert;
 import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.action.Action;
+import fr.iutinfo.studiesWar.resources.ObjetTransfert;
 import fr.iutinfo.studiesWar.resources.PartieRessource;
 
 public class TestPartieRessource extends JerseyTest {
