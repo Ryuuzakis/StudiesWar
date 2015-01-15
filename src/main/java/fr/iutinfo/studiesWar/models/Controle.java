@@ -115,9 +115,8 @@ public class Controle {
 	@Override
 	public boolean equals(Object obj) {
 		Controle other = (Controle) obj;
-		if (obj == null)
-			if (this == null)
-				return true;
+		if (other == null)
+			return this == null;
 		if (matiere == null) {
 			if (other.matiere != null)
 				return false;
