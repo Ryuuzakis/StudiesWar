@@ -46,6 +46,23 @@ function getActions(idJoueur, idPartie, idJour) {
 	});
 }
 
+function getCaracteristiques(idJoueur) {
+	var path = "v1/partie/" + idJoueur + "/caracteristiques";
+	$.getJSON(path, function(data) {
+		afficheListCaracs(data, idJour)
+	});
+}
+
+function afficheListCaracs(data) {
+	var html ='<ul>';
+	var index = 0;
+	for (index = 0; index < data.caracs.length; ++index) {
+		html = html + "<li>" + data.caracs[index] + "</li>";
+	}
+	html = html + "</ul>";
+	$("#MettezVotreDivIci").html(html);
+}
+
 function afficheListActions(data) {
 	var html ='';
 	var index = 0;
