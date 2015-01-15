@@ -66,6 +66,23 @@ function afficheListResultats(data) {
 	$("#resultsdiv").html(html);
 }
 
+function getControles(idPartie) {
+	var path = "v1/partie/" + idPartie + "/controles";
+	$.getJSON(path, function(data) {
+		afficheListControles(data)
+	});
+}
+
+function afficheListControles(data) {
+	var html ='<ul>';
+	var index = 0;
+	for (index = 0; index < data.controles.length; ++index) {
+		html = html + "<li>" + data.controles[index] + "</li>";
+	}
+	html = html + "</ul>";
+	$("#controlesdiv").html(html);
+}
+
 
 function afficheListUsers(data) {
 	var html = '<ul>';
