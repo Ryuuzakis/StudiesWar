@@ -17,9 +17,6 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
-	//Ensemble des actions disponibles
-	private ArrayList<Action> actionDispo;
-	//Actions choisies 
 	private ArrayList<Action> actions;
 	protected ArrayList<Action> actionPosibles;
 	
@@ -27,7 +24,8 @@ public abstract class Personnage {
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
-		actionDispo = new ArrayList<Action>();
+		actionPosibles = new ArrayList<Action>();
+		actions = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
@@ -133,13 +131,6 @@ public abstract class Personnage {
 		setStat(matieres.get(iMoins),new Random().nextInt(7));
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		return result;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
