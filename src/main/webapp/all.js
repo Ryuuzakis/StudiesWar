@@ -203,13 +203,12 @@ function lancerPartie() {
 }
 
 /*Fonction qui cree la partie*/
-function creerPartie() {
-	nom = $('#user').val();
+function creerPartie(data) {
 	alert(nom);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
-		url : "v1/partie/"+nom+"/creer",
+		url : "v1/partie/"+data+"/creer",
 		success : function(data, textStatus, jqXHR) {
 			idJoueur = data.idJoueur;
 			idPartie = data.idPartie;
