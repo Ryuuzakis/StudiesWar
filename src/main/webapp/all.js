@@ -1,6 +1,7 @@
 	var idJoueur;
 	var idPartie;
-	var nom;
+	var jour;
+	var choix = [-1, -1, -1, -1, -1];
 
 function getUser(name) {
 	$.getJSON("v1/user/" + name, function(data) {
@@ -38,9 +39,10 @@ function listUsers() {
 	});
 }
 function getActions(idJoueur, idPartie, idJour) {
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
+	jour=idJour;
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur ;
 	$.getJSON(path, function(data) {
-		afficheListActions(data)
+		afficheListActions(data, idJour)
 	});
 }
 
@@ -51,17 +53,44 @@ function afficheListActions(data) {
 		html = html + "<a  onclick='action("+index+")' id='action"+index+"'> " + data.actions[index] + "</a></br>";
 	}
 	$("#choix").html(html);
+	
+		if(choix[jour-1]>-1) {
+			for (var y=0; y<5; y++) {
+				if (choix[jour-1]==y) {
+					document.getElementById('action'+y).style.color= "red";
+				} else {
+					document.getElementById('action'+y).style.color= "grey";				
+				}
+			}
+		}
 }
 
 function action (index) {
+	choix[jour-1]=index;
+
 	document.getElementById('action0').style.color= "grey";
 	document.getElementById('action1').style.color= "grey";
 	document.getElementById('action2').style.color= "grey";
 	document.getElementById('action3').style.color= "grey";
 	document.getElementById('action4').style.color= "grey";
 	
-	var element = document.getElementById('action'+index);
-	element.style.color= "red";
+	
+	document.getElementById('action'+index).style.color= "red";
+	if (jour == 1) {
+		document.getElementById('lundi').style.backgroundColor= "green";	
+	}
+	if (jour == 2) {
+		document.getElementById('mardi').style.backgroundColor= "green";	
+	}
+	if (jour == 3) {
+		document.getElementById('mercredi').style.backgroundColor= "green";	
+	}
+	if (jour == 4) {
+		document.getElementById('jeudi').style.backgroundColor= "green";	
+	}
+	if (jour == 5) {
+		document.getElementById('vendredi').style.backgroundColor= "green";	
+	}
 }
 
 function getResultats(idPartie) {
@@ -154,12 +183,6 @@ function afficherEdt () {
 	Hide('contacts2');
 
   	Show('edt');
-  	
-  	document.getElementById("lundi").onclick = getActions(idJoueur, idPartie, 1);
-  	document.getElementById("mardi").onclick = getActions(idJoueur, idPartie, 2);
-  	document.getElementById("mercredi").onclick = getActions(idJoueur, idPartie, 3);
-	document.getElementById("jeudi").onclick = getActions(idJoueur, idPartie, 4);
- 	document.getElementById("vendredi").onclick = getActions(idJoueur, idPartie, 5);
   	
 }
 
