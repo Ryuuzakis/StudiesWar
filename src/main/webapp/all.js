@@ -33,8 +33,8 @@ function listUsers() {
 		afficheListUsers(data)
 	});
 }
-function getActions(idJoueur, idPartie) {
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur;
+function getActions(idJoueur, idPartie, idJour) {
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
 		afficheListActions(data)
 	});
