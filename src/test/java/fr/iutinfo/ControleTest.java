@@ -34,7 +34,7 @@ public class ControleTest {
 			
 			Controle c1=new Controle("Maths",p,(byte)1);
 
-			Action a1 = new Absence(p1,(byte)1,(byte)7,"Test");
+			Action a1 = new Absence(p1,c1,"Test");
 			a1.agit();
 
 			c1.calculerTousLesNotes();
@@ -116,7 +116,7 @@ public class ControleTest {
 
 			p.rejoinPartie(p1);
 
-			Action a1 = new Etudier(p1,"Maths",3,"Test");
+			Action a1 = new Etudier(p1,new Controle("", p, (byte)1),3,"Test");
 
 			a1.agit();
 

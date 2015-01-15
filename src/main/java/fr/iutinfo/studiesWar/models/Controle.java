@@ -30,7 +30,11 @@ public class Controle {
 	}
 
 	public void calculerTousLesNotes(){
-
+		
+		for(Evenement e : events){
+			e.alieu();
+		}
+		
 		for(Personnage p : partie.getPersonnes()){
 			this.getNote(p).calculerNote();
 		}
@@ -46,6 +50,10 @@ public class Controle {
 					changement=true;
 				}
 			}
+		}
+		
+		for(Personnage p : partie.getPersonnes()){
+			this.getNote(p).calculNoteRelationEchange();
 		}
 		for(Personnage p : partie.getPersonnes()){
 			if(!p.getEffets(1, this).isEmpty()){
@@ -74,8 +82,9 @@ public class Controle {
 	}
 	
 	public void GenereEvent(){
-		//TODO : Corriger l'erreur
-		//events.add(Parametre.gestionEvent());
+		Evenement e=Parametre.gestionEvent(this,partie);
+		if(e!=null)
+			events.add(e);
 	}
 
 	public String getMatiere() {
@@ -95,13 +104,16 @@ public class Controle {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + date;
+		result = prime * result + ((matiere == null) ? 0 : matiere.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
 		Controle other = (Controle) obj;
 		if (date != other.date)
 			return false;

@@ -39,6 +39,14 @@ public class Note {
 			}
 		}
 	}
+	
+	public void calculNoteRelationEchange(){
+		if(personne.getEffets(1,controle).isEmpty()){
+			for(int i=0;i<personne.getEffets(4,controle).size();i++){
+				personne.getEffets(4,controle).get(i).modifNote(this);
+			}
+		}
+	}
 
 	public Personnage getPersonne() {
 		return personne;

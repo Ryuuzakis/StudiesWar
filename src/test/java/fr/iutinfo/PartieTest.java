@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
 import org.junit.Test;
 
 import fr.iutinfo.studiesWar.models.Controle;
@@ -38,10 +37,10 @@ public class PartieTest {
 					fail();
 				}
 				else{
-				a.add(l.get(cpt).getMatiere());
+					a.add(l.get(cpt).getMatiere());
 				}
 			}
-		i++;	
+			i++;	
 		}
 	}
 

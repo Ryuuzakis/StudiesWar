@@ -13,7 +13,6 @@ import org.junit.Test;
 import fr.iutinfo.studiesWar.App;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Personnage;
-import fr.iutinfo.studiesWar.models.action.Action;
 import fr.iutinfo.studiesWar.resources.ObjetTransfert;
 import fr.iutinfo.studiesWar.resources.PartieRessource;
 
@@ -59,14 +58,18 @@ public class TestPartieRessource extends JerseyTest {
 	
 	@Test
 	public void testObtenirResultats() {
-		pr.creerPartie("toto");
-		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(0, 0).getActions();
-		pr.validerAction(actions.get(0), 0, 0);
-		ObjetTransfert obj = pr.obtenirResultats(0);
+		ObjetTransfert obj = pr.creerPartie("toto");
+		ArrayList<String> actions = (ArrayList<String>) 
+				pr.obtenirActions(obj.getIdPartie(), obj.getIdJoueur()).getActions();
+		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
+		obj = pr.obtenirResultats(0);
 		List<String> resultats = obj.getResultats();
 		
 		assertTrue(resultats.size() > 0 );
 		
+		for(String ch : resultats) {
+			System.out.println(ch);
+		}
 		//TODO : Tester
 	}
 	

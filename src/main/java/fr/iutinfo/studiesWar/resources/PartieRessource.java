@@ -33,7 +33,11 @@ public class PartieRessource {
 		joueurs.put(idJoueur, pj);
 		parties.get(idPartie).rejoinPartie(pj);
 		parties.get(idPartie).DebutDuTour();
-		return new ObjetTransfert(idPartie, idJoueur);
+		
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setIdPartie(idPartie);
+		obj.setIdJoueur(idJoueur);
+		return obj;
 	}
 	
 	@GET
@@ -52,6 +56,23 @@ public class PartieRessource {
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
 		return output;
+	}
+	
+	@GET
+	@Path("{idPartie}/controles")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
+		Partie p = parties.get(idPartie);
+		ArrayList<String> controles = new ArrayList<String>();
+		for(Byte b=1 ; b<=5;b++){
+			if (p.getSemaineActuel().get(b) != null)
+				controles.add(p.getSemaineActuel().get(b).getMatiere());
+			else
+				controles.add("pas de contrôle");
+		}
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setControles(controles);
+		return obj;
 	}
 	
 	@POST
