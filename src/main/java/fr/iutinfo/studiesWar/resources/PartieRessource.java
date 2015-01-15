@@ -49,8 +49,8 @@ public class PartieRessource {
 		ArrayList<String> controles = new ArrayList<String>();
 		for(byte i = 1 ; i <= 5; i++){
 			Controle c = p.getSemaineActuel().get(i);
-			if (p.getSemaineActuel().get(i) != null)
-				controles.add(p.getSemaineActuel().get(i).getMatiere());
+			if (c != null)
+				controles.add(c.getMatiere());
 			else
 				controles.add("pas de contrôle");
 		}
