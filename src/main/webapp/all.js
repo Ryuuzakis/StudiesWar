@@ -37,8 +37,8 @@ function listUsers() {
 		afficheListUsers(data)
 	});
 }
-function getActions(idJoueur, idPartie) {
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur;
+function getActions(idJoueur, idPartie, idJour) {
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
 		afficheListActions(data)
 	});
@@ -146,15 +146,19 @@ function lancerPartie() {
 	
 }
 
-function recupActions () {
+function afficherEdt () {
 	Hide('identification');
 	Hide('partie');
 	Hide('bulletins');
 
   	Show('edt');
   	
+  	document.getElementById("lundi").onclick = getActions(idJoueur, idPartie, 1);
+  	document.getElementById("mardi").onclick = getActions(idJoueur, idPartie, 2);
+  	document.getElementById("mercredi").onclick = getActions(idJoueur, idPartie, 3);
+	document.getElementById("jeudi").onclick = getActions(idJoueur, idPartie, 4);
+ 	document.getElementById("vendredi").onclick = getActions(idJoueur, idPartie, 5);
   	
-   	getActions(idJoueur, idPartie, idJour)
 }
 
 function retourAccueil(){
