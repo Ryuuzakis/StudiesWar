@@ -69,7 +69,8 @@
 					var idPartie;
 	
 	   				element.onclick=function() {
-	   					creerPartie(nom);
+	   					alert("nom " + nom + "///" + $('#user').val());
+	   					creerPartie($('#user').val());
 	   					lancerPartie();
 	   					 
 	   				};
