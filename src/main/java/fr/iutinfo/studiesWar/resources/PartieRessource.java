@@ -42,9 +42,10 @@ public class PartieRessource {
 	
 	@GET
 	@Path("{idPartie}/lancer")
-	public void lancerPartie(@PathParam("idPartie") int idPartie) {
+	public ObjetTransfert lancerPartie(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
 		p.lancerPartie();
+		return new ObjetTransfert();
 	}
 	
 	@GET
