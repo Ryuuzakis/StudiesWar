@@ -77,6 +77,7 @@ public abstract class Personnage {
 	
 	public void genererActions(Partie partie){
 		actionPosibles.clear();
+		
 		for(Controle c : partie.getSemaineActuel().values()){
 			actionPosibles.add(new Etudier(this, c.getMatiere(), 1,"etudier un peu pour le controle de "+c.getMatiere()));
 			actionPosibles.add(new Etudier(this, c.getMatiere(), 2,"etudier passinnement pour le controle de "+c.getMatiere()));
@@ -88,6 +89,11 @@ public abstract class Personnage {
 				}
 			}
 			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1),"simuler une gastro pour le controle de "+c.getMatiere()));
+		}
+		if(this instanceof PersonnageIA){
+			Action tmp = actionPosibles.get(new Random().nextInt(actionPosibles.size()));
+			actionPosibles.clear();
+			actionPosibles.add(tmp);
 		}
 		
 	}

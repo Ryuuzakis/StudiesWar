@@ -7,6 +7,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.ObjetTransfert;
@@ -17,11 +19,12 @@ import fr.iutinfo.studiesWar.models.action.Action;
 @Path("/partie")
 public class PartieRessource {
 	
-	private HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
-	private HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
+	private static HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
+	private static HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
 	
-	@POST
-	@Path("{name}")
+	@GET
+	@Path("{name}/creer")
+	@Produces(MediaType.APPLICATION_JSON)
 	public ObjetTransfert creerPartie(@PathParam("name") String name ) {
 		int idPartie = parties.size();
 		parties.put(idPartie, (Partie) Factory.getResource(Factory.PARTIE, idPartie));
@@ -35,18 +38,21 @@ public class PartieRessource {
 	}
 	
 	@GET
-	@Path("{idPartie}/joueur/{idJoueur}/getaction")
-	public ArrayList<String> obtenirActions(@PathParam("idPartie") int idPartie,
+	@Path("/{idPartie}/joueur/{idJoueur}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirActions(
+			@PathParam("idPartie") int idPartie,
 			@PathParam("idJoueur") int idJoueur) {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
 		ArrayList<Action> actions = p.getActions(pj);
-		
 		for (Action a : actions) {
 			actionsString.add(a.toString());
 		}
-		return actionsString;
+		ObjetTransfert output = new ObjetTransfert();
+		output.setActions(actionsString);
+		return output;
 	}
 	
 	@POST

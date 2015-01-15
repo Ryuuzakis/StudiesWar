@@ -1,5 +1,7 @@
 package fr.iutinfo.studiesWar.models;
 
+import java.util.List;
+
 /**
  * Objet permettant de transferer les informations entre le client et le serveur
  *
@@ -15,7 +17,16 @@ public class ObjetTransfert {
 	 * ID du joueur
 	 */
 	private int idJoueur;
+	private List<String> actions;
 	
+	public List<String> getActions() {
+		return actions;
+	}
+
+	public void setActions(List<String> actions) {
+		this.actions = actions;
+	}
+
 	public ObjetTransfert() { }
 	
 	public ObjetTransfert(int idPartie, int idJoueur) {

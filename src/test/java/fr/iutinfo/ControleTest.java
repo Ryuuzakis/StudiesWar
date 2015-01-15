@@ -31,11 +31,11 @@ public class ControleTest {
 			Personnage p1=new PersonnageJoueur();
 
 			p.rejoinPartie(p1);
+			
+			Controle c1=new Controle("Maths",p,(byte)1);
 
 			Action a1 = new Absence(p1,(byte)1,(byte)7,"Test");
 			a1.agit();
-
-			Controle c1=new Controle("Maths",p,(byte)1);
 
 			c1.calculerTousLesNotes();
 

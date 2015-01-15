@@ -15,7 +15,7 @@ public class NoteOfficeEvent extends Evenement{
 	public NoteOfficeEvent(Partie p,String s,Controle c,int note) {
 		super(p,s);
 		this.note=note;
-		
+		this.c = c;
 	}
 
 	@Override
