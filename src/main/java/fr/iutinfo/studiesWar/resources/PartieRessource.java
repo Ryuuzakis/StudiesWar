@@ -43,6 +43,7 @@ public class PartieRessource {
 	public ObjetTransfert obtenirActions(
 			@PathParam("idPartie") int idPartie,
 			@PathParam("idJoueur") int idJoueur) {
+		System.out.println("obtenir actions");
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
