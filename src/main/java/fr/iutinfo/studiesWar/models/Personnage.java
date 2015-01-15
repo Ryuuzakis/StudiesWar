@@ -114,8 +114,8 @@ public abstract class Personnage {
 		return actionControl;
 	}
 
-	public ArrayList<Action> getAction() {
-		return actions;
+	public ArrayList<Action> getActionPossibles() {
+		return actionPosibles;
 	}
 	
 	public void addEffect(Effet e){
