@@ -10,7 +10,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
@@ -34,7 +33,11 @@ public class PartieRessource {
 		joueurs.put(idJoueur, pj);
 		parties.get(idPartie).rejoinPartie(pj);
 		parties.get(idPartie).DebutDuTour();
-		return new ObjetTransfert(idPartie, idJoueur);
+		
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setIdPartie(idPartie);
+		obj.setIdJoueur(idJoueur);
+		return obj;
 	}
 	
 	@GET
@@ -61,8 +64,11 @@ public class PartieRessource {
 	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
 		ArrayList<String> controles = new ArrayList<String>();
-		for(Controle c : p.getSemaineActuel().values()) {
-			controles.add(c.getMatiere().toString());
+		for(Byte b=1 ; b<=5;b++){
+			if (p.getSemaineActuel().get(b) != null)
+				controles.add(p.getSemaineActuel().get(b).getMatiere());
+			else
+				controles.add("pas de contrôle");
 		}
 		ObjetTransfert obj = new ObjetTransfert();
 		obj.setControles(controles);

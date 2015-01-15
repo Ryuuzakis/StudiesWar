@@ -19,6 +19,8 @@
 		
 		<!-- Code local -->
 	</head>
+	
+	
 	<body>
 		<script src="all.js"></script>
 		
@@ -31,6 +33,7 @@
 		<div style="text-align: center">
 			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
 			<button id="sub">Créer Partie</button>
+			<button id="controles">Afficher les contrôles</button>
 			<a href="#" id="actions">Affiche les actions</a>
 		</div>
 		<div id="controlesdiv">
@@ -69,6 +72,9 @@
 							}
 							});
 						}
+   			$("#controles").click(function() {
+   				getControles(idPartie);
+   			});
    			$("#actions").click(function () {
    									getActions(idJoueur, idPartie)
    								}

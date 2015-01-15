@@ -1,3 +1,7 @@
+	var idJoueur;
+	var idPartie;
+	var nom;
+
 function getUser(name) {
 	$.getJSON("v1/user/" + name, function(data) {
 		afficheUser(data)
@@ -33,22 +37,33 @@ function listUsers() {
 		afficheListUsers(data)
 	});
 }
-function getActions(idJoueur, idPartie) {
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur;
+function getActions(idJoueur, idPartie, idJour) {
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
 		afficheListActions(data)
 	});
 }
 
 function afficheListActions(data) {
-	var html ='<ul>';
+	var html ='';
 	var index = 0;
 	for (index = 0; index < data.actions.length; ++index) {
-		html = html + "<li> " + data.actions[index] + "</li>";
+		html = html + "<a  onclick='action("+index+")' id='action"+index+"'> " + data.actions[index] + "</a></br>";
 	}
-	html = html + "</ul>";
-	$("#actionsdiv").html(html);
+	$("#choix").html(html);
 }
+
+function action (index) {
+	document.getElementById('action0').style.color= "grey";
+	document.getElementById('action1').style.color= "grey";
+	document.getElementById('action2').style.color= "grey";
+	document.getElementById('action3').style.color= "grey";
+	document.getElementById('action4').style.color= "grey";
+	
+	var element = document.getElementById('action'+index);
+	element.style.color= "red";
+}
+
 function getResultats(idPartie) {
 	var path = "v1/partie/" + idPartie + "/resultats";
 	$.getJSON(path, function(data) {
@@ -109,15 +124,17 @@ function Show (addr) {
 
 
 
-function lancerPartie(){	
+function lancerPartie() {
+	nom = $('#user').val();
+	
+	
 	$.ajax({
-		type : 'POST',
+		type : 'GET',
 		contentType : 'application/json',
-		url : "v1/partie/"+$('#user').val(),
+		url : "v1/partie/"+$('#user').val()+"/creer",
 		success : function(data, textStatus, jqXHR) {
 			idJoueur = data.idJoueur;
 			idPartie = data.idPartie;
-			alert(idJoueur + "/" + idPartie);
 			Show("partie");
 			Show("nav");
 			Hide("identification");	
@@ -125,14 +142,37 @@ function lancerPartie(){
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
 		}
-	});	
+	});
+	
+}
+
+function afficherEdt () {
+	Hide('identification');
+	Hide('contacts');
+	Hide('partie');
+	Hide('bulletins');
+	Hide('contacts2');
+
+  	Show('edt');
+  	
+  	document.getElementById("lundi").onclick = getActions(idJoueur, idPartie, 1);
+  	document.getElementById("mardi").onclick = getActions(idJoueur, idPartie, 2);
+  	document.getElementById("mercredi").onclick = getActions(idJoueur, idPartie, 3);
+	document.getElementById("jeudi").onclick = getActions(idJoueur, idPartie, 4);
+ 	document.getElementById("vendredi").onclick = getActions(idJoueur, idPartie, 5);
+  	
 }
 
 function retourAccueil(){
  	
 	Show("identification");
 	Hide("nav");
-	Hide("partie");	
+	Hide("partie");
+	Hide('contacts');
+	Hide('edt');
+	Hide('partie');
+	Hide('bulletins');
+	Hide('contacts2');	
 }
 
 
