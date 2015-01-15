@@ -36,17 +36,21 @@ public class TestPartieRessource extends JerseyTest {
 	
 	@Test
 	public void testObtenirActions() {
-		pr.creerPartie("toto");
-		ArrayList<String> actions = pr.obtenirActions(0, 0);
-		assertTrue(actions != null);
-		assertTrue(actions.size() > 0);
+		for (int i = 0; i < 100; i++) {
+			ObjetTransfert obj = pr.creerPartie("toto" + i);
+			ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
+					obj.getIdJoueur()).getActions();
+			assertTrue(actions != null);
+			assertTrue(actions.size() > 0);
+		}
 	}
 	
 	@Test
 	public void testValiderAction() {
-		pr.creerPartie("toto");
-		ArrayList<String> actions = pr.obtenirActions(0, 0);
-		pr.validerAction(actions.get(0), 0, 0);
+		ObjetTransfert obj = pr.creerPartie("totoro");
+		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
+				obj.getIdJoueur()).getActions();
+		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
 		
 		//TODO : faire un test interessant
 		
@@ -55,12 +59,11 @@ public class TestPartieRessource extends JerseyTest {
 	@Test
 	public void testObtenirResultats() {
 		pr.creerPartie("toto");
-		ArrayList<String> actions = pr.obtenirActions(0, 0);
+		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(0, 0).getActions();
 		pr.validerAction(actions.get(0), 0, 0);
 		ArrayList<String> resultats = pr.obtenirResultats(0);
-		for (String ch : resultats) {
-			System.out.println(ch);
-		}
+		
+		//TODO : Tester
 	}
 	
 
