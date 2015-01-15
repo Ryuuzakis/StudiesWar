@@ -12,11 +12,9 @@ import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 public class TromperDeCopie extends Evenement{
 
 	private Controle controle;
-	private int note;
 
-	public TromperDeCopie(Partie p,String s,int note,Controle c) {
+	public TromperDeCopie(Partie p,String s, Controle c) {
 		super(p,s);
-		this.note=note;
 		this.controle=c;
 	}
 
