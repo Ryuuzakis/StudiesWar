@@ -94,7 +94,7 @@ function action (index) {
 	
 	var cpt=0;
 	for (var i=0; i<5; i++) {
-		if (choix > -1 ) {
+		if (choix[i] > -1 ) {
 			cpt++;
 		}
 	}
