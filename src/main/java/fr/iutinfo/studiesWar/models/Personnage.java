@@ -17,13 +17,17 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
+	//Ensemble des actions disponibles
+	private ArrayList<Action> actionDispo;
+	//Actions choisies 
+	private ArrayList<Action> actions;
 	protected ArrayList<Action> actionPosibles;
 	
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
-		actionPosibles = new ArrayList<Action>();
+		actionDispo = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
@@ -88,12 +92,18 @@ public abstract class Personnage {
 					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()+" pour le controle de "+c.getMatiere()));
 				}
 			}
+
 			actionPosibles.add(new Absence(this, c,"simuler une gastro pour le controle de "+c.getMatiere()));
 		}
+
+	}
+	
+	public void addAction(Action a) {
+		actions.add(a);
 	}
 
 	public ArrayList<Action> getAction() {
-		return actionPosibles;
+		return actions;
 	}
 	
 	public void addEffect(Effet e){

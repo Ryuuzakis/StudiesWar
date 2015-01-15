@@ -2,6 +2,7 @@ package fr.iutinfo;
 
 import static org.junit.Assert.*;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
