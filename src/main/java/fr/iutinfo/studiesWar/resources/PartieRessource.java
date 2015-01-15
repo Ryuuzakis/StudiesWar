@@ -80,6 +80,17 @@ public class PartieRessource {
 		return output;
 	}
 	
+	@GET
+	@Path("/{idJoueur}/caracteristiques")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirCaracs(@PathParam("idJoueur") int idJoueur) {
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setCaracs(pj.getStats());
+		
+		return obj;
+	}
+	
 	
 	@POST
 	@Path("/{idPartie}/joueur/{idJoueur}/sendaction/{action}")
