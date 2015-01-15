@@ -81,16 +81,22 @@ public abstract class Personnage {
 	public void genererActions(Partie partie) {
 		actionDispo.clear();
 		for (Controle c : partie.getSemaineActuel().values()) {
-			actionDispo.add(new Etudier(this, c.getMatiere(), 1,
-					"etudier un peu pour le controle de " + c.getMatiere()));
-			actionDispo.add(new Etudier(this, c.getMatiere(), 2,
-					"etudier passinnement pour le controle de "
-							+ c.getMatiere()));
-			actionDispo
-					.add(new Etudier(this, c.getMatiere(), 3,
-							"etudier a la folie pour le controle de "
+			if (this.getPA() >= 1) {
+				actionDispo
+						.add(new Etudier(this, c.getMatiere(), 1,
+								"etudier un peu pour le controle de "
+										+ c.getMatiere()));
+				if (this.getPA() >= 2) {
+					actionDispo.add(new Etudier(this, c.getMatiere(), 2,
+							"etudier passinnement pour le controle de "
 									+ c.getMatiere()));
-
+					if (this.getPA() >= 3) {
+						actionDispo.add(new Etudier(this, c.getMatiere(), 3,
+								"etudier a la folie pour le controle de "
+										+ c.getMatiere()));
+					}
+				}
+			}
 			for (Personnage personnage : partie.getPersonnes()) {
 				if (this != personnage) {
 					actionDispo
