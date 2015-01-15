@@ -18,9 +18,10 @@
 		
 		
 		<!-- Code local -->
-		<script src="all.js"></script>
 	</head>
-
+	<body>
+		<script src="all.js"></script>
+		
 
 
   		<h1 style="text-align: center">Lancer une partie</h1>
@@ -58,7 +59,10 @@
 							}
 							});
 						}
-   			$("#actions").click(function () {getActions(idJoueur, idPartie)});
+   			$("#actions").click(function () {
+   									getActions(idJoueur, idPartie)
+   								}
+   			);
 						
   		</script>
   		
@@ -88,4 +92,5 @@
 			
 			
 		</div>
+		</body>
   		</html>

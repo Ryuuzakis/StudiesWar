@@ -1,6 +1,7 @@
 package fr.iutinfo;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+
 
 
 import java.util.ArrayList;
