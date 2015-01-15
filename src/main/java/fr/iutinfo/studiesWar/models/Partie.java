@@ -15,6 +15,7 @@ public class Partie {
 	private ArrayList<Personnage> personnes;
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
 	private ArrayList<String> matieres = new ArrayList<String>();
+	private int nbJ = 10;
 
 	private int dureeTour;
 	private int id;
@@ -24,6 +25,10 @@ public class Partie {
 		this.dureeTour=dureeTour;
 		this.personnes=new ArrayList<Personnage>();
 		initMatieres();
+		for(int i=0;i<nbJ;i++){
+			personnes.add(new PersonnageIA());
+			personnes.get(i).setMatieres(matieres);
+		}
 	}
 	private void initMatieres() {
 		matieres.add("Maths");
@@ -37,7 +42,16 @@ public class Partie {
 	 */
 	public void rejoinPartie(Personnage p){
 		p.setMatieres(matieres);
-		personnes.add(p);
+		int i = 0;
+		boolean ajoute = false;
+		while(i<nbJ&&!ajoute){
+			if(personnes.get(i) instanceof PersonnageIA){
+				personnes.remove(i);
+				personnes.add(p);
+				ajoute = true;
+			}
+			i++;
+		}
 	}
 	/**
 	 * methode appelee a chaque debut de tour
@@ -58,6 +72,14 @@ public class Partie {
 	 * methode appelee a chaque fin de tour
 	 */
 	public boolean finDuTour(){
+		
+		for(Personnage p : personnes){
+			for(Action a : p.getAction()){
+				a.agit();
+			}
+		}
+		
+		
 		Map<Personnage,Double>moy = new HashMap<Personnage,Double>();
 		for(Controle c : semaineActuel.values()){
 			c.calculerTousLesNotes();

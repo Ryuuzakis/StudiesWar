@@ -7,4 +7,5 @@ public class PersonnageIA extends Personnage {
 	}
 	
 	
+	
 }

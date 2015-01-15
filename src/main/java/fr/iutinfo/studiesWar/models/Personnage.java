@@ -17,13 +17,16 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
-	private ArrayList<Action> actionPosibles;
+	//Ensemble des actions disponibles
+	private ArrayList<Action> actionDispo;
+	//Actions choisies 
+	private ArrayList<Action> actions;
 	
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		Random r = new Random();
-		actionPosibles = new ArrayList<Action>();
+		actionDispo = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
@@ -75,31 +78,48 @@ public abstract class Personnage {
 		PA = pA;
 	}
 	
-	public void genererActions(Partie partie){
-		actionPosibles.clear();
-		
-		for(Controle c : partie.getSemaineActuel().values()){
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 1,"etudier un peu pour le controle de "+c.getMatiere()));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 2,"etudier passinnement pour le controle de "+c.getMatiere()));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 3,"etudier a la folie pour le controle de "+c.getMatiere()));
-			
-			for(Personnage personnage :partie.getPersonnes()){
-				if(this!=personnage){
-					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()+" pour le controle de "+c.getMatiere()));
+	public void genererActions(Partie partie) {
+		actionDispo.clear();
+		for (Controle c : partie.getSemaineActuel().values()) {
+			actionDispo.add(new Etudier(this, c.getMatiere(), 1,
+					"etudier un peu pour le controle de " + c.getMatiere()));
+			actionDispo.add(new Etudier(this, c.getMatiere(), 2,
+					"etudier passinnement pour le controle de "
+							+ c.getMatiere()));
+			actionDispo
+					.add(new Etudier(this, c.getMatiere(), 3,
+							"etudier a la folie pour le controle de "
+									+ c.getMatiere()));
+
+			for (Personnage personnage : partie.getPersonnes()) {
+				if (this != personnage) {
+					actionDispo
+							.add(new Tricher(this, personnage, c,
+									"tricher sur " + personnage.getNom()
+											+ " pour le controle de "
+											+ c.getMatiere()));
 				}
 			}
-			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1),"simuler une gastro pour le controle de "+c.getMatiere()));
+			actionDispo
+					.add(new Absence(this, c.getDate(),
+							(byte) (c.getDate() + 1),
+							"simuler une gastro pour le controle de "
+									+ c.getMatiere()));
 		}
-		if(this instanceof PersonnageIA){
-			Action tmp = actionPosibles.get(new Random().nextInt(actionPosibles.size()));
-			actionPosibles.clear();
-			actionPosibles.add(tmp);
+		if (this instanceof PersonnageIA) {
+			Action tmp = actionDispo.get(new Random().nextInt(actionDispo
+					.size()));
+			this.actions.add(tmp);
 		}
-		
+
+	}
+	
+	public void addAction(Action a) {
+		actions.add(a);
 	}
 
 	public ArrayList<Action> getAction() {
-		return actionPosibles;
+		return actions;
 	}
 	
 	public void addEffect(Effet e){
