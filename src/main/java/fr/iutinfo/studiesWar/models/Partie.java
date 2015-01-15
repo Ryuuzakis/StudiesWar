@@ -16,19 +16,27 @@ public class Partie {
 	private HashMap<Byte, Controle> semaineActuel=new HashMap<Byte, Controle>();
 	private ArrayList<String> matieres = new ArrayList<String>();
 	private int nbJ = 10;
-
+	private int numTour;
 	private int dureeTour;
 	private int id;
+	private Bulletin b;
 
 	public Partie(int dureeTour,int id){
 		this.id=id;
 		this.dureeTour=dureeTour;
+		this.numTour=-1;
 		this.personnes=new ArrayList<Personnage>();
 		initMatieres();
 		for(int i=0;i<nbJ;i++){
 			personnes.add(new PersonnageIA("Random Guy " + (i + 1)));
 			personnes.get(i).setMatieres(matieres);
 		}
+	}
+	public int getNumTour() {
+		return numTour;
+	}
+	public void setNumTour(int numTour) {
+		this.numTour = numTour;
 	}
 	private void initMatieres() {
 		matieres.add("Maths");
@@ -57,16 +65,28 @@ public class Partie {
 	 * methode appelee a chaque debut de tour
 	 */
 	public void DebutDuTour(){
+		semaineActuel=new HashMap<Byte, Controle>();
+		this.setNumTour(this.getNumTour()+1);
 		for(Personnage p : this.personnes){
 			p.setPA(p.getPA()/2+5);
 		}
-		byte date=(byte) (new Random().nextInt(6)+1);
+		byte date=(byte) (new Random().nextInt(5)+1);
+		
 		Controle controle;
+		Controle control2;
+		Controle control3;
 		//TODO: Tester si la boucle permet bien de ne pas avoir de doublons dans la map
 		do {
-			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, date);
+			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)1);
+			control2=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)2);
+			control3=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)3);
 		} while (semaineActuel.containsValue(controle));
-		semaineActuel.put(date,controle);
+		semaineActuel.put((byte) 1,controle);
+		semaineActuel.put((byte) 2,control2);
+		semaineActuel.put((byte) 3,control3);
+
+		
+		
 	}
 	/**
 	 * methode appelee a chaque fin de tour
@@ -102,6 +122,8 @@ public class Partie {
 		for(Map.Entry<Personnage,Double> entry : moy.entrySet()){
 			list.add(entry);
 		}
+		
+		b.addResult(this);
 		
 		Collections.sort(list,new Comparator<Map.Entry<Personnage,Double>>() {
 			@Override
@@ -171,6 +193,14 @@ public class Partie {
 	public ArrayList<Action> getActions(Controle controleDuJour,PersonnageJoueur pj) {
 		pj.genererActions(this);
 		return pj.getActionduControle(controleDuJour);
+	}
+	
+	public ArrayList<String> getResultatsSemaine(int semaine,Personnage p){
+		ArrayList<String>res = new ArrayList<String>();
+		for(int i=0;i<b.getResult(semaine).size();i++){
+			res.add(b.getResult(semaine).get(i).toString(p));
+		}
+		return res;
 	}
 	
 }

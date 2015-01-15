@@ -127,5 +127,9 @@ public class Controle {
 		return true;
 	}
 	
+	public String toString(Personnage p){
+		return this.getMatiere() + " : " + this.getNote(p).getNote();
+	}
+	
 	
 }
