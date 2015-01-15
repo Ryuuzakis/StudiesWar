@@ -28,8 +28,8 @@ titre2{
 
 menu{
 	position:absolute;
-	left:58px;
-	top:130px;
+	left:50px;
+	top:170px;
 	text-align: center;
 	color:black;
 	font-family:arial, sans-serif;
@@ -40,49 +40,3 @@ menu{
 timer{
 
 }
-
-bouton1{
-	position:absolute;
-	left:130px;
-	top:120px;
-	text-align: left;
-	color:black;
-	font-family:arial, sans-serif;
-	font-size:70%;
-	font-style: italic;
-}
-
-bouton2{
-	position:absolute;
-	left:700px;
-	top:350px;
-	text-align: center;
-	color:black;
-	font-family:arial, sans-serif;
-	font-size:70%;
-	font-style: italic;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
