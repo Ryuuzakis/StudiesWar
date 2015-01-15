@@ -1,24 +1,24 @@
-img{
-	position:absolute;
-	left:0px;
-	top:0px;
+body {
+	background-image:url(fond.jpg);
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size: 100% 100%;
+	
+	
 }
 
-titre{
+h1{
 	position:absolute;
-	left:610px;
-	top:48px;
+	left:45%;
+	top:3%;
 	text-align: center;
 	color:black;
 	font-family:arial, sans-serif;
-	font-size:350%;
+	font-size:250%;
 	font-style: italic;
 }
 
-titre2{
-	position:absolute;
-	left:700px;
-	top:170px;
+h2{
 	text-align: center;
 	color:white;
 	font-family:arial, sans-serif;
@@ -26,10 +26,21 @@ titre2{
 	font-style: italic;
 }
 
-menu{
+#auteur{
 	position:absolute;
-	left:58px;
-	top:130px;
+	left:7%;
+	top:14%;
+	text-align: center;
+	color:black;
+	font-family:arial, sans-serif;
+	font-size:110%;
+	font-style: italic;
+}
+
+nav{
+	position:absolute;
+	left:7.5%;
+	top: 15%;
 	text-align: center;
 	color:black;
 	font-family:arial, sans-serif;
@@ -50,7 +61,7 @@ timer{
 
 }
 
-bouton1{
+#b1{
 	position:absolute;
 	left:130px;
 	top:120px;
@@ -61,7 +72,7 @@ bouton1{
 	font-style: italic;
 }
 
-bouton2{
+#b2{
 	position:absolute;
 	left:700px;
 	top:350px;
@@ -86,6 +97,7 @@ bouton2{
 text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
 }
 
+<<<<<<< HEAD
 /*bouton2:active{
 
     background: #444;
@@ -106,6 +118,30 @@ bouton2:hover {
     background: linear-gradient( #777, #333);
 }
 */
+=======
+section {
+	position:absolute;
+	left: 24%;
+	top: 17%;
+	height:40%;
+	width : 58%;
+	text-align: center;
+	color:black;
+	font-family:arial, sans-serif;
+	font-size:110%;
+	font-style: italic;
+	visibility : hidden;
+	style="border-width:5px; 
+	border-style:dotted; 
+	border-color:black;"
+}
+
+
+nav {
+	visibility : hidden;
+}
+
+>>>>>>> fe8d2d3510bef6a48c27de9a06ffc23174a1a5df
 
 
 .wrapper {

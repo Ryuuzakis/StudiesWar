@@ -23,6 +23,12 @@ public class Controle {
 		init();
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		Controle c = (Controle) o;
+		return c.matiere.equals(matiere);
+	}
+	
 	private void init() {
 		for(Personnage p:partie.getPersonnes()){
 			notes.put(p, new Note(this,p));
@@ -93,4 +99,25 @@ public class Controle {
 	public Map<Personnage, Note> getNotes(){
 		return notes;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Controle other = (Controle) obj;
+		if (date != other.date)
+			return false;
+		if (matiere == null) {
+			if (other.matiere != null)
+				return false;
+		} else if (!matiere.equals(other.matiere))
+			return false;
+		return true;
+	}
+	
+	
 }

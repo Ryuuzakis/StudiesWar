@@ -1,5 +1,6 @@
 package fr.iutinfo.studiesWar.models.action;
 
+import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 

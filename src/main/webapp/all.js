@@ -72,22 +72,30 @@ function toggle(anId){
 function toggle(anId, anId2){
 	if (document.getElementById(anId).style.visibility == "hidden")	{
 		Show(anId);
-		document.getElementById(anId).style.height = "auto";
 	}else{	
 		Hide(anId);
 		document.getElementById(anId2).style.height = "0";
 	}if (document.getElementById(anId2).style.visibility == "hidden"){
 		Show(anId);
-		document.getElementById(anId).style.height = "auto";
 	}else{	
 		Hide(anId2);
 		document.getElementById(anId2).style.height = "0";
 	}
 }
 
+<<<<<<< HEAD
 function afficheBulletin(data) {
 	console.log(data);
 	$("#reponse").html(data.id + " : " + data.name);
+=======
+function lancerPartie(anId, anId2){
+	Show(anId);
+	Show('nav');
+	
+	Hide(anId2);
+	document.getElementById(anId2).style.height = "0";
+	
+>>>>>>> fe8d2d3510bef6a48c27de9a06ffc23174a1a5df
 }
 
 
