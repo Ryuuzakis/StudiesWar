@@ -49,8 +49,8 @@ public class PartieRessource {
 		ArrayList<String> controles = new ArrayList<String>();
 		for(byte i = 1 ; i <= 5; i++){
 			Controle c = p.getSemaineActuel().get(i);
-			if (p.getSemaineActuel().get(i) != null)
-				controles.add(p.getSemaineActuel().get(i).getMatiere());
+			if (c != null)
+				controles.add(c.getMatiere());
 			else
 				controles.add("pas de contrôle");
 		}
@@ -78,6 +78,17 @@ public class PartieRessource {
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
 		return output;
+	}
+	
+	@GET
+	@Path("/{idJoueur}/caracteristiques")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirCaracs(@PathParam("idJoueur") int idJoueur) {
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setCaracs(pj.getStats());
+		
+		return obj;
 	}
 	
 	

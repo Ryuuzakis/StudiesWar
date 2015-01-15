@@ -47,13 +47,21 @@ public class TestPartieRest extends JerseyTest {
 
 		ObjetTransfert obj3 = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()
 				+"/jour/" + 1).request().get(ObjetTransfert.class);
-		//String json = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()).request().get(String.class);;
-		//assertEquals("",json);
 		
 		assertTrue(obj3 != null);
 		assertTrue(obj3.getActions().size() > 0);
 		
-		//TODO : Tester
+	}
+	
+	@Test
+	public void testObtenirCaracs() {
+		String name = "Clavier";
+		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
+		
+		ObjetTransfert obj2 = target("/partie/" + obj.getIdJoueur() + "/caracteristiques").request().get(ObjetTransfert.class);
+		
+		assertTrue(obj2 != null);
+		assertTrue(obj2.getCaracs().size() > 0);
 	}
 	
 

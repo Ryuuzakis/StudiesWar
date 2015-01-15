@@ -20,6 +20,7 @@ public class ObjetTransfert {
 	private List<String> actions;
 	private List<String> resultats;
 	private List<String> controles;
+	private List<String> caracs;
 	
 	public List<String> getActions() {
 		return actions;
@@ -66,6 +67,14 @@ public class ObjetTransfert {
 
 	public void setControles(List<String> controles) {
 		this.controles = controles;
+	}
+
+	public List<String> getCaracs() {
+		return caracs;
+	}
+
+	public void setCaracs(List<String> caracs) {
+		this.caracs = caracs;
 	}
 	
 }

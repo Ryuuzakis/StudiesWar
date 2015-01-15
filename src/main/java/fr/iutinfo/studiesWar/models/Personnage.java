@@ -10,6 +10,7 @@ import org.eclipse.persistence.internal.jaxb.many.MapEntry;
 import fr.iutinfo.studiesWar.models.action.Absence;
 import fr.iutinfo.studiesWar.models.action.Action;
 import fr.iutinfo.studiesWar.models.action.Etudier;
+import fr.iutinfo.studiesWar.models.action.NeRienFaire;
 import fr.iutinfo.studiesWar.models.action.Tricher;
 import fr.iutinfo.studiesWar.models.effet.Effet;
 
@@ -96,13 +97,13 @@ public abstract class Personnage {
 		
 		for(Controle c : partie.getSemaineActuel().values()){
 
-			if (this.getPA() >= 1) {
+			//if (this.getPA() >= 1) {
 			actionPosibles.add(new Etudier(this, c, 1,"etudier un peu"));
-			if (this.getPA() >= 2) {
+			//if (this.getPA() >= 2) {
 			actionPosibles.add(new Etudier(this, c, 2,"etudier passinnement"));
-			if (this.getPA() >= 3) {
+			//if (this.getPA() >= 3) {
 			actionPosibles.add(new Etudier(this, c, 3,"etudier a la folie"));
-			}}}
+			//}}}
 
 			for(Personnage personnage :partie.getPersonnes()){
 				if(!this.equals(personnage)){
@@ -112,6 +113,8 @@ public abstract class Personnage {
 
 			actionPosibles.add(new Absence(this, c,"simuler une gastro"));
 		}
+		
+		
 
 	}
 	
@@ -119,13 +122,16 @@ public abstract class Personnage {
 		actions.add(a);
 	}
 	
-	public ArrayList<Action> getAction(Controle c){
+	public ArrayList<Action> getActionduControle(Controle c){
 		ArrayList<Action> actionControl=new ArrayList<Action>();
-		for(Action a : actionPosibles){
-			if(a.getControle().getMatiere().equals(c.getMatiere())){
-				actionControl.add(a);
+		if (c != null) {
+			for (Action a : actionPosibles) {
+				if (a.getControle().getMatiere().equals(c.getMatiere())) {
+					actionControl.add(a);
+				}
 			}
 		}
+		actionControl.add(new NeRienFaire(this, "ne rien faire", c));
 		return actionControl;
 	}
 
