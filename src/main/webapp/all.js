@@ -42,6 +42,7 @@ function getActions(idJour) {
 	jour=idJour;
 	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour +"/";
 	$.getJSON(path, function(data) {
+		alert(JSON.stringify(data, null, 4));
 		afficheListActions(data, idJour)
 	});
 }
