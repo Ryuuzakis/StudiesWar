@@ -122,15 +122,12 @@ public abstract class Personnage {
 	public ArrayList<Action> getActionduControle(Controle c){
 		ArrayList<Action> actionControl=new ArrayList<Action>();
 		if (c != null) {
-			System.out.println("Mon contrôle il est pas nul d'abord !");
 			for (Action a : actionPosibles) {
 				if (a.getControle().getMatiere().equals(c.getMatiere())) {
 					actionControl.add(a);
 				}
 			}
-		} else {
-			System.out.println("trop null ce contrôle :'(");
-		}
+		} 
 		actionControl.add(new NeRienFaire(this, "ne rien faire", c));
 		return actionControl;
 	}

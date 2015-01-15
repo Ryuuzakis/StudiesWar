@@ -22,6 +22,7 @@ public class TestPartieRest extends JerseyTest {
 	
 	@Test 
 	public void testCreerPartie() {
+		System.out.println("Test créer partie");
 		String name = "Clavier";
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
 		
@@ -32,6 +33,7 @@ public class TestPartieRest extends JerseyTest {
 	
 	@Test
 	public void testLancerPartie() {
+		System.out.println("Test lancer partie");
 		String name = "Clavier";
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
 		
@@ -44,6 +46,7 @@ public class TestPartieRest extends JerseyTest {
 	
 	@Test
 	public void testObtenirControles() {
+		System.out.println("Test obtenir contrôles");
 		String name = "Clavier";
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
 		
@@ -55,6 +58,7 @@ public class TestPartieRest extends JerseyTest {
 	}
 	@Test 
 	public void testObtenirActions() {
+		System.out.println("Test obtenir contrôles");
 		String name = "Clavier";
 		//Creation de la partie
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
@@ -70,7 +74,6 @@ public class TestPartieRest extends JerseyTest {
 			ObjetTransfert obj3 = target("/partie/"+obj.getIdPartie()+"/joueur/"+obj.getIdJoueur()
 					+"/jour/" + i).request().get(ObjetTransfert.class);
 			
-			System.out.println(obj3.getActions());
 			assertTrue(obj3 != null);
 			assertTrue(obj3.getActions().size() > 0);
 			if (obj3.getActions().size() == 1)
@@ -82,6 +85,7 @@ public class TestPartieRest extends JerseyTest {
 	
 	@Test
 	public void testObtenirCaracs() {
+		System.out.println("Test obtenir caracs");
 		String name = "Clavier";
 		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
 		

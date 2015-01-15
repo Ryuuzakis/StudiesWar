@@ -2,9 +2,6 @@ package fr.iutinfo;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.test.JerseyTest;

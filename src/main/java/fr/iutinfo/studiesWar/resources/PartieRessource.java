@@ -53,10 +53,8 @@ public class PartieRessource {
 	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
 		ArrayList<String> controles = new ArrayList<String>();
-		for(byte i = 1 ; i <= 5; i++){
+		for(int i = 1 ; i <= 5; i++){
 			Controle c = p.getSemaineActuelle().get(i);
-			System.out.println(p.getSemaineActuelle());
-			System.out.println(c);
 			if (c != null)
 				controles.add(c.getMatiere());
 			else
@@ -78,6 +76,7 @@ public class PartieRessource {
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
 		Controle controleDuJour = p.getSemaineActuelle().get(idJour);
+		System.out.println(controleDuJour);
 		
 		ArrayList<Action> actions = p.getActions(controleDuJour, pj);
 		for (Action a : actions) {
