@@ -129,6 +129,10 @@ nav {
 	border-color:red;
 }
 
+#valider {
+	visibility : hidden;
+}
+
 footer {
 	bottom:0px;
 }

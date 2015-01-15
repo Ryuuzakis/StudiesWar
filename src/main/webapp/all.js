@@ -91,6 +91,17 @@ function action (index) {
 	if (jour == 5) {
 		document.getElementById('vendredi').style.backgroundColor= "green";	
 	}
+	
+	var cpt=0;
+	for (var i=0; i<5; i++) {
+		if (choix > -1 ) {
+			cpt++;
+		}
+	}
+	if (cpt == 5) {
+		document.getElementById('valider').style.visibility= "visible";
+	}
+	
 }
 
 function getResultats(idPartie) {
