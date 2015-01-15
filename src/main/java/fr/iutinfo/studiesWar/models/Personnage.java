@@ -20,14 +20,14 @@ public abstract class Personnage {
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
 	protected ArrayList<Action> actions;
-	protected ArrayList<Action> actionPosibles;
+	protected ArrayList<Action> actionPossibles;
 
 	
 	public Personnage(String s){
 		this.nom = s;
 		this.effets = new ArrayList<Effet>();
 		actions = new ArrayList<Action>();
-		actionPosibles = new ArrayList<Action>();
+		actionPossibles = new ArrayList<Action>();
 	}
 	
 	public Personnage(){
@@ -90,25 +90,25 @@ public abstract class Personnage {
 	}
 	
 	public void genererActions(Partie partie){
-		actionPosibles.clear();
+		actionPossibles.clear();
 		
 		for(Controle c : partie.getSemaineActuelle().values()){
 
 			//if (this.getPA() >= 1) {
-			actionPosibles.add(new Etudier(this, c, 1,"etudier un peu"));
+			actionPossibles.add(new Etudier(this, c, 1,"etudier un peu"));
 			//if (this.getPA() >= 2) {
-			actionPosibles.add(new Etudier(this, c, 2,"etudier passinnement"));
+			actionPossibles.add(new Etudier(this, c, 2,"etudier passinnement"));
 			//if (this.getPA() >= 3) {
-			actionPosibles.add(new Etudier(this, c, 3,"etudier a la folie"));
+			actionPossibles.add(new Etudier(this, c, 3,"etudier a la folie"));
 			//}}}
 
 			for(Personnage personnage :partie.getPersonnes()){
 				if(!this.equals(personnage)){
-					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()));
+					actionPossibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()));
 				}
 			}
 
-			actionPosibles.add(new Absence(this, c,"simuler une gastro"));
+			actionPossibles.add(new Absence(this, c,"simuler une gastro"));
 		}
 		
 		
@@ -122,7 +122,7 @@ public abstract class Personnage {
 	public ArrayList<Action> getActionduControle(Controle c){
 		ArrayList<Action> actionControl=new ArrayList<Action>();
 		if (c != null) {
-			for (Action a : actionPosibles) {
+			for (Action a : actionPossibles) {
 				if (a.getControle().getMatiere().equals(c.getMatiere())) {
 					actionControl.add(a);
 				}
@@ -133,7 +133,7 @@ public abstract class Personnage {
 	}
 
 	public ArrayList<Action> getActionPossibles() {
-		return actionPosibles;
+		return actionPossibles;
 	}
 	
 	public void addEffect(Effet e){

@@ -84,7 +84,6 @@ public class PartieRessource {
 		}
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
-		System.out.println(actionsString);
 		return output;
 	}
 	
@@ -101,24 +100,18 @@ public class PartieRessource {
 	
 	
 	@POST
-	@Path("/{idPartie}/joueur/{idJoueur}/sendaction/{action}")
-	public void validerAction(@PathParam("action") String action, @PathParam("idPartie") int idPartie,
+	@Path("/{idPartie}/joueur/{idJoueur}/sendaction/")
+	public void validerAction(TableauTransfert tab, @PathParam("idPartie") int idPartie,
 			@PathParam("idJoueur") int idJoueur) {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
-		ArrayList<Action> actions = p.getActionsPossibles(pj);
-		for (Action a : actions) {
-			if (action.equals(a.toString())) {
-				a.agit();
-				break;
-			}
+		for (int i = 0; i < tab.getActions().length; i++) {
+			Controle controle = p.getSemaineActuelle().get(i);
+			ArrayList<Action> actions = p.getActions(controle, pj);
+			Action a = actions.get(tab.getActions()[i]);
+			a.agit();
 		}
-		if(parties.get(idPartie).finDuTour()){
-			//TODO : Gerer la fin de la partie
-		}
-		else{
-			
-		}
+		parties.get(idPartie).finDuTour();
 	}
 	
 	@GET

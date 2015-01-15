@@ -20,7 +20,7 @@ public class PartieTest {
 	public void test() {
 		int i = 0;
 		while(i<25){
-			Partie p = new Partie(12);
+			Partie p = new Partie();
 			Personnage p1 = new PersonnageJoueur();
 			p.rejoindrePartie(p1);
 			p.demarrerTour();

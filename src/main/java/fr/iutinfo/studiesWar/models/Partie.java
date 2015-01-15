@@ -13,13 +13,11 @@ public class Partie {
 	private HashMap<Integer, Controle> semaineActuelle=new HashMap<Integer, Controle>();
 	private ArrayList<String> matieres = new ArrayList<String>();
 	private int numTour;
-	private int id;
 	private Bulletin bulletin;
 
 	public static final int NB_JOUEURS = 10;
 	public static final int NB_CONTROLES = 4;
-	public Partie(int id){
-		this.id=id;
+	public Partie(){
 		this.numTour=0;
 		this.personnes=new ArrayList<Personnage>();
 		initMatieres();
@@ -38,6 +36,8 @@ public class Partie {
 		matieres.add("Français");
 		matieres.add("Histoire");
 		matieres.add("Chimie");
+		matieres.add("Etudier");
+		matieres.add("Triche");
 	}
 	/**
 	 * methode appelee quand un joueur rejoint la partie
@@ -84,30 +84,23 @@ public class Partie {
 					this, dates.get(idxJour));
 			semaineActuelle.put(dates.remove(idxJour), controle);
 		}
+		for (Personnage p : personnes)
+			p.genererActions(this);
 	}
 	/**
 	 * methode appelee a chaque fin de tour
 	 */
-	public boolean finDuTour(){
-		
-		for(Personnage p : personnes){
-			//TODO :verifier que ce soit les bonnes actions qui agissent
-			for(Action a : p.getActionPossibles()){
-				a.agit();
-			}
-		}
-		
-		
+	public void finDuTour(){
 		Map<Personnage,Double>moy = new HashMap<Personnage,Double>();
 		for(Controle c : semaineActuelle.values()){
-			c.calculerTousLesNotes();
+			c.calculerToutesLesNotes();
 		}
 		for(Personnage p : this.personnes){
 			Double moyen = 0.0 ;
 			int coef = semaineActuelle.size();
 			for(Controle c : semaineActuelle.values()){
 				if(c.getNote(p).getNote()!=-1){
-				moyen = moyen + c.getNote(p).getNote();
+					moyen = moyen + c.getNote(p).getNote();
 				}
 				else{
 					coef--;
@@ -134,12 +127,6 @@ public class Partie {
 				return 0;
 			}
 		});
-		
-		this.elimine(list.get(0).getKey());
-		if (personnes.size() > 1) {
-			return false;
-		}
-		return true;
 	}
 	
 	
@@ -160,7 +147,6 @@ public class Partie {
 	}
 	
 	public ArrayList<Action> getActionsPossibles(Personnage p){
-		p.genererActions(this);
 		return p.getActionPossibles();
 	}
 	
@@ -189,7 +175,6 @@ public class Partie {
 		return true;
 	}
 	public ArrayList<Action> getActions(Controle controleDuJour,PersonnageJoueur pj) {
-		pj.genererActions(this);
 		return pj.getActionduControle(controleDuJour);
 	}
 	

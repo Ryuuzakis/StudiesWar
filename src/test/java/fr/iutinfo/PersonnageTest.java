@@ -1,11 +1,9 @@
 package fr.iutinfo;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import fr.iutinfo.studiesWar.models.Partie;
@@ -50,7 +48,7 @@ public class PersonnageTest {
 	
 	@Test
 	public void test2(){
-		Partie p = new Partie(0);
+		Partie p = new Partie();
 		Personnage p1 = new PersonnageJoueur();
 		p.rejoindrePartie(p1);
 	}

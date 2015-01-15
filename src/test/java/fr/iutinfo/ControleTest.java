@@ -12,8 +12,6 @@ import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 import fr.iutinfo.studiesWar.models.action.Absence;
 import fr.iutinfo.studiesWar.models.action.Action;
-import fr.iutinfo.studiesWar.models.action.Etudier;
-import fr.iutinfo.studiesWar.models.action.Tricher;
 
 
 public class ControleTest {
@@ -26,7 +24,7 @@ public class ControleTest {
 		int i =0;
 		while(i<25){
 
-			Partie p=new Partie(0);
+			Partie p=new Partie();
 
 			Personnage p1=new PersonnageJoueur();
 
@@ -37,7 +35,7 @@ public class ControleTest {
 			Action a1 = new Absence(p1,c1,"Test");
 			a1.agit();
 
-			c1.calculerTousLesNotes();
+			c1.calculerToutesLesNotes();
 
 			assertTrue(-1==c1.getNote(p1).getNote());
 			i++;
@@ -50,7 +48,7 @@ public class ControleTest {
 		int i =0;
 		while(i<25){
 
-			Partie p=new Partie(0);
+			Partie p = new Partie();
 
 			Personnage p1=new PersonnageJoueur();
 			Personnage p2=new PersonnageJoueur();
@@ -62,7 +60,7 @@ public class ControleTest {
 
 			Controle c1=new Controle("Maths",p,(byte)1);
 
-			c1.calculerTousLesNotes();
+			c1.calculerToutesLesNotes();
 			c1.triParNote();
 			ArrayList<Personnage> per = p.getPersonnes();
 			assertTrue(c1.getNote(per.get(0)).getNote() >= c1.getNote(per.get(1)).getNote());

@@ -21,7 +21,7 @@ public class ControleBoost extends Evenement{
 		if(!partie.getPersonnes().isEmpty()){
 			Collections.shuffle(partie.getPersonnes());
 			Personnage cible=partie.getPersonnes().get(0);
-			for(Personnage personnage : partie.getPersonnes()){
+			for(int i = 0; i < partie.getPersonnes().size(); i++){
 				cible.addEffect(new BoostNote(controle.getDate(), (controle.getDate()+1), modif, controle.getMatiere()));
 			}
 			return true;

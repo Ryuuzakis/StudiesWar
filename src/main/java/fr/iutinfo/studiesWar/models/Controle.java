@@ -29,7 +29,7 @@ public class Controle {
 		}
 	}
 
-	public void calculerTousLesNotes(){
+	public void calculerToutesLesNotes(){
 		//Evenement e=Parametre.gestionEvent(this, partie);
 		//if(e!=null)
 		//	e.alieu();

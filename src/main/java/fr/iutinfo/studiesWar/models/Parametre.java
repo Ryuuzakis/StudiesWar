@@ -1,6 +1,5 @@
 package fr.iutinfo.studiesWar.models;
 
-import java.util.EventObject;
 import java.util.Random;
 
 import fr.iutinfo.studiesWar.event.ControleBoost;

@@ -12,7 +12,7 @@ public class PersonnageIA extends Personnage {
 
 	public void genererActions(Partie partie){
 		super.genererActions(partie);
-		Action tmp = actionPosibles.get(new Random().nextInt(actionPosibles.size()));
+		Action tmp = actionPossibles.get(new Random().nextInt(actionPossibles.size()));
 		actions.add(tmp);
 	}
 
