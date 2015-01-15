@@ -48,6 +48,8 @@ function lancerPartie() {
 	alert('Lancer la partie');
 }
 
+function CreerPartie(){}
+
 /** Fonction basculant la visibilité d'un élément dom
 * @parameter anId string l'identificateur de la cible à montrer, cacher
 */
@@ -83,7 +85,36 @@ function toggle(anId, anId2){
 	}
 }
 
+function afficheBulletin(data) {
+	console.log(data);
+	$("#reponse").html(data.id + " : " + data.name);
+}
 
+
+function afficherContact(){ 
+	window.onload = function()
+	{
+  		  var section = document.getElementById('canvas_contacts');
+    		    if(!section)
+       		 {
+        		    alert("Impossible de récupérer le canvas");
+          		
+         return;
+            
+        }
+
+    var context = section.getContext('2d');
+        if(!context)
+        {
+            alert("Impossible de récupérer le context du canvas");
+            return;
+        }
+
+
+    //C'est ici que l'on placera tout le code servant à nos dessins.
+    context.font = "18px Helvetica";//On passe à l'attribut "font" de l'objet context une simple chaîne de caractères composé de la taille de la police, puis de son nom.
+	context.fillText("Hello World", 0, 30);//strokeText(); fonctionne aussi, vous vous en doutez.
+}
 
 
 

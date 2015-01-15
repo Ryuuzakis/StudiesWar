@@ -36,6 +36,15 @@ menu{
 	font-size:110%;
 	font-style: italic;
 }
+section{
+	position:absolute;
+	left:350px;
+	top:150px;
+	
+
+   
+
+}
 
 timer{
 
@@ -61,12 +70,111 @@ bouton2{
 	font-family:arial, sans-serif;
 	font-size:70%;
 	font-style: italic;
+	
+/*width:auto;
+    padding:8px 0;
+    text-align:center;
+    display: inline-block;
+    float:left;
+    margin:0 8px 0 0;
+    border-radius:7px;
+    font-size: 0.85em;
+    width:120px;
+    color:#000;
+    font-family: Arial,sans-serif;
+    box-shadow: 0 0 1px rgba( 0, 0, 0, 0.2), 0 -1px 0 rgba( 255, 255, 255, 0.1);
+text-shadow: 0px 1px 0px rgba( 255, 255, 255, 0.3);
 }
 
+/*bouton2:active{
+
+    background: #444;
+    background: linear-gradient( #555, #2C2C2C);
+    background: -webkit-linear-gradient( #555, #2C2C2C);
+    background: -moz-linear-gradient( #555, #2C2C2C);
+    background: -ms-linear-gradient( #555, #2C2C2C);
+    background: -o-linear-gradient( #555, #2C2C2C);
+    background: linear-gradient( #555, #2C2C2C);
+  box-shadow: 1px 1px 10px #000 inset, 0 1px 0 rgba( 255, 255, 255, 0.4);
+}
+bouton2:hover {
+    background: #555;
+    background: -webkit-linear-gradient( #777, #333);
+    background: -moz-linear-gradient( #777, #333);
+    background: -ms-linear-gradient( #777, #333);
+    background: -o-linear-gradient( #777, #333);
+    background: linear-gradient( #777, #333);
+}
+*/
 
 
+.wrapper {
+  position: relative;
+  margin: 40px auto;
+  background: white;
+}
 
+@mixin timer($item, $duration, $size, $color, $border, $hover: running) {
+  #{$item}, #{$item} * { @include box-sizing(border-box); }
 
+  #{$item} { 
+    width: $size;
+    height: $size;
+  }
+
+  #{$item} .pie {
+    width: 50%;
+    height: 100%;
+    transform-origin: 100% 50%;
+    position: absolute;
+    background: $color;
+    border: #{$border};
+  }
+
+  #{$item} .spinner {
+    border-radius: 100% 0 0 100% / 50% 0 0 50%;
+    z-index: 200;
+    border-right: none;
+    animation: rota $duration + s linear infinite;
+  }
+
+  #{$item}:hover .spinner,
+  #{$item}:hover .filler, 
+  #{$item}:hover .mask {
+    animation-play-state: $hover;    
+  }
+
+  #{$item} .filler {
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0; 
+    left: 50%;
+    opacity: 0;
+    z-index: 100;
+    animation: opa $duration + s steps(1,end) infinite reverse;
+    border-left: none;
+  }
+
+  #{$item} .mask {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    opacity: 1;
+    z-index: 300;
+    animation: opa $duration + s steps(1,end) infinite;
+  }
+
+  @keyframes rota {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes opa {
+    0% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+}
+
+@include timer('.wrapper', 5, 250px, #08C, '5px solid rgba(0,0,0,0.5)');
 
 
 
