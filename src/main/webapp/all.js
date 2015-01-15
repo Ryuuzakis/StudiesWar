@@ -39,8 +39,10 @@ function listUsers() {
 	});
 }
 function getActions(idJour) {
+	alert('getActions ' + idJour);
 	jour=idJour;
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour +"/";
+	
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
 		alert(JSON.stringify(data, null, 4));
 		afficheListActions(data, idJour)
@@ -183,6 +185,7 @@ function Show (addr) {
 
 
 function lancerPartie() {
+	alert('Methode lancerPartie');
 	nom = $('#user').val();
 	
 	/*Fonction qui cree la partie*/
