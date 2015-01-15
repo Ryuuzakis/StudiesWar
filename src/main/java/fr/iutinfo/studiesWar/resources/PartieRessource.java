@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
@@ -52,6 +53,20 @@ public class PartieRessource {
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
 		return output;
+	}
+	
+	@GET
+	@Path("{idPartie}/controles")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
+		Partie p = parties.get(idPartie);
+		ArrayList<String> controles = new ArrayList<String>();
+		for(Controle c : p.getSemaineActuel().values()) {
+			controles.add(c.getMatiere().toString());
+		}
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setControles(controles);
+		return obj;
 	}
 	
 	@POST
