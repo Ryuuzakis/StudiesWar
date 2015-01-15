@@ -10,6 +10,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
@@ -41,15 +42,36 @@ public class PartieRessource {
 	}
 	
 	@GET
-	@Path("/{idPartie}/joueur/{idJoueur}")
+	@Path("{idPartie}/controles")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
+		Partie p = parties.get(idPartie);
+		ArrayList<String> controles = new ArrayList<String>();
+		for(byte i = 1 ; i <= 5; i++){
+			Controle c = p.getSemaineActuel().get(i);
+			if (p.getSemaineActuel().get(i) != null)
+				controles.add(p.getSemaineActuel().get(i).getMatiere());
+			else
+				controles.add("pas de contrôle");
+		}
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setControles(controles);
+		return obj;
+	}
+	@GET
+	@Path("/{idPartie}/joueur/{idJoueur}/jour/{idJour}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ObjetTransfert obtenirActions(
 			@PathParam("idPartie") int idPartie,
-			@PathParam("idJoueur") int idJoueur) {
+			@PathParam("idJoueur") int idJoueur,
+			@PathParam("idJour") int idJour) {
+		
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
-		ArrayList<Action> actions = p.getActions(pj);
+		Controle controleDuJour = p.getSemaineActuel().get(idJour);
+		
+		ArrayList<Action> actions = p.getActions(controleDuJour, pj);
 		for (Action a : actions) {
 			actionsString.add(a.toString());
 		}
@@ -58,22 +80,6 @@ public class PartieRessource {
 		return output;
 	}
 	
-	@GET
-	@Path("{idPartie}/controles")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ObjetTransfert obtenirControles(@PathParam("idPartie") int idPartie) {
-		Partie p = parties.get(idPartie);
-		ArrayList<String> controles = new ArrayList<String>();
-		for(Byte b=1 ; b<=5;b++){
-			if (p.getSemaineActuel().get(b) != null)
-				controles.add(p.getSemaineActuel().get(b).getMatiere());
-			else
-				controles.add("pas de contrôle");
-		}
-		ObjetTransfert obj = new ObjetTransfert();
-		obj.setControles(controles);
-		return obj;
-	}
 	
 	@POST
 	@Path("/{idPartie}/joueur/{idJoueur}/sendaction/{action}")

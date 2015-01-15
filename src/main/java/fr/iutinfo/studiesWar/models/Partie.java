@@ -168,5 +168,10 @@ public class Partie {
 		}
 		return true;
 	}
+	public ArrayList<Action> getActions(Controle controleDuJour,
+			PersonnageJoueur pj) {
+		pj.genererActions(this);
+		return pj.getAction(controleDuJour);
+	}
 	
 }

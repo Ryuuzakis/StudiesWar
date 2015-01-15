@@ -1,5 +1,6 @@
 package fr.iutinfo.studiesWar.models;
 
+import java.awt.Event;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -30,10 +31,9 @@ public class Controle {
 	}
 
 	public void calculerTousLesNotes(){
-		
-		for(Evenement e : events){
-			e.alieu();
-		}
+		//Evenement e=Parametre.gestionEvent(this, partie);
+		//if(e!=null)
+		//	e.alieu();
 		
 		for(Personnage p : partie.getPersonnes()){
 			this.getNote(p).calculerNote();
@@ -115,12 +115,14 @@ public class Controle {
 	@Override
 	public boolean equals(Object obj) {
 		Controle other = (Controle) obj;
-		if (date != other.date)
-			return false;
+		if (other == null)
+			return this == null;
 		if (matiere == null) {
 			if (other.matiere != null)
 				return false;
 		} else if (!matiere.equals(other.matiere))
+			return false;
+		if (date != other.date)
 			return false;
 		return true;
 	}

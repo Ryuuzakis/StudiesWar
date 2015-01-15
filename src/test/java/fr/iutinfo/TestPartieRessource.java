@@ -34,44 +34,44 @@ public class TestPartieRessource extends JerseyTest {
 		assertEquals("toto", ((Personnage) Factory.getResource(Factory.JOUEUR, 0)).getNom());
 	}
 	
-	@Test
-	public void testObtenirActions() {
-		for (int i = 0; i < 100; i++) {
-			ObjetTransfert obj = pr.creerPartie("toto" + i);
-			ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
-					obj.getIdJoueur()).getActions();
-			assertTrue(actions != null);
-			assertTrue(actions.size() > 0);
-		}
-	}
-	
-	@Test
-	public void testValiderAction() {
-		ObjetTransfert obj = pr.creerPartie("totoro");
-		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
-				obj.getIdJoueur()).getActions();
-		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
-		
-		//TODO : faire un test interessant
-		
-	}
-	
-	@Test
-	public void testObtenirResultats() {
-		ObjetTransfert obj = pr.creerPartie("toto");
-		ArrayList<String> actions = (ArrayList<String>) 
-				pr.obtenirActions(obj.getIdPartie(), obj.getIdJoueur()).getActions();
-		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
-		obj = pr.obtenirResultats(0);
-		List<String> resultats = obj.getResultats();
-		
-		assertTrue(resultats.size() > 0 );
-		
-		for(String ch : resultats) {
-			System.out.println(ch);
-		}
-		//TODO : Tester
-	}
+//	@Test
+//	public void testObtenirActions() {
+//		for (int i = 0; i < 100; i++) {
+//			ObjetTransfert obj = pr.creerPartie("toto" + i);
+//			ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
+//					obj.getIdJoueur()).getActions();
+//			assertTrue(actions != null);
+//			assertTrue(actions.size() > 0);
+//		}
+//	}
+//	
+//	@Test
+//	public void testValiderAction() {
+//		ObjetTransfert obj = pr.creerPartie("totoro");
+//		ArrayList<String> actions = (ArrayList<String>) pr.obtenirActions(obj.getIdPartie(),
+//				obj.getIdJoueur()).getActions();
+//		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
+//		
+//		//TODO : faire un test interessant
+//		
+//	}
+//	
+//	@Test
+//	public void testObtenirResultats() {
+//		ObjetTransfert obj = pr.creerPartie("toto");
+//		ArrayList<String> actions = (ArrayList<String>) 
+//				pr.obtenirActions(obj.getIdPartie(), obj.getIdJoueur()).getActions();
+//		pr.validerAction(actions.get(0), obj.getIdPartie(), obj.getIdJoueur());
+//		obj = pr.obtenirResultats(0);
+//		List<String> resultats = obj.getResultats();
+//		
+//		assertTrue(resultats.size() > 0 );
+//		
+//		for(String ch : resultats) {
+//			System.out.println(ch);
+//		}
+//		//TODO : Tester
+//	}
 	
 
 }

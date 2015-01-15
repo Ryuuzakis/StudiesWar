@@ -72,35 +72,6 @@ public class ControleTest {
 		}
 
 	}
-	/**
-	 * Verifie que le tricheur a au moins la meme note que la personne qu'il a copie
-	 */ 
-	@Test
-	public void test3() {
-		int i =0;
-		while(i<25){
-
-			Partie p=new Partie(0, 0);
-
-			Personnage p1=new PersonnageJoueur();
-			Personnage p2=new PersonnageJoueur();
-
-			p.rejoinPartie(p1);
-			p.rejoinPartie(p2);
-
-			Controle c1=new Controle("Maths",p,(byte)1);
-
-			Action a1 = new Tricher(p2,p1,c1,"Test");
-
-			a1.agit();
-
-
-
-			c1.calculerTousLesNotes();
-
-			assertTrue(c1.getNote(p1).getNote()<= c1.getNote(p2).getNote());
-			i++;
-		}} 
 
 	/**
 	 * Verifie que les etudes depensent bien un point d'action
@@ -108,7 +79,7 @@ public class ControleTest {
 	@Test
 	public void test4() {
 		int i =0;
-		while(i<25){
+		while(i<100){
 
 			Partie p=new Partie(0, 0);
 
@@ -119,51 +90,14 @@ public class ControleTest {
 			Action a1 = new Etudier(p1,new Controle("", p, (byte)1),3,"Test");
 
 			a1.agit();
+			
+			
 
 			assertTrue(p1.getPA()==2);
-
+			
 			i++;
 
 		}
 	}
-
-	@Test
-	public void test6() {
-		int i =0;
-		Partie p;
-		Personnage p1;
-		Personnage p2;
-		Personnage p3;
-		Controle c1;
-		Action a2;
-		Action a4;
-		while(i<25){
-
-		p=new Partie(0, 0);
-
-		p1=new PersonnageJoueur();
-		p2=new PersonnageJoueur();
-		p3=new PersonnageJoueur();
-
-		p.rejoinPartie(p1);
-		p.rejoinPartie(p2);
-		p.rejoinPartie(p3);
-
-		c1=new Controle("Maths",p,(byte)1);
-
-		//Action a1 = new Tricher(p3,"Maths",3,"Test");
-		a2 = new Tricher(p1,p2,c1,"Test");
-		a4 = new Tricher(p2,p3,c1,"Test2");
-		a2.agit();
-		a4.agit();
-
-		c1.calculerTousLesNotes();
-		assertTrue(c1.getNote(p2).getNote()>= c1.getNote(p3).getNote());
-
-
-		i++;
-		}
-
-	} 
 
 }
