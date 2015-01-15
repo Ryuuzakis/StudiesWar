@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<title>Jersey Skeleton - Studies War</title>
@@ -20,12 +20,12 @@
 		<link rel="stylesheet" href="style.css" />
 		
 		<!-- Code local -->
-		<script src="all.js"></script>
+		
 	</head>
 	
 	
 	<body>
-
+<script src="all.js"></script>
 		<h1>Studies War</h1>
 		<div id="identification">
 				
@@ -46,9 +46,19 @@
 				
 				
 				<div id="b2">
-					Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/></br>
+					<p id="text"> Imaginez votre vie de tous les jours mais de façon beaucoup moins ... conventionnelle.</br>
+						Dans Studies War, vous incarnez un étudiant qui a, à chaque fin de semaine plusieurs de DS.</br>
+						Le but du jeu est d'être le dernier survivant de votre classe car a chaque fin de tour, un eleve quitte l'ecole. </br>
+						Vous etes le maillon faible, au revoir !</br>
+						Dans une partie, le joueur peut choisir de réviser pour ses cours ou ... tricher.</br>
+						Des evenements exceptionnels peuvent survenir tel que "le prof s'est fait renverser par un bus, le ds est annule".</br>
+						</br>
+						Si vous avez des questions ou des suggestions, cliquez sur le bouton "Contact" ci-dessous.</br>
+						</br>
+						Nom : 
+					</p><input type="text" name="user" id="user" placeholder="Nom ?"/></br>
 					<button  id="sub">Lancer une partie</button>
-					<button  onclick="toggle('contacts','identification')">Contacts</button>
+					<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
 				</div>
 			
 				<script type="text/javascript">
@@ -58,70 +68,56 @@
 					var idJoueur;
 					var idPartie;
 	
-	   				element.onclick = function() {
-	   										
-						$.ajax({
-							type : 'POST',
-							contentType : 'application/json',
-							url : "v1/partie/"+$('#user').val(),
-							success : function(data, textStatus, jqXHR) {
-								idJoueur = data.idJoueur;
-								idPartie = data.idPartie;
-								alert(idJoueur + "/" + idPartie);
-								lancerPartie('partie','identification');	
-							},
-							error : function(jqXHR, textStatus, errorThrown) {
-								alert('postUser error: ' + textStatus);
-							}
-						});
-					}
+	   				element.onclick = lancerPartie; 
+	   				
 	  			</script>
   		
  	 		</div>   <!-- fin de la division d'authentification -->
 
 
-			<section id="contacts">
-				<h1>Contacts</h1>
-
-			
-				<div id="b3">
-					<button onclick="toggle('identification','contacts')">Retour a l'accueil</button>
-				</div>
-			
-		
-				<script type="text/javascript">
-			
-
-		  		</script>
-  		
- 		 	</section>   <!-- fin de la division des contacts1 -->
-
 	
 			<nav id="nav">
-					<button onclick="toggle('identification','edt')">Se deconnecter</button></br>
+					<button onclick="retourAccueil()">Se deconnecter</button></br>
 					</br>
-					<button onclick="toggle('partie','edt')">Lancer une partie</button></br>
-					<button>Emploi du temps</button></br>
-					<button onclick="toggle('bulletins','edt')">Bulletins</button></br>
-					<button onclick="toggle('contacts2','edt')">Contacts</button></br>
+					<button onclick="toggle('partie')">Profil</button></br>
+					<button onclick="recupActions()">Emploi du temps</button></br>
+					<button onclick="toggle('bulletins')">Bulletins</button></br>
+					<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
 			</nav>
 			
 			<section id="edt">
-				<h1>Emplois du temps</h1>
-
 				
+				<div id='lundi' class='jour'>
+					<h3>Lundi</h3>
+				</div>
+				 
+				<div id='mardi' class='jour'>
+					<h3>Mardi</h3>
+				</div>
+				
+				<div id='mercredi' class='jour'>
+					<h3>Mercredi</h3>
+				</div>
+				
+				<div id='jeudi' class='jour'>
+					<h3>Jeudi</h3>
+				</div>
+				
+				<div id='vendredi' class='jour'>
+					<h3>Vendredi</h3>
+				</div>
+				
+				<div id='choix'>
+				
+				</div>
 
-		
-				<script type="text/javascript">
-			
-	  			</script>
 	  		</section>
 	
 	
 	
 	  		<section id="partie">
 	  
-			<h2>Choisir vos parametres</h2>
+			<h2>Vos Stats :</h2>
 					
 				
 	
@@ -158,7 +154,8 @@
   		
 	 	 	</section>   <!-- fin de la division des contacts2 -->
 
-
+			<footer>
+				<a href="www.dangerecole.blogspot.com">www.dangerecole.blogspot.com</a>
+			</footer>
 	</body>
-	
 </html>

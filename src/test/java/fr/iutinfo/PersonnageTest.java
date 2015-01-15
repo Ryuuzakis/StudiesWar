@@ -47,5 +47,12 @@ public class PersonnageTest {
 		cpt++;
 		}
 	}
+	
+	@Test
+	public void test2(){
+		Partie p = new Partie(0,0);
+		Personnage p1 = new PersonnageJoueur();
+		p.rejoinPartie(p1);
+	}
 
 }
