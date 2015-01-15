@@ -135,6 +135,7 @@ function retourAccueil(){
 	Hide("partie");	
 }
 
+
 function toggle(anId){
 	Hide('identification');
 	Hide('contacts');

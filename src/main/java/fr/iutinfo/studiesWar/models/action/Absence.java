@@ -5,19 +5,15 @@ import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 
 public class Absence extends Action{
-	byte dD;
-	byte dF;
 	
-	public Absence(Personnage p,byte dD, byte dF,String s) {
-		super(p,s);
-		this.dD = dD;
-		this.dF = dF;
+	public Absence(Personnage p,Controle c,String s) {
+		super(p,s,c);
 		
 	}
 
 	@Override
 	public void agit() {
-		p.addEffect(new NoteOffice(dD,dF,-1));
+		p.addEffect(new NoteOffice(controle.getDate(),(byte)(controle.getDate()+1),-1));
 	}
 
 }

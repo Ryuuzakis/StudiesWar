@@ -20,14 +20,10 @@ public class NoteOfficeEvent extends Evenement{
 
 	@Override
 	public boolean alieu() {
-		if(!partie.getPersonnes().isEmpty()){
-			Collections.shuffle(partie.getPersonnes());
-			Personnage cible=partie.getPersonnes().get(0);
-			byte date=(byte)(new Random().nextInt(5)+1);
-			cible.addEffect(new NoteOffice(date, (byte)(date+1),note));
-			return true;
-		}
-		return false;
+		for(Personnage cible : partie.getPersonnes())
+			cible.addEffect(new NoteOffice(c.getDate(), (byte)(c.getDate()+1), note));
+		return true;
+		
 	}
 	
 	

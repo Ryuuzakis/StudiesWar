@@ -9,11 +9,6 @@ public class PersonnageIA extends Personnage {
 	public PersonnageIA(){
 		super();
 	}
-<<<<<<< HEAD
-	
-	
-	
-=======
 
 	public void genererActions(Partie partie){
 		super.genererActions(partie);
@@ -22,5 +17,4 @@ public class PersonnageIA extends Personnage {
 		actionPosibles.add(tmp);
 	}
 
->>>>>>> d49f478af65fc1335cd38ff53b33efb4f4baecdc
 }

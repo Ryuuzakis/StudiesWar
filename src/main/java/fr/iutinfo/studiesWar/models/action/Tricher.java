@@ -10,12 +10,10 @@ import fr.iutinfo.studiesWar.models.effet.NoteOffice;
 public class Tricher extends Action{
 	
 	private Personnage destPersonnage;
-	private Controle controle;
 	
-	public Tricher(Personnage p,Personnage destPersonnage,Controle controle,String s){
-		super(p,s);
+	public Tricher(Personnage p,Personnage destPersonnage,Controle c,String s){
+		super(p,s,c);
 		this.destPersonnage = destPersonnage;
-		this.controle=controle;
 	}
 
 	@Override
