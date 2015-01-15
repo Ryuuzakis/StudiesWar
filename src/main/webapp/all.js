@@ -148,10 +148,8 @@ function lancerPartie() {
 
 function afficherEdt () {
 	Hide('identification');
-	Hide('contacts');
 	Hide('partie');
 	Hide('bulletins');
-	Hide('contacts2');
 
   	Show('edt');
   	
@@ -168,21 +166,17 @@ function retourAccueil(){
 	Show("identification");
 	Hide("nav");
 	Hide("partie");
-	Hide('contacts');
 	Hide('edt');
 	Hide('partie');
 	Hide('bulletins');
-	Hide('contacts2');	
 }
 
 
 function toggle(anId){
 	Hide('identification');
-	Hide('contacts');
 	Hide('edt');
 	Hide('partie');
 	Hide('bulletins');
-	Hide('contacts2');
 
   	Show(anId);
 }
