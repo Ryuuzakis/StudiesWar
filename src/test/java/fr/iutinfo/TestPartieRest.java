@@ -10,7 +10,7 @@ import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 
 import fr.iutinfo.studiesWar.App;
-import fr.iutinfo.studiesWar.models.ObjetTransfert;
+import fr.iutinfo.studiesWar.resources.ObjetTransfert;
 
 
 public class TestPartieRest extends JerseyTest {

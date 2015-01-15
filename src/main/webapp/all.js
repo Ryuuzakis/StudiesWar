@@ -44,17 +44,34 @@ function afficheListActions(data) {
 	var html ='<ul>';
 	var index = 0;
 	for (index = 0; index < data.actions.length; ++index) {
-		/*html = html + "<li>" + data.actions.[index] + "</li>";*/
+		html = html + "<li> " + data.actions[index] + "</li>";
 	}
 	html = html + "</ul>";
 	$("#actionsdiv").html(html);
 }
+function getResultats(idPartie) {
+	var path = "v1/partie/" + idPartie + "/resultats";
+	$.getJSON(path, function(data) {
+		afficheListResultats(data)
+	});
+}
+
+function afficheListResultats(data) {
+	var html ='<ul>';
+	var index = 0;
+	for (index = 0; index < data.resultats.length; ++index) {
+		html = html + "<li>" + data.resultats[index] + "</li>";
+	}
+	html = html + "</ul>";
+	$("#resultsdiv").html(html);
+}
+
 
 function afficheListUsers(data) {
 	var html = '<ul>';
 	var index = 0;
 	for (index = 0; index < data.length; ++index) {
-		html = html + "<li>" + data[index].name + "</li>";
+		html = html + "<li>" + index + " : " + data[index].name + "</li>";
 	}
 	html = html + "</ul>";
 	$("#reponse").html(html);
@@ -75,20 +92,42 @@ function Show (addr) {
 
 
 
-function lancerPartie(){
+function lancerPartie(){	
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/partie/"+$('#user').val(),
+		success : function(data, textStatus, jqXHR) {
+			idJoueur = data.idJoueur;
+			idPartie = data.idPartie;
+			alert(idJoueur + "/" + idPartie);
+			Show("partie");
+			Show("nav");
+			Hide("identification");	
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
+	});	
+}
+
+function retourAccueil(){
  	
-	Show("partie");
-	Show("nav");
-	Hide("identification");	
+	Show("identification");
+	Hide("nav");
+	Hide("partie");	
 }
 
 
 function toggle(anId){
-	var sujets = document.getElementsByTagName("section");
-    for (sujet in sujets) {
-		sujet.style.visibility = "hidden";
-   }
-   show(anId);
+	Hide('identification');
+	Hide('contacts');
+	Hide('edt');
+	Hide('partie');
+	Hide('bulletins');
+	Hide('contacts2');
+
+  	Show(anId);
 }
 
 

@@ -1,7 +1,6 @@
 package fr.iutinfo;
 
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,10 +36,10 @@ public class PartieTest {
 					fail();
 				}
 				else{
-				a.add(l.get(cpt).getMatiere());
+					a.add(l.get(cpt).getMatiere());
 				}
 			}
-		i++;	
+			i++;	
 		}
 	}
 

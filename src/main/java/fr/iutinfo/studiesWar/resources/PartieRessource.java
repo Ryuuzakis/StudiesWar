@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import fr.iutinfo.studiesWar.models.Factory;
-import fr.iutinfo.studiesWar.models.ObjetTransfert;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 import fr.iutinfo.studiesWar.models.action.Action;
@@ -78,9 +77,11 @@ public class PartieRessource {
 	
 	@GET
 	@Path("{idPartie}/resultats")
-	public ArrayList<String> obtenirResultats(@PathParam("idPartie") int idPartie) {
+	public ObjetTransfert obtenirResultats(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
-		return p.getResultats();
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setResultats(p.getResultats());
+		return obj;
 	}
 
 }

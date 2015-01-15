@@ -18,9 +18,10 @@
 		
 		
 		<!-- Code local -->
-		<script src="all.js"></script>
 	</head>
-
+	<body>
+		<script src="all.js"></script>
+		
 
 
   		<h1 style="text-align: center">Lancer une partie</h1>
@@ -30,10 +31,16 @@
 		<div style="text-align: center">
 			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
 			<button id="sub">Créer Partie</button>
-			<button id="actions">Affiche les actions</button>
+			<a href="#" id="actions">Affiche les actions</a>
 		</div>
 		<div id="actionsdiv">
 			totototo
+			
+		</div>
+		<div id="resultsdiv">
+		
+			resultats
+			
 			
 		</div>
 		
@@ -58,7 +65,10 @@
 							}
 							});
 						}
-   			$("#actions").click(function () {getActions(idJoueur, idPartie)});
+   			$("#actions").click(function () {
+   									getActions(idJoueur, idPartie)
+   								}
+   			);
 						
   		</script>
   		
@@ -88,4 +98,5 @@
 			
 			
 		</div>
+		</body>
   		</html>

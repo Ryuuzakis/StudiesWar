@@ -17,7 +17,7 @@ public abstract class Personnage {
 	private int PA = 5;
 	private HashMap<String,Integer> stats = new HashMap<String,Integer>();
 	private ArrayList<Effet> effets ;
-	private ArrayList<Action> actionPosibles;
+	protected ArrayList<Action> actionPosibles;
 	
 	public Personnage(String s){
 		this.nom = s;
@@ -79,23 +79,17 @@ public abstract class Personnage {
 		actionPosibles.clear();
 		
 		for(Controle c : partie.getSemaineActuel().values()){
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 1,"etudier un peu pour le controle de "+c.getMatiere()));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 2,"etudier passinnement pour le controle de "+c.getMatiere()));
-			actionPosibles.add(new Etudier(this, c.getMatiere(), 3,"etudier a la folie pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c, 1,"etudier un peu pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c, 2,"etudier passinnement pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Etudier(this, c, 3,"etudier a la folie pour le controle de "+c.getMatiere()));
 			
 			for(Personnage personnage :partie.getPersonnes()){
-				if(this!=personnage){
+				if(!this.equals(personnage)){
 					actionPosibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()+" pour le controle de "+c.getMatiere()));
 				}
 			}
-			actionPosibles.add(new Absence(this, c.getDate(), (byte)(c.getDate()+1),"simuler une gastro pour le controle de "+c.getMatiere()));
+			actionPosibles.add(new Absence(this, c,"simuler une gastro pour le controle de "+c.getMatiere()));
 		}
-		if(this instanceof PersonnageIA){
-			Action tmp = actionPosibles.get(new Random().nextInt(actionPosibles.size()));
-			actionPosibles.clear();
-			actionPosibles.add(tmp);
-		}
-		
 	}
 
 	public ArrayList<Action> getAction() {
@@ -117,6 +111,12 @@ public abstract class Personnage {
 		}
 		setStat(matieres.get(iPlus),new Random().nextInt(7)+14);
 		setStat(matieres.get(iMoins),new Random().nextInt(7));
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		//TODO : faire une methode equals
+		return false;
 	}
 	
 }
