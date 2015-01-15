@@ -77,9 +77,11 @@ public class PartieRessource {
 	
 	@GET
 	@Path("{idPartie}/resultats")
-	public ArrayList<String> obtenirResultats(@PathParam("idPartie") int idPartie) {
+	public ObjetTransfert obtenirResultats(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
-		return p.getResultats();
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setResultats(p.getResultats());
+		return obj;
 	}
 
 }

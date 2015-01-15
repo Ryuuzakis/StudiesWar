@@ -44,17 +44,34 @@ function afficheListActions(data) {
 	var html ='<ul>';
 	var index = 0;
 	for (index = 0; index < data.actions.length; ++index) {
-		html = html + "<li>" + data.actions[index] + "</li>";
+		html = html + "<li> " + data.actions[index] + "</li>";
 	}
 	html = html + "</ul>";
 	$("#actionsdiv").html(html);
 }
+function getResultats(idPartie) {
+	var path = "v1/partie/" + idPartie + "/resultats";
+	$.getJSON(path, function(data) {
+		afficheListResultats(data)
+	});
+}
+
+function afficheListResultats(data) {
+	var html ='<ul>';
+	var index = 0;
+	for (index = 0; index < data.resultats.length; ++index) {
+		html = html + "<li>" + data.resultats[index] + "</li>";
+	}
+	html = html + "</ul>";
+	$("#resultsdiv").html(html);
+}
+
 
 function afficheListUsers(data) {
 	var html = '<ul>';
 	var index = 0;
 	for (index = 0; index < data.length; ++index) {
-		html = html + "<li>" + data[index].name + "</li>";
+		html = html + "<li>" + index + " : " + data[index].name + "</li>";
 	}
 	html = html + "</ul>";
 	$("#reponse").html(html);
