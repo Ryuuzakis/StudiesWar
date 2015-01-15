@@ -92,19 +92,41 @@ function Show (addr) {
 
 
 
-function lancerPartie(){
+function lancerPartie(){	
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/partie/"+$('#user').val(),
+		success : function(data, textStatus, jqXHR) {
+			idJoueur = data.idJoueur;
+			idPartie = data.idPartie;
+			alert(idJoueur + "/" + idPartie);
+			Show("partie");
+			Show("nav");
+			Hide("identification");	
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
+	});	
+}
+
+function retourAccueil(){
  	
-	Show("partie");
-	Show("nav");
-	Hide("identification");	
+	Show("identification");
+	Hide("nav");
+	Hide("partie");	
 }
 
 function toggle(anId){
-	var sujets = document.getElementsByTagName("section");
-    for (sujet in sujets) {
-		sujet.style.visibility = "hidden";
-   }
-   show(anId);
+	Hide('identification');
+	Hide('contacts');
+	Hide('edt');
+	Hide('partie');
+	Hide('bulletins');
+	Hide('contacts2');
+
+  	Show(anId);
 }
 
 
