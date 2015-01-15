@@ -20,12 +20,12 @@
 		<link rel="stylesheet" href="style.css" />
 		
 		<!-- Code local -->
-		<script src="all.js"></script>
+		
 	</head>
 	
 	
 	<body>
-
+<script src="all.js"></script>
 		<h1>Studies War</h1>
 		<div id="identification">
 				
@@ -95,14 +95,37 @@
 			<nav id="nav">
 					<button onclick="retourAccueil()">Se deconnecter</button></br>
 					</br>
-					<button onclick="toggle('partie')">Lancer une partie</button></br>
-					<button onclick="toggle('edt')">Emploi du temps</button></br>
+					<button onclick="toggle('partie')">Profil</button></br>
+					<button onclick="recupActions()">Emploi du temps</button></br>
 					<button onclick="toggle('bulletins')">Bulletins</button></br>
 					<button onclick="toggle('contacts2')">Contacts</button></br>
 			</nav>
 			
 			<section id="edt">
-				<h1>Emplois du temps</h1>
+				
+				<div id='lundi' class='jour'>
+					<h3>Lundi</h3>
+				</div>
+				 
+				<div id='mardi' class='jour'>
+					<h3>Mardi</h3>
+				</div>
+				
+				<div id='mercredi' class='jour'>
+					<h3>Mercredi</h3>
+				</div>
+				
+				<div id='jeudi' class='jour'>
+					<h3>Jeudi</h3>
+				</div>
+				
+				<div id='vendredi' class='jour'>
+					<h3>Vendredi</h3>
+				</div>
+				
+				<div id='choix'>
+				
+				</div>
 
 	  		</section>
 	
@@ -110,7 +133,7 @@
 	
 	  		<section id="partie">
 	  
-			<h2>Choisir vos parametres</h2>
+			<h2>Vos Stats :</h2>
 					
 				
 	
