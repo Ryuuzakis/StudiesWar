@@ -21,6 +21,7 @@ public class Partie {
 	private int id;
 	private Bulletin b;
 
+	private final int NB_CONTROLES = 4;
 	public Partie(int dureeTour,int id){
 		this.id=id;
 		this.dureeTour=dureeTour;
@@ -70,23 +71,23 @@ public class Partie {
 		for(Personnage p : this.personnes){
 			p.setPA(p.getPA()/2+5);
 		}
-		byte date=(byte) (new Random().nextInt(5)+1);
+		ArrayList<Byte> dates = new ArrayList<Byte>();
+		ArrayList<String> tmpMatieres = new ArrayList<String>();
+		tmpMatieres.addAll(matieres);
+		dates.add((byte) 1);
+		dates.add((byte) 2);
+		dates.add((byte) 3);
+		dates.add((byte) 4);
+		dates.add((byte) 5);
 		
-		Controle controle;
-		Controle control2;
-		Controle control3;
 		//TODO: Tester si la boucle permet bien de ne pas avoir de doublons dans la map
-		do {
-			controle=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)1);
-			control2=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)2);
-			control3=new Controle(matieres.get(new Random().nextInt(matieres.size()-2)), this, (byte)3);
-		} while (semaineActuel.containsValue(controle));
-		semaineActuel.put((byte) 1,controle);
-		semaineActuel.put((byte) 2,control2);
-		semaineActuel.put((byte) 3,control3);
-
-		
-		
+		for (int i = 0; i < NB_CONTROLES; i++) {
+			int idxMatiere = (int) (Math.random() * tmpMatieres.size());
+			int idxJour = (int) (Math.random() * dates.size());
+			Controle controle = new Controle(tmpMatieres.remove(idxMatiere),
+					this, dates.get(idxJour));
+			semaineActuel.put(dates.remove(idxJour), controle);
+		}
 	}
 	/**
 	 * methode appelee a chaque fin de tour
