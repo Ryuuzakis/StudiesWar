@@ -13,11 +13,8 @@ import org.junit.Test;
 import fr.iutinfo.studiesWar.App;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Personnage;
-<<<<<<< HEAD
-=======
 import fr.iutinfo.studiesWar.models.action.Action;
 import fr.iutinfo.studiesWar.resources.ObjetTransfert;
->>>>>>> b39aa939f3118cd02cba4cd51aca7fad50de56e6
 import fr.iutinfo.studiesWar.resources.PartieRessource;
 
 public class TestPartieRessource extends JerseyTest {
