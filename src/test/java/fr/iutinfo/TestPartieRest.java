@@ -50,6 +50,7 @@ public class TestPartieRest extends JerseyTest {
 		
 		assertTrue(obj3 != null);
 		assertTrue(obj3.getActions().size() > 0);
+		System.out.println(obj3.getActions());
 		
 	}
 	

@@ -38,9 +38,9 @@ function listUsers() {
 		afficheListUsers(data)
 	});
 }
-function getActions(idJoueur, idPartie, idJour) {
+function getActions(idJour) {
 	jour=idJour;
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur ;
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour +"/";
 	$.getJSON(path, function(data) {
 		afficheListActions(data, idJour)
 	});
