@@ -101,6 +101,16 @@ public abstract class Personnage {
 	public void addAction(Action a) {
 		actions.add(a);
 	}
+	
+	public ArrayList<Action> getAction(Controle c){
+		ArrayList<Action> actionControl=new ArrayList<Action>();
+		for(Action a : actionPosibles){
+			if(a.getControle().equals(c)){
+				actionControl.add(a);
+			}
+		}
+		return actionControl;
+	}
 
 	public ArrayList<Action> getAction() {
 		return actions;
@@ -122,11 +132,26 @@ public abstract class Personnage {
 		setStat(matieres.get(iPlus),new Random().nextInt(7)+14);
 		setStat(matieres.get(iMoins),new Random().nextInt(7));
 	}
-	
+
 	@Override
-	public boolean equals(Object o) {
-		//TODO : faire une methode equals
-		return false;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Personnage other = (Personnage) obj;
+		if (nom == null) {
+			if (other.nom != null)
+				return false;
+		} else if (!nom.equals(other.nom))
+			return false;
+		return true;
+	}
+	
+	
 	
 }
