@@ -23,12 +23,6 @@ public class Controle {
 		init();
 	}
 	
-	@Override
-	public boolean equals(Object o) {
-		Controle c = (Controle) o;
-		return c.matiere.equals(matiere);
-	}
-	
 	private void init() {
 		for(Personnage p:partie.getPersonnes()){
 			notes.put(p, new Note(this,p));

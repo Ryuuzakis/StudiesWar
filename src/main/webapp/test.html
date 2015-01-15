@@ -30,6 +30,11 @@
 		<div style="text-align: center">
 			Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
 			<button id="sub">Créer Partie</button>
+			<button id="actions">Affiche les actions</button>
+		</div>
+		<div id="actionsdiv">
+			totototo
+			
 		</div>
 		
 		
@@ -40,9 +45,9 @@
 			var idPartie;
    			 element.onclick = function() {
 							$.ajax({
-							type : 'POST',
+							type : 'GET',
 							contentType : 'application/json',
-							url : "v1/partie/"+$('#user').val(),
+							url : "v1/partie/"+$('#user').val()+"/creer",
 							success : function(data, textStatus, jqXHR) {
 								idJoueur = data.idJoueur;
 								idPartie = data.idPartie;
@@ -53,6 +58,7 @@
 							}
 							});
 						}
+   			$("#actions").click(function () {getActions(idJoueur, idPartie)});
 						
   		</script>
   		
