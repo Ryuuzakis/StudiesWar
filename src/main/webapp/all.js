@@ -185,7 +185,7 @@ function Show (addr) {
 function lancerPartie() {
 	nom = $('#user').val();
 	
-	
+	/*Fonction qui cree la partie*/
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
@@ -202,6 +202,17 @@ function lancerPartie() {
 		}
 	});
 	
+	$.ajax({
+		type : 'GET',
+		contentType : 'application/json',
+		url : "v1/partie/"+idPartie+"/lancer",
+		success : function(data, textStatus, jqXHR) {
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
+	});
+	
 }
 
 function afficherEdt () {
@@ -210,7 +221,6 @@ function afficherEdt () {
 	Hide('bulletins');
 
   	Show('edt');
-  	
 }
 
 function retourAccueil(){
