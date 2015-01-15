@@ -22,15 +22,15 @@
 		<!-- Code local -->
 		<script src="all.js"></script>
 	</head>
+	
+	
 	<body>
-	<div>
 
-		<img src="fond.jpg"  id="img">
-		</img>
+		<h1>Studies War</h1>
 		<div id="identification">
-			<titre>Studies War</titre>
+				
 			
-			<menu id="auteur">
+			<div id="auteur">
 				<p style="text-align: center">
 					Par</br>
 					</br>
@@ -42,184 +42,128 @@
 					GUILBERT Florian</br>
 					LECOINTE Jonathan</br>
 				</p>
-			</menu>
-
-			<bouton2>
-				<button  onclick="toggle('partie','identification')">Lancer une partie</button>
-				<button  onclick="toggle('contacts1','identification')">Contacts</button>
-			</bouton2>
-		
-			<script type="text/javascript">
+			</div>
+				
+				
+				<div id="b2">
+					Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/></br>
+					<button  id="sub">Lancer une partie</button>
+					<button  onclick="toggle('contacts1','identification')">Contacts</button>
+				</div>
 			
-
+				<script type="text/javascript">
+					$(document).ready(function() {
+						
+						$("#contacts1").hide();
+						$("#contacts2").hide();
+					});
 			
-				window.onload = function () {
-					Hide("partie");
-					Hide("bulletins");
-					Hide("edt");
-					Hide("contacts1");
-					Hide("contacts2");
-				};
-				$(document).ready(function() {
-					$("#partie").hide();
-					$("#get").click(function () {getUser($('#user').val())});
-					$("#post").click(function () {postUser($('#user').val())});
-					$("#list").click(function () {listUsers()});
-					$("#lancerPartie").click(function (){$("#partie").slideToggle()});
-					$("#lancerPartie").click(function (){$("#identification").slideToggle()});
-				});
-			
-	  		</script>
-  		
- 	 	</div>   <!-- fin de la division d'authentification -->
-
-
-		<div id="contacts1">
-			<titre>Contacts</titre>
-
-			
-			<bouton2>
-				<button onclick="toggle('identification','contacts1')">Retour a l'accueil</button>
-			</bouton2>
-			
-		
-			<script type="text/javascript">
-			
-
-			
-			
-	  		</script>
-  		
- 	 	</div>   <!-- fin de la division des contacts1 -->
-
+					var element = document.getElementById('sub');
+					var nom = $('#user').val();
+					var idJoueur;
+					var idPartie;
 	
-		<div id="edt">
-			<titre>Emplois du temps</titre>
-
-			<menu>
-				<button onclick="toggle('identification','edt')">Se deconnecter</button></br>
-				</br>
-				<button onclick="toggle('partie','edt')">Lancer une partie</button></br>
-				<button>Emploi du temps</button></br>
-				<button onclick="toggle('bulletins','edt')">Bulletins</button></br>
-				<button onclick="toggle('contacts2','edt')">Contacts</button></br>
-			</menu>
-
-		
-			<script type="text/javascript">
-			
-
-			
-			
-	  		</script>
-	  	</div>
-	
-	  	<div id="partie">
-	  
-	  		<titre>Lancer une partie</titre>
-			<menu>
-				<button onclick="toggle('identification','partie')">Se deconnecter</button></br>
-				</br>
-				<button>Lancer une partie</button></br>
-				<button onclick="toggle('edt','partie')">Emploi du temps</button></br>
-				<button onclick="toggle('bulletins','partie')">Bulletins</button></br>
-				<button onclick="toggle('contacts2','partie')">Contacts</button></br>
-			</menu>
-	
-			<titre2>Choisir vos parametres</titre2>
-			<bouton2>
-				Nom : <input type="text" name="user" id="user" placeholder="Nom ?"/>
-				<button id="sub" onclick="toggle('identification','partie')">Valider</button>
-			</bouton2>
-	
-	
-			
-			
-			<script type="text/javascript">
-				var element = document.getElementById('sub');
-				var nom = $('#user').val();
-				var idJoueur;
-				var idPartie;
-	
-	   			 element.onclick = function() {
-								$.ajax({
-								type : 'POST',
-								contentType : 'application/json',
-								url : "v1/partie/"+$('#user').val(),
-								success : function(data, textStatus, jqXHR) {
+	   				element.onclick = function() {
+	   										
+						$.ajax({
+							type : 'POST',
+							contentType : 'application/json',
+							url : "v1/partie/"+$('#user').val(),
+							success : function(data, textStatus, jqXHR) {
 								idJoueur = data.idJoueur;
 								idPartie = data.idPartie;
-								alert(idJoueur + "/" + idPartie);	
-								},
-								error : function(jqXHR, textStatus, errorThrown) {
-									alert('postUser error: ' + textStatus);
-								}
-								});
-								Hide(partie);
-								Show(identification);
+								alert(idJoueur + "/" + idPartie);
+								lancerPartie('partie','identification');	
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert('postUser error: ' + textStatus);
 							}
-				
-				
-	  		</script>
-	  
-	  	</div>
-		<!-- fin de la division de parametres de partie --> 
-
-		
-
-
-		<div id="bulletins">
-			<titre>Bulletins</titre>
-
-			<menu>
-				<button onclick="toggle('identification','bulletins')">Se deconnecter</button></br>
-				</br>
-				<button onclick="toggle('partie','bulletins')">Lancer une partie</button></br>
-				<button onclick="toggle('edt','bulletins')">Emploi du temps</button></br>
-				<button>Bulletins</button></br>
-				<button onclick="toggle('contacts2','bulletins')">Contacts</button></br>
-			</menu>
-
-			<bouton2>
-				<button onclick="toggle('partie','bulletins')">Voir les resultats</button>
-			</bouton2>
-		
-			<script type="text/javascript">
-			
-
-			
-			
-	  		</script>
+						});
+					}
+	  			</script>
   		
- 	 	</div>   <!-- fin de la division des bulletins -->
+ 	 		</div>   <!-- fin de la division d'authentification -->
 
-		<div id="contacts2">
-			<titre>Contacts</titre>
 
-			<menu>
-				<button onclick="toggle('identification','contacts2')">Se deconnecter</button></br>
-				</br>
-				<button onclick="toggle('partie','contacts2')">Lancer une partie</button></br>
-				<button onclick="toggle('edt','contacts2')">Emploi du temps</button></br>
-				<button onclick="toggle('bulletins','contacts2')">Bulletins</button></br>
-				<button>Contacts</button></br>
-			</menu>
+			<section id="contacts1">
+				<h1>Contacts</h1>
 
+			
+				<div id="b2">
+					<button onclick="toggle('identification','contacts1')">Retour a l'accueil</button>
+				</div id="b2">
 			
 		
-			<script type="text/javascript">
+				<script type="text/javascript">
 			
 
-			
-			
-	  		</script>
+		  		</script>
   		
- 	 	</div>   <!-- fin de la division des contacts2 -->
-
-
-	 </div>
+ 		 	</section>   <!-- fin de la division des contacts1 -->
 
 	
+			<nav id="nav">
+					<button onclick="toggle('identification','edt')">Se deconnecter</button></br>
+					</br>
+					<button onclick="toggle('partie','edt')">Lancer une partie</button></br>
+					<button>Emploi du temps</button></br>
+					<button onclick="toggle('bulletins','edt')">Bulletins</button></br>
+					<button onclick="toggle('contacts2','edt')">Contacts</button></br>
+			</nav>
+			
+			<section id="edt">
+				<h1>Emplois du temps</h1>
+
+				
+
+		
+				<script type="text/javascript">
+			
+	  			</script>
+	  		</section>
+	
+	
+	
+	  		<section id="partie">
+	  
+			<h2>Choisir vos parametres</h2>
+					
+				
+	
+	
+			
+			
+				
+	  
+	  		</section>
+			<!-- fin de la division de parametres de partie --> 
+	
+		
+
+
+			<section id="bulletins">
+				<titre>Bulletins</titre>
+
+				<div id="b2">
+					<button onclick="toggle('partie','bulletins')">Voir les resultats</button>
+				</div>
+		
+				<script type="text/javascript">
+			
+				</script>
   		
+ 	 		</section>   <!-- fin de la division des bulletins -->
+
+			<section id="contacts2">
+				<titre>Contacts</titre>
+
+				<script type="text/javascript">
+			
+		  		</script>
+  		
+	 	 	</section>   <!-- fin de la division des contacts2 -->
+
+
 	</body>
+	
 </html>

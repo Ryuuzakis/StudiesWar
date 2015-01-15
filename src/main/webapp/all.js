@@ -86,17 +86,24 @@ function toggle(anId){
 function toggle(anId, anId2){
 	if (document.getElementById(anId).style.visibility == "hidden")	{
 		Show(anId);
-		document.getElementById(anId).style.height = "auto";
 	}else{	
 		Hide(anId);
 		document.getElementById(anId2).style.height = "0";
 	}if (document.getElementById(anId2).style.visibility == "hidden"){
 		Show(anId);
-		document.getElementById(anId).style.height = "auto";
 	}else{	
 		Hide(anId2);
 		document.getElementById(anId2).style.height = "0";
 	}
+}
+
+function lancerPartie(anId, anId2){
+	Show(anId);
+	Show('nav');
+	
+	Hide(anId2);
+	document.getElementById(anId2).style.height = "0";
+	
 }
 
 
