@@ -102,5 +102,28 @@ public class Controle {
 	public Map<Personnage, Note> getNotes(){
 		return notes;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + date;
+		result = prime * result + ((matiere == null) ? 0 : matiere.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Controle other = (Controle) obj;
+		if (date != other.date)
+			return false;
+		if (matiere == null) {
+			if (other.matiere != null)
+				return false;
+		} else if (!matiere.equals(other.matiere))
+			return false;
+		return true;
+	}
+	
 	
 }
