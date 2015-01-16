@@ -84,6 +84,7 @@ public class PartieRessource {
 		}
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
+		System.out.println(actionsString);
 		return output;
 	}
 	
