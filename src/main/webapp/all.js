@@ -3,6 +3,24 @@
 	var jour;
 	var choix = [-1, -1, -1, -1, -1];
 
+function validerTour() {
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/partie/"+idPartie+"/joueur/"+idJoueur+"/sendaction",
+		dataType : "json",
+		data : JSON.stringify({
+			"actions" : choix
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log("ca marche");
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
+	});
+}
+
 function getUser(name) {
 	$.getJSON("v1/user/" + name, function(data) {
 		afficheUser(data)
