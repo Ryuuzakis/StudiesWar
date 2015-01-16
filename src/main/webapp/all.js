@@ -35,6 +35,7 @@ function afficheUser(data) {
 	$("#reponse").html(data.id + " : " + data.name);
 }
 
+
 function postUser(name) {
 	$.ajax({
 		type : 'POST',
