@@ -13,7 +13,7 @@ public class Partie {
 	private HashMap<Integer, Controle> semaineActuelle=new HashMap<Integer, Controle>();
 	private ArrayList<String> matieres = new ArrayList<String>();
 	private int numTour;
-	private Bulletin bulletin;
+	private Bulletin bulletin = new Bulletin();
 
 	public static final int NB_JOUEURS = 10;
 	public static final int NB_CONTROLES = 4;
