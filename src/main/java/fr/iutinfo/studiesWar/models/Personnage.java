@@ -101,11 +101,11 @@ public abstract class Personnage {
 		for(Controle c : partie.getSemaineActuelle().values()){
 
 			//if (this.getPA() >= 1) {
-			actionPossibles.add(new Etudier(this, c, 1,"etudier un peu"));
+			actionPossibles.add(new Etudier(this, c, 1,"étudier un peu"));
 			//if (this.getPA() >= 2) {
-			actionPossibles.add(new Etudier(this, c, 2,"etudier passinnement"));
+			actionPossibles.add(new Etudier(this, c, 2,"étudier passionnement"));
 			//if (this.getPA() >= 3) {
-			actionPossibles.add(new Etudier(this, c, 3,"etudier a la folie"));
+			actionPossibles.add(new Etudier(this, c, 3,"étudier à la folie"));
 			//}}}
 
 			for(Personnage personnage :partie.getPersonnes()){
