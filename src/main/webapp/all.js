@@ -20,7 +20,8 @@ function validerTour() {
 			choix = [-1, -1, -1, -1, -1];
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
+			alert('Vous avez été éliminé !!');
+			document.location.href="index.html";
 		}
 	});
 }
