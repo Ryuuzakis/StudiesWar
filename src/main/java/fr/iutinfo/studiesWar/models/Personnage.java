@@ -101,20 +101,20 @@ public abstract class Personnage {
 		for(Controle c : partie.getSemaineActuelle().values()){
 
 			//if (this.getPA() >= 1) {
-			actionPossibles.add(new Etudier(this, c, 1,"étudier un peu"));
+			actionPossibles.add(new Etudier(this, c, 1,"Étudier un peu"));
 			//if (this.getPA() >= 2) {
-			actionPossibles.add(new Etudier(this, c, 2,"étudier passionnement"));
+			actionPossibles.add(new Etudier(this, c, 2,"Étudier passionnement"));
 			//if (this.getPA() >= 3) {
-			actionPossibles.add(new Etudier(this, c, 3,"étudier à la folie"));
+			actionPossibles.add(new Etudier(this, c, 3,"Étudier à la folie"));
 			//}}}
 
 			for(Personnage personnage :partie.getPersonnes()){
 				if(!this.equals(personnage)){
-					actionPossibles.add(new Tricher(this,personnage, c,"tricher sur "+personnage.getNom()));
+					actionPossibles.add(new Tricher(this,personnage, c,"Tricher sur "+personnage.getNom()));
 				}
 			}
 
-			actionPossibles.add(new Absence(this, c,"simuler une gastro"));
+			actionPossibles.add(new Absence(this, c,"Simuler une gastro"));
 		}
 
 	}
@@ -132,7 +132,7 @@ public abstract class Personnage {
 				}
 			}
 		} 
-		actionControl.add(new NeRienFaire(this, "ne rien faire", c));
+		actionControl.add(new NeRienFaire(this, "Ne rien faire", c));
 		return actionControl;
 	}
 
