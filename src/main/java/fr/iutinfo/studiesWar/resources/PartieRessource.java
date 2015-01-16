@@ -152,6 +152,8 @@ public class PartieRessource {
 	@Path("{idPartie}/resultats")
 	public ObjetTransfert obtenirResultats(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
+		if (!p.tourEstTermine())
+			return null;
 		ObjetTransfert obj = new ObjetTransfert();
 		obj.setResultats(p.getResultats());
 		return obj;
