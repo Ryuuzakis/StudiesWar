@@ -151,6 +151,7 @@ public class TestPartieRest extends JerseyTest {
 		Entity<TableauTransfert> entity = Entity.entity(tab, MediaType.APPLICATION_JSON);
 		target("/partie/" + obj.getIdPartie() + "/joueur/" + obj.getIdJoueur() + "/sendaction").request().post(entity);
 		
+		//Obtenir les resultats
 		ObjetTransfert obj2 = target("/partie/" + obj.getIdPartie() + "/resultats").request().get(ObjetTransfert.class);
 		System.out.println(obj2.getResultats());
 		
