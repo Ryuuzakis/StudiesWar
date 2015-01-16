@@ -21,7 +21,7 @@ public class ObjetTransfert {
 	private List<String> resultats;
 	private List<String> controles;
 	private List<String> caracs;
-	private boolean elimine;
+	private String elimine = "truc debile";
 	
 	public List<String> getActions() {
 		return actions;
@@ -78,12 +78,20 @@ public class ObjetTransfert {
 		this.caracs = caracs;
 	}
 
-	public boolean isElimine() {
+	public String getElimine() {
 		return elimine;
 	}
 
-	public void setElimine(boolean elimine) {
+	public void setElimine(String elimine) {
 		this.elimine = elimine;
 	}
+	
+	public void setElimine(boolean bool)  {
+		if (bool)
+			elimine = "Tu es éliminé!";
+		else
+			elimine = "Continue au prochain tour !";
+	}
+
 	
 }
