@@ -116,7 +116,6 @@ public class Partie {
 		for(Map.Entry<Personnage,Double> entry : moy.entrySet()){
 			list.add(entry);
 		}
-		
 		bulletin.addResult(this);
 		
 		Collections.sort(list,new Comparator<Map.Entry<Personnage,Double>>() {
@@ -194,6 +193,10 @@ public class Partie {
 				return false;
 		}
 		return true;
+	}
+	
+	public int getNumBulletin(){
+		return bulletin.getNumBulletin();
 	}
 	
 }
