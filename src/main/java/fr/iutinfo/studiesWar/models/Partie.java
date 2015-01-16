@@ -133,8 +133,7 @@ public class Partie {
 		});
 		
 		bulletin.addResult(this);
-		
-		elimine(list.get(list.size() - 1).getKey());
+		elimine(list.get(0).getKey());
 	}
 	
 	

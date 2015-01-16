@@ -22,9 +22,13 @@ public abstract class Action {
 		return controle;
 	}
 
-	public String toString(){
-		return description;
+	@Override
+	public String toString() {
+		return "Action [p=" + p.getNom() + ", controle=" + controle + ", description="
+				+ description + "]";
 	}
+	
+	
 	
 	public abstract void agit();
 
