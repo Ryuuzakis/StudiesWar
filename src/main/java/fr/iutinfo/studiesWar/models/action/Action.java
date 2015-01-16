@@ -24,8 +24,7 @@ public abstract class Action {
 
 	@Override
 	public String toString() {
-		return "Action [p=" + p.getNom() + ", controle=" + controle + ", description="
-				+ description + "]";
+		return description;
 	}
 	
 	
