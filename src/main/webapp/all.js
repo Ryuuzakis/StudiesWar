@@ -273,7 +273,24 @@ function lancerPartie() {
 
 
 function rejoindrePartie() {
-
+	$.ajax({
+		console.log("rejoindre partie");
+		type : 'GET',
+		contentType : 'application/json',
+		url : "v1/partie/"+data+"/rejoindre",
+		success : function(data, textStatus, jqXHR) {
+			idJoueur = data.idJoueur;
+			idPartie = data.idPartie;
+			Show("partie");
+			Show("nav");
+			Hide("identification");
+			Hide("lancer");
+			getCaracteristiques(idJoueur);	
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error lancer: ' + textStatus);
+		}
+	});
 }
 
 
