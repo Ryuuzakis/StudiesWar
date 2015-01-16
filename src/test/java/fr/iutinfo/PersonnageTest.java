@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Partie;
 import fr.iutinfo.studiesWar.models.Personnage;
+import fr.iutinfo.studiesWar.models.PersonnageIA;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 
 public class PersonnageTest {
@@ -52,5 +54,22 @@ public class PersonnageTest {
 		Personnage p1 = new PersonnageJoueur();
 		p.rejoindrePartie(p1);
 	}
+	/*
+	@Test
+	public void testIA(){
+		Partie p = new Partie();
+		Personnage p1 = new PersonnageIA("Michelin");
+		Personnage p2 = new PersonnageIA("Pascalin");
+		Personnage p3 = new PersonnageIA("Augustin");
+		p.rejoindrePartie(p1);
+		p.rejoindrePartie(p2);
+		p.rejoindrePartie(p3);	
+		p.demarrerTour();
+		System.out.println(p1.g(p.getSemaineActuelle().get(1)));
+		System.out.println(p1.getActionduControle(p.getSemaineActuelle().get(2)));
+		
+	}
+	*/
+	
 
 }
