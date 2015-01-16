@@ -189,8 +189,11 @@ public class Partie {
 		return res;
 	}
 	public boolean tourEstTermine() {
-		// TODO Auto-generated method stub
-		return false;
+		for(Personnage p : personnes){
+			if(!p.aJoue())
+				return false;
+		}
+		return true;
 	}
 	
 }

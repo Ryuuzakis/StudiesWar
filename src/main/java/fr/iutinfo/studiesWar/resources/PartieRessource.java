@@ -85,6 +85,7 @@ public class PartieRessource {
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
 		return output;
+		
 	}
 	
 	@GET
