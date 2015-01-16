@@ -66,7 +66,7 @@ public class Partie {
 	 */
 	public void demarrerTour(){
 		semaineActuelle.clear();
-		nbControles = (int) (Math.random() * 2 + 3);
+		nbControles = (int) (Math.random() * 3 + 3);
 		this.setNumTour(this.getNumTour()+1);
 		for(Personnage p : this.personnes){
 			p.setPA(p.getPA()/2+5);

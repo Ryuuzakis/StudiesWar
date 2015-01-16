@@ -52,50 +52,50 @@ function getActions(idJour) {
 function getCaracteristiques(idJoueur) {
 	var path = "v1/partie/" + idJoueur + "/caracteristiques";
 	$.getJSON(path, function(data) {
-		afficheListCaracs(data, idJour)
+		afficheListCaracs(data)
 	});
 }
 
 function afficheListCaracs(data) {
-	var html ='<ul>';
+	alert(data);
+	var html ="<p id='listCarac'>";
 	var index = 0;
 	for (index = 0; index < data.caracs.length; ++index) {
-		html = html + "<li>" + data.caracs[index] + "</li>";
+		html = html + data.caracs[index] + "</br>";
 	}
-	html = html + "</ul>";
-	$("#MettezVotreDivIci").html(html);
+	html=html+"</p>";
+	$("#stat").html(html);
 }
 
 function afficheListActions(data) {
 	var html ='';
 	var index = 0;
-	for (index = 0; index < data.actions.length; ++index) {
-		html = html + "<a  onclick='action("+index+")' id='action"+index+"'> " + data.actions[index] + "</a></br>";
+	var nbrAction = data.actions.length;
+	for (index = 0; index < nbrAction; ++index) {
+		html = html + "<a  onclick='action("+index+", "+nbrAction+")' id='action"+index+"'> " + data.actions[index] + "</a></br>";
 	}
 	$("#choix").html(html);
 	
-		if(choix[jour-1]>-1) {
-			for (var y=0; y<5; y++) {
-				if (choix[jour-1]==y) {
-					document.getElementById('action'+y).style.color= "red";
-				} else {
-					document.getElementById('action'+y).style.color= "grey";				
-				}
+	if(choix[jour-1]>-1) {
+		for (var y=0; y<nbrAction; y++) {
+			if (choix[jour-1]==y) {
+				document.getElementById('action'+y).style.color= "red";
+			} else {
+				document.getElementById('action'+y).style.color= "grey";				
 			}
 		}
+	}
 }
 
-function action (index) {
+function action (index, nbrAction) {
 	choix[jour-1]=index;
-
-	document.getElementById('action0').style.color= "grey";
-	document.getElementById('action1').style.color= "grey";
-	document.getElementById('action2').style.color= "grey";
-	document.getElementById('action3').style.color= "grey";
-	document.getElementById('action4').style.color= "grey";
 	
+	for (var i = 0; i < nbrAction; ++i) {
+		document.getElementById('action'+ i).style.color= "grey";
+	}
 	
 	document.getElementById('action'+index).style.color= "red";
+	
 	if (jour == 1) {
 		document.getElementById('lundi').style.backgroundColor= "green";	
 	}
@@ -194,7 +194,8 @@ function lancerPartie() {
 		success : function(data, textStatus, jqXHR) {
 			Show("partie");
 			Show("nav");
-			Hide("identification");	
+			Hide("identification");
+			getCaracteristiques(idJoueur);	
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error creer: ' + textStatus);
