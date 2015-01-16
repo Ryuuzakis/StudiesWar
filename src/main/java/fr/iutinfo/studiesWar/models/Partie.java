@@ -56,7 +56,7 @@ public class Partie {
 	}
 	private void ajouterJoueursIA() {
 		for (int i = personnes.size(); i < NB_JOUEURS ; i++){
-			PersonnageIA ia = new PersonnageIA(PersonnageIA.getNomRandom(i));
+			PersonnageIA ia = new PersonnageIA("kevindu0"+i);
 			ia.setCaracteristiques(matieres);
 			personnes.add(ia);
 		}
