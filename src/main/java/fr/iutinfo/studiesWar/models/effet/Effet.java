@@ -10,13 +10,11 @@ import fr.iutinfo.studiesWar.models.Note;
  */
 public abstract class Effet {
 	
-	protected byte dDebut ;
-	protected byte dFin ;
-	protected byte priorite;
+	protected int dDebut ;
+	protected int dFin ;
+	protected int priorite;
 	
-
-	
-	public Effet(byte dD,byte dF,byte pri){
+	public Effet(int dD, int dF, int pri){
 		this.dDebut = dD;
 		this.dFin = dF;
 		this.priorite = pri;
@@ -27,14 +25,10 @@ public abstract class Effet {
 		return dDebut <= c.getDate() && dFin > c.getDate();
 	}
 	
-	
-	
-	public byte getPriorite() {
+	public int getPriorite() {
 		return priorite;
 	}
 
 	public abstract void modifNote(Note n);
-	
-	
 
 }

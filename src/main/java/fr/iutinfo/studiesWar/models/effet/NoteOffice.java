@@ -5,8 +5,8 @@ import fr.iutinfo.studiesWar.models.Note;
 public class NoteOffice extends Effet {
 	private int note ;
 	
-	public NoteOffice(byte dD, byte dF,int n) {
-		super(dD, dF,(byte)1);
+	public NoteOffice(int dD, int dF,int n) {
+		super(dD, dF,1);
 		this.note = n;
 		
 	}
@@ -14,7 +14,5 @@ public class NoteOffice extends Effet {
 	@Override
 	public void modifNote(Note n) {
 		n.setNote(this.note);
-
 	}
-
 }

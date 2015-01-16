@@ -1,6 +1,5 @@
 package fr.iutinfo.studiesWar.models;
 
-import java.awt.Event;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,9 +14,9 @@ public class Controle {
 	private Map<Personnage, Note> notes=new HashMap<Personnage, Note>();
 	private ArrayList<Evenement> events=new ArrayList<Evenement>();
 	private Partie partie;
-	private byte date;
+	private int date;
 	
-	public Controle(String s,Partie p,byte date){
+	public Controle(String s, Partie p, int date){
 		this.matiere=s;
 		this.partie=p;
 		this.date=date;
@@ -30,7 +29,7 @@ public class Controle {
 		}
 	}
 
-	public void calculerTousLesNotes(){
+	public void calculerToutesLesNotes(){
 		//Evenement e=Parametre.gestionEvent(this, partie);
 		//if(e!=null)
 		//	e.alieu();
@@ -91,7 +90,7 @@ public class Controle {
 		return matiere;
 	}
 
-	public byte getDate() {
+	public int getDate() {
 		return date;
 	}
 	

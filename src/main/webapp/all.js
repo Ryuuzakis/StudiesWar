@@ -39,8 +39,10 @@ function listUsers() {
 	});
 }
 function getActions(idJour) {
+	alert('getActions ' + idJour);
 	jour=idJour;
-	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour +"/";
+	
+	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
 		alert(JSON.stringify(data, null, 4));
 		afficheListActions(data, idJour)
@@ -183,25 +185,38 @@ function Show (addr) {
 
 
 function lancerPartie() {
-	nom = $('#user').val();
-	
-	
+	alert('Id partie' + idPartie);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
-		url : "v1/partie/"+$('#user').val()+"/creer",
+		url : "v1/partie/"+idPartie+"/lancer",
+		
 		success : function(data, textStatus, jqXHR) {
-			idJoueur = data.idJoueur;
-			idPartie = data.idPartie;
 			Show("partie");
 			Show("nav");
 			Hide("identification");	
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('postUser error: ' + textStatus);
+			alert('postUser error creer: ' + textStatus);
 		}
 	});
-	
+}
+
+/*Fonction qui cree la partie*/
+function creerPartie(data) {
+	alert(nom);
+	$.ajax({
+		type : 'GET',
+		contentType : 'application/json',
+		url : "v1/partie/"+data+"/creer",
+		success : function(data, textStatus, jqXHR) {
+			idJoueur = data.idJoueur;
+			idPartie = data.idPartie;
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error lancer: ' + textStatus);
+		}
+	});
 }
 
 function afficherEdt () {
@@ -210,7 +225,6 @@ function afficherEdt () {
 	Hide('bulletins');
 
   	Show('edt');
-  	
 }
 
 function retourAccueil(){

@@ -15,7 +15,7 @@ public class Factory {
 		if(resource == PARTIE) {
 			Partie p = parties.get(id);
 			if (p == null) {
-				p = new Partie(5, id);
+				p = new Partie();
 				parties.put(id, p);
 			}
 			return p;

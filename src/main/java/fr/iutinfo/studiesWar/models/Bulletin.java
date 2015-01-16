@@ -8,7 +8,7 @@ public class Bulletin {
 	
 	public void addResult(Partie p){
 		ArrayList<Controle> cont = new ArrayList<Controle>();
-		for(Controle c : p.getSemaineActuel().values()){
+		for(Controle c : p.getSemaineActuelle().values()){
 			cont.add(c);
 		}
 		bulletin.add(cont);

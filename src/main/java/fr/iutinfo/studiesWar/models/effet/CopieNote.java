@@ -6,8 +6,8 @@ import fr.iutinfo.studiesWar.models.Personnage;
 public class CopieNote extends Effet{
 	private Personnage personnage;
 
-	public CopieNote(byte dD, byte dF,Personnage p) {
-		super(dD, dF, (byte) 3);
+	public CopieNote(int dD, int dF,Personnage p) {
+		super(dD, dF, 3);
 		this.personnage = p;
 	}
 

@@ -68,7 +68,11 @@
 					var idJoueur;
 					var idPartie;
 	
-	   				element.onclick = lancerPartie; 
+	   				element.onclick=function() {
+	   					creerPartie($('#user').val());
+	   					lancerPartie();
+	   					 
+	   				};
 	   				
 	  			</script>
   		

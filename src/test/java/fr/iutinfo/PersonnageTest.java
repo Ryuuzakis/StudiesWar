@@ -1,11 +1,9 @@
 package fr.iutinfo;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import fr.iutinfo.studiesWar.models.Partie;
@@ -36,7 +34,7 @@ public class PersonnageTest {
 		matieres.add("Maths");
 		matieres.add("Triche");
 		matieres.add("Algo");
-		p.setMatieres(matieres);
+		p.setCaracteristiques(matieres);
 		int max = 0;
 		for(int i=0;i<3;i++){
 			if(max<p.getStat(matieres.get(i))){
@@ -50,9 +48,9 @@ public class PersonnageTest {
 	
 	@Test
 	public void test2(){
-		Partie p = new Partie(0,0);
+		Partie p = new Partie();
 		Personnage p1 = new PersonnageJoueur();
-		p.rejoinPartie(p1);
+		p.rejoindrePartie(p1);
 	}
 
 }
