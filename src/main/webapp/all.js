@@ -97,19 +97,24 @@ function action (index, nbrAction) {
 	document.getElementById('action'+index).style.color= "red";
 	
 	if (jour == 1) {
-		document.getElementById('lundi').style.backgroundColor= "green";	
+		document.getElementById('lundi').style.backgroundColor= "green";
+		document.getElementById('ctrl1').style.backgroundColor= "green";	
 	}
 	if (jour == 2) {
 		document.getElementById('mardi').style.backgroundColor= "green";	
+		document.getElementById('ctrl2').style.backgroundColor= "green";	
 	}
 	if (jour == 3) {
 		document.getElementById('mercredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl3').style.backgroundColor= "green";	
 	}
 	if (jour == 4) {
 		document.getElementById('jeudi').style.backgroundColor= "green";	
+		document.getElementById('ctrl4').style.backgroundColor= "green";	
 	}
 	if (jour == 5) {
 		document.getElementById('vendredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl5').style.backgroundColor= "green";	
 	}
 	
 	var cpt=0;
@@ -151,7 +156,7 @@ function getControles(idPartie) {
 function afficheListControles(data) {
 	var index = 0;
 	for (index = 0; index < data.controles.length; ++index) {
-		$("#ctrl"+index+1).html("<h3>"+data.controles[index]+"</h3>");
+		$("#ctrl"+(index+1)).html("<h3>"+data.controles[index]+"</h3>");
 	}
 }
 
@@ -202,7 +207,6 @@ function lancerPartie() {
 
 /*Fonction qui cree la partie*/
 function creerPartie(data) {
-	alert(nom);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
