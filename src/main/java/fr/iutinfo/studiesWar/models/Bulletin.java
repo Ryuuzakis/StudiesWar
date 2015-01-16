@@ -18,6 +18,8 @@ public class Bulletin {
 		return bulletin.get(semaine);
 	}
 	
-	
+	public int getNumBulletin(){
+		return bulletin.size();
+	}
 
 }
