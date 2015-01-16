@@ -72,33 +72,33 @@ public class ControleTest {
 
 	}
 
-	@Test
-	public void test4() {
-		int i =0;
-
-		Partie p=new Partie();
-
-		Personnage p1=new PersonnageJoueur();
-		Personnage p2=new PersonnageJoueur();
-		Personnage p3=new PersonnageJoueur();
-		Personnage p4=new PersonnageJoueur();
-
-		p.rejoindrePartie(p1);
-		p.rejoindrePartie(p2);
-		p.rejoindrePartie(p3);
-		p.rejoindrePartie(p4);
-		
-		p.demarrerTour();
-		
-		p.finDuTour();
-		
-		p.demarrerTour();
-		
-		p.finDuTour();
-		
-		System.out.println(p.getResultatsSemaine(0, p1));
-		System.out.println(p.getResultatsSemaine(1, p1));
-
-	}
+//	@Test
+//	public void test4() {
+//		int i =0;
+//
+//		Partie p=new Partie();
+//
+//		Personnage p1=new PersonnageJoueur();
+//		Personnage p2=new PersonnageJoueur();
+//		Personnage p3=new PersonnageJoueur();
+//		Personnage p4=new PersonnageJoueur();
+//
+//		p.rejoindrePartie(p1);
+//		p.rejoindrePartie(p2);
+//		p.rejoindrePartie(p3);
+//		p.rejoindrePartie(p4);
+//		
+//		p.demarrerTour();
+//		
+//		p.finDuTour();
+//		
+//		p.demarrerTour();
+//		
+//		p.finDuTour();
+//		
+//		System.out.println(p.getResultatsSemaine(0, p1));
+//		System.out.println(p.getResultatsSemaine(1, p1));
+//
+//	}
 
 }
