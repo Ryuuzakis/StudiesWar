@@ -78,28 +78,38 @@ public class ControleTest {
 	 */
 	@Test
 	public void test4() {
-//		int i =0;
-//		while(i<100){
-//
-//			Partie p=new Partie(0, 0);
-//
-//			Personnage p1=new PersonnageJoueur();
-//
-//			p.rejoinPartie(p1);
-//
-//			Action a1 = new Etudier(p1,new Controle("", p, (byte)1),3,"Test");
-//
-//			a1.agit();
-//			
-//			System.out.println(p.getResultatsSemaine(0, p1));
-//			
-//			
-//
-//			//assertTrue(p1.getPA()==2);
-//			
-//			i++;
-//
-//		}
+		int i =0;
+		while(i<100){
+
+		Partie p=new Partie(0, 0);
+
+		Personnage p1=new PersonnageJoueur();
+		Personnage p2=new PersonnageJoueur();
+		Personnage p3=new PersonnageJoueur();
+		Personnage p4=new PersonnageJoueur();
+
+		p.rejoinPartie(p1);
+		p.rejoinPartie(p2);
+		p.rejoinPartie(p3);
+		p.rejoinPartie(p4);
+		
+		Controle  c1 = new Controle("Maths",p,(byte)1);
+
+		Action a1 = new Etudier(p1,new Controle("", p, (byte)1),3,"Test");
+
+		a1.agit();
+		
+		c1.calculerTousLesNotes();
+		
+		System.out.println(p.getResultatsSemaine(0, p1));
+		
+		p.finDuTour();
+
+		assertTrue(p1.getPA()==2);
+		
+			i++;
+
+		}
 	}
 
 }

@@ -70,6 +70,7 @@ public class PartieRessource {
 		Partie p = parties.get(idPartie);
 		ArrayList<String> actionsString = new ArrayList<String>();
 		Controle controleDuJour = p.getSemaineActuel().get(idJour);
+		System.out.println(controleDuJour);
 		
 		ArrayList<Action> actions = p.getActions(controleDuJour, pj);
 		for (Action a : actions) {
@@ -77,6 +78,8 @@ public class PartieRessource {
 		}
 		ObjetTransfert output = new ObjetTransfert();
 		output.setActions(actionsString);
+		
+		System.out.println(output.getActions());
 		return output;
 	}
 	
