@@ -187,6 +187,19 @@ public class PartieRessource {
 		return tchats.get(idPartie);
 	}
 	
+	@GET
+	@Path("{idPartie}/joueur/{idJoueur}/elimine")
+	public ObjetTransfert estElimine(
+			@PathParam("idPartie") int idPartie,
+			@PathParam("idJoueur") int idJoueur) {
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		Partie p = parties.get(idPartie);
+		
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setElimine(p.joueurElimine(pj));
+		return obj;
+	}
+	
 	
 //	@GET
 //	@Path("{idPartie}/joueur/{idJoueur}/bulletins")
