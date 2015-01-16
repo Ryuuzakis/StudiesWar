@@ -14,7 +14,8 @@ public class Partie {
 	private ArrayList<String> matieres = new ArrayList<String>();
 	private int numTour;
 	private Bulletin bulletin = new Bulletin();
-
+	private boolean estLancee=false;
+	
 	public static final int NB_JOUEURS = 5;
 	public static int nbControles = 4;
 	public Partie(){
@@ -49,6 +50,7 @@ public class Partie {
 	
 	public void lancerPartie() {
 		semaineActuelle=new HashMap<Integer, Controle>();
+		estLancee=true;
 		ajouterJoueursIA();
 		demarrerTour();
 	}
@@ -204,5 +206,9 @@ public class Partie {
 	public int getNumBulletin(){
 		return bulletin.getNumBulletin();
 	}
+	public boolean estLancee() {
+		return estLancee;
+	}
+	
 	
 }

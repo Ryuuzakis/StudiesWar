@@ -149,13 +149,10 @@ function getControles(idPartie) {
 }
 
 function afficheListControles(data) {
-	var html ='<ul>';
 	var index = 0;
 	for (index = 0; index < data.controles.length; ++index) {
-		html = html + "<li>" + data.controles[index] + "</li>";
+		$("#ctrl"+index+1).html("<h3>"+data.controles[index]+"</h3>");
 	}
-	html = html + "</ul>";
-	$("#controlesdiv").html(html);
 }
 
 
@@ -226,6 +223,7 @@ function afficherEdt () {
 	Hide('bulletins');
 
   	Show('edt');
+  	getControles(idPartie);
 }
 
 function retourAccueil(){

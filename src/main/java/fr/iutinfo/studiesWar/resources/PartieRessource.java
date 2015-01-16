@@ -2,6 +2,7 @@ package fr.iutinfo.studiesWar.resources;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -40,6 +41,34 @@ public class PartieRessource {
 		obj.setIdPartie(idPartie);
 		obj.setIdJoueur(idJoueur);
 		return obj;
+	}
+	
+	@GET
+	@Path("{name}/rejoindre")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ObjetTransfert rejoindrePartie(@PathParam("name") String name ) {
+		PersonnageJoueur pj = null;
+		int idPartie = 0;
+		int idJoueur = 0;
+		for(Map.Entry<Integer, Partie> e : parties.entrySet()) {
+			if (!e.getValue().estLancee()) {
+				idPartie = e.getKey();
+				idJoueur = joueurs.size();
+				pj = (PersonnageJoueur) Factory.getResource(Factory.JOUEUR, idJoueur);
+				pj.setNom(name);
+				joueurs.put(idJoueur, pj);
+				e.getValue().rejoindrePartie(pj);
+			}
+		}
+		if (pj == null)
+			return null;
+		//TODO : Verifier que si on renvoie null, on ouvre une popup disant qu'il n'y a pas de partie libre
+		
+		ObjetTransfert obj = new ObjetTransfert();
+		obj.setIdPartie(idPartie);
+		obj.setIdJoueur(idJoueur);
+		return obj;
+		
 	}
 	
 	@GET
@@ -145,5 +174,18 @@ public class PartieRessource {
 	public TchatTransfert updateTchat(@PathParam("idPartie") int idPartie) {
 		return tchats.get(idPartie);
 	}
+	
+	
+//	@GET
+//	@Path("{idPartie}/joueur/{idJoueur}/bulletins")
+//	public ObjetTransfert obtenirBulletins(
+//			@PathParam("idPartie") int idPartie,
+//			@PathParam("idJoueur") int idJoueur) {
+//		PersonnageJoueur pj = joueurs.get(idJoueur);
+//		Partie p = parties.get(idPartie);
+//		
+//		
+//		return null;
+//	}
 
 }
