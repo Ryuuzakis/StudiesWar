@@ -5,4 +5,5 @@ public class PersonnageJoueur extends Personnage {
 	public PersonnageJoueur() {
 		super();
 	}
+
 }

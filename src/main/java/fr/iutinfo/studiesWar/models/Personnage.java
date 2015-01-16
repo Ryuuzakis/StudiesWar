@@ -21,6 +21,7 @@ public abstract class Personnage {
 	private ArrayList<Effet> effets ;
 	protected ArrayList<Action> actions;
 	protected ArrayList<Action> actionPossibles;
+	private boolean aJoue = false;
 
 	
 	public Personnage(String s){
@@ -173,6 +174,14 @@ public abstract class Personnage {
 		} else if (!nom.equals(other.nom))
 			return false;
 		return true;
+	}
+
+	public boolean aJoue() {
+		return aJoue;
+	}
+
+	public void setaJoue(boolean aJoue) {
+		this.aJoue = aJoue;
 	}
 		
 	
