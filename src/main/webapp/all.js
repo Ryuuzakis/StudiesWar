@@ -4,6 +4,7 @@
 	var choix = [-1, -1, -1, -1, -1];
 
 function validerTour() {
+	document.getElementById("valider").style.visibility = "hidden" ;
 	$.ajax({
 		type : 'POST',
 		contentType : 'application/json',
@@ -157,12 +158,12 @@ function getResultats(idPartie) {
 }
 
 function afficheListResultats(data) {
-	var html ='<ul>';
+	var html ='<p id="result">';
 	var index = 0;
 	for (index = 0; index < data.resultats.length; ++index) {
-		html = html + "<li>" + data.resultats[index] + "</li>";
+		html = html + data.resultats[index] + "</br>";
 	}
-	html = html + "</ul>";
+	html = html + "</p>";
 	$("#bulletins").html(html);
 }
 
@@ -217,6 +218,7 @@ function lancerPartie() {
 			Show("partie");
 			Show("nav");
 			Hide("identification");
+			Hide("lancer");
 			getCaracteristiques(idJoueur);	
 		},
 		error : function(jqXHR, textStatus, errorThrown) {

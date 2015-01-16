@@ -15,6 +15,7 @@ public class Etudier extends Action {
 		this.puissance=puissance;
 		Random r = new Random();
 		int noteEtud = p.getStat("Etudier")/3 + 1;
+		System.out.println(noteEtud);
 		this.eff = (r.nextInt(noteEtud)*((r.nextInt(puissance)+1)));
 	}
 
