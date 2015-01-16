@@ -47,8 +47,12 @@ public abstract class Personnage {
 	public ArrayList<String> getStats(){
 		ArrayList<String> res = new ArrayList<String>();
 		for (Map.Entry<String, Integer> ch : stats.entrySet()) {
-			res.add("\t" + ch.getKey() + " : " + ch.getValue() + "\n");
+			if(!ch.getKey().equals("Triche") && !ch.getKey().equals("Etudier")){
+				res.add("\t" + ch.getKey() + " : " + ch.getValue() + "\n");
+			}
 		}
+		res.add("\t" + "Etudier" + " : " + stats.get("Etudier") + "\n");
+		res.add("\t" + "Triche" + " : " + stats.get("Triche") + "\n");
 		return res;
 	}
 	

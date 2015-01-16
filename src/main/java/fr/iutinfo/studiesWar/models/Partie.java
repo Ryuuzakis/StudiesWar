@@ -157,7 +157,13 @@ public class Partie {
 		for (Controle c : semaineActuelle.values()) {
 			String ch = c.getMatiere() + " : \n";
 			for (Map.Entry<Personnage, Note> res : c.getNotes().entrySet()) {
-				ch += "\t" + res.getKey().getNom() + " : " + res.getValue().getNote() + "\n";
+				
+				ch += "\t" + res.getKey().getNom() + " : ";
+				if(res.getValue().getNote()==-1){
+					ch+= "abs \n";
+				}else{
+					ch+= res.getValue().getNote() + "\n";
+				}
 			}
 			results.add(ch);
 		}
