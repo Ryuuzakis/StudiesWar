@@ -195,4 +195,8 @@ public class Partie {
 		return true;
 	}
 	
+	public int getNumBulletin(){
+		return bulletin.getNumBulletin();
+	}
+	
 }

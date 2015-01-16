@@ -21,6 +21,7 @@ public class PartieRessource {
 	
 	public static HashMap<Integer, Partie> parties= new HashMap<Integer, Partie>();
 	public static HashMap<Integer, PersonnageJoueur> joueurs = new HashMap<Integer, PersonnageJoueur>();
+	public static HashMap<Integer, TchatTransfert> tchats = new HashMap<Integer, TchatTransfert>();
 	
 	@GET
 	@Path("{name}/creer")
@@ -28,6 +29,7 @@ public class PartieRessource {
 	public ObjetTransfert creerPartie(@PathParam("name") String name ) {
 		int idPartie = parties.size();
 		parties.put(idPartie, (Partie) Factory.getResource(Factory.PARTIE, idPartie));
+		tchats.put(idPartie, new TchatTransfert());
 		int idJoueur = joueurs.size();
 		PersonnageJoueur pj = (PersonnageJoueur) Factory.getResource(Factory.JOUEUR, idJoueur);
 		pj.setNom(name);
@@ -124,6 +126,24 @@ public class PartieRessource {
 		ObjetTransfert obj = new ObjetTransfert();
 		obj.setResultats(p.getResultats());
 		return obj;
+	}
+	
+	@GET
+	@Path("{idPartie}/joueur/{idJoueur}/tchat/{reponse}")
+	public TchatTransfert ecrireDansTchat(
+			@PathParam("idPartie") int idPartie,
+			@PathParam("idJoueur") int idJoueur,
+			@PathParam("reponse") String reponse) {
+		
+		TchatTransfert tchat = tchats.get(idPartie);
+		PersonnageJoueur pj = joueurs.get(idJoueur);
+		return tchat.ajouterReponse(pj.getNom(), reponse);
+	}
+	
+	@GET
+	@Path("{idPartie}/tchat")
+	public TchatTransfert updateTchat(@PathParam("idPartie") int idPartie) {
+		return tchats.get(idPartie);
 	}
 
 }

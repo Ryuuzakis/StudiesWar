@@ -45,48 +45,45 @@
 			</div>
 				
 				
-				<div id="b2">
-					<p id="text"> Imaginez votre vie de tous les jours mais de façon beaucoup moins ... conventionnelle.</br>
-						Dans Studies War, vous incarnez un étudiant qui a, à chaque fin de semaine plusieurs de DS.</br>
-						Le but du jeu est d'être le dernier survivant de votre classe car a chaque fin de tour, un eleve quitte l'ecole. </br>
-						Vous etes le maillon faible, au revoir !</br>
-						Dans une partie, le joueur peut choisir de réviser pour ses cours ou ... tricher.</br>
-						Des evenements exceptionnels peuvent survenir tel que "le prof s'est fait renverser par un bus, le ds est annule".</br>
-						</br>
-						Si vous avez des questions ou des suggestions, cliquez sur le bouton "Contact" ci-dessous.</br>
-						</br>
-						Nom : 
-					</p><input type="text" name="user" id="user" placeholder="Nom ?"/></br>
-					<button  id="sub">Lancer une partie</button>
-					<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
-				</div>
+			<div id="b2">
+				<p id="text"> Imaginez votre vie de tous les jours mais de façon beaucoup moins ... conventionnelle.</br>
+					Dans Studies War, vous incarnez un étudiant qui a, à chaque fin de semaine plusieurs de DS.</br>
+					Le but du jeu est d'être le dernier survivant de votre classe car a chaque fin de tour, un eleve quitte l'ecole. </br>
+					Vous etes le maillon faible, au revoir !</br>
+					Dans une partie, le joueur peut choisir de réviser pour ses cours ou ... tricher.</br>
+					Des evenements exceptionnels peuvent survenir tel que "le prof s'est fait renverser par un bus, le ds est annule".</br>
+					</br>
+					Si vous avez des questions ou des suggestions, cliquez sur le bouton "Contact" ci-dessous.</br>
+					</br>
+					Nom : 
+				</p><input type="text" name="user" id="user" placeholder="Nom ?"/></br>
+				<button  id="sub">Lancer une partie</button>
+				<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
+			</div>
 			
-				<script type="text/javascript">
+			<script type="text/javascript">
 		
-					var element = document.getElementById('sub');
-					var nom = $('#user').val();
-					var idJoueur;
-					var idPartie;
-	
-	   				element.onclick=function() {
-	   					creerPartie($('#user').val());
-	   					lancerPartie();
-	   					 
-	   				};
-	   				
-	  			</script>
+				var element = document.getElementById('sub');
+				var nom = $('#user').val();
+				var idJoueur;
+				var idPartie;
+		   		element.onclick=function() {
+	  				creerPartie($('#user').val());
+	   				lancerPartie();			 
+	   			};		
+	  		</script>
   		
- 	 		</div>   <!-- fin de la division d'authentification -->
+ 	 	</div>   <!-- fin de la division d'authentification -->
 
 	
-			<nav id="nav">
-					<button onclick="retourAccueil()">Se deconnecter</button></br>
-					</br>
-					<button onclick="toggle('partie')">Profil</button></br>
-					<button onclick="afficherEdt()">Emploi du temps</button></br>
-					<button onclick="toggle('bulletins')">Bulletins</button></br>
-					<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
-			</nav>
+		<nav id="nav">
+			<button onclick="retourAccueil()">Se deconnecter</button></br>
+			</br>
+			<button onclick="toggle('partie')">Profil</button></br>
+			<button onclick="afficherEdt()">Emploi du temps</button></br>
+			<button onclick="toggle('bulletins')">Bulletins</button></br>
+			<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
+		</nav>
 			
 			<section id="edt">
 				
@@ -120,10 +117,14 @@
 	
 	
 	
-	  		<section id="partie">
+	  	<section id="partie">
 	  
 			<h2>Vos Stats :</h2>
-					
+			
+			<div id='stat'>
+			
+			
+			</div>		
 				
 	
 	
