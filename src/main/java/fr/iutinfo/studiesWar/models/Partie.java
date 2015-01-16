@@ -15,7 +15,7 @@ public class Partie {
 	private int numTour;
 	private Bulletin bulletin = new Bulletin();
 
-	public static final int NB_JOUEURS = 10;
+	public static final int NB_JOUEURS = 5;
 	public static final int NB_CONTROLES = 4;
 	public Partie(){
 		this.numTour=0;
