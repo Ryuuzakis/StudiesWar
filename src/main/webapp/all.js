@@ -274,6 +274,7 @@ function lancerPartie() {
 
 function rejoindrePartie() {
 	$.ajax({
+		console.log("rejoindre partie");
 		type : 'GET',
 		contentType : 'application/json',
 		url : "v1/partie/"+data+"/rejoindre",
