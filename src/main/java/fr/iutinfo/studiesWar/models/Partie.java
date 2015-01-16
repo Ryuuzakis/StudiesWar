@@ -14,7 +14,8 @@ public class Partie {
 	private ArrayList<String> matieres = new ArrayList<String>();
 	private int numTour;
 	private Bulletin bulletin = new Bulletin();
-
+	private boolean estLancee=false;
+	
 	public static final int NB_JOUEURS = 5;
 	public static int nbControles = 4;
 	public Partie(){
@@ -49,6 +50,7 @@ public class Partie {
 	
 	public void lancerPartie() {
 		semaineActuelle=new HashMap<Integer, Controle>();
+		estLancee=true;
 		ajouterJoueursIA();
 		demarrerTour();
 	}
@@ -64,7 +66,7 @@ public class Partie {
 	 */
 	public void demarrerTour(){
 		semaineActuelle.clear();
-		nbControles = (int) (Math.random() * 2 + 3);
+		nbControles = (int) (Math.random() * 3 + 3);
 		this.setNumTour(this.getNumTour()+1);
 		for(Personnage p : this.personnes){
 			p.setPA(p.getPA()/2+5);
@@ -157,7 +159,13 @@ public class Partie {
 		for (Controle c : semaineActuelle.values()) {
 			String ch = c.getMatiere() + " : \n";
 			for (Map.Entry<Personnage, Note> res : c.getNotes().entrySet()) {
-				ch += "\t" + res.getKey().getNom() + " : " + res.getValue().getNote() + "\n";
+				
+				ch += "\t" + res.getKey().getNom() + " : ";
+				if(res.getValue().getNote()==-1){
+					ch+= "abs \n";
+				}else{
+					ch+= res.getValue().getNote() + "\n";
+				}
 			}
 			results.add(ch);
 		}
@@ -198,5 +206,9 @@ public class Partie {
 	public int getNumBulletin(){
 		return bulletin.getNumBulletin();
 	}
+	public boolean estLancee() {
+		return estLancee;
+	}
+	
 	
 }

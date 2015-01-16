@@ -3,6 +3,26 @@
 	var jour;
 	var choix = [-1, -1, -1, -1, -1];
 
+function validerTour() {
+	$.ajax({
+		type : 'POST',
+		contentType : 'application/json',
+		url : "v1/partie/"+idPartie+"/joueur/"+idJoueur+"/sendaction",
+		dataType : "json",
+		data : JSON.stringify({
+			"actions" : choix
+		}),
+		success : function(data, textStatus, jqXHR) {
+			console.log("ca marche");
+			
+			afficherBulletin();
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('postUser error: ' + textStatus);
+		}
+	});
+}
+
 function getUser(name) {
 	$.getJSON("v1/user/" + name, function(data) {
 		afficheUser(data)
@@ -98,19 +118,24 @@ function action (index, nbrAction) {
 	document.getElementById('action'+index).style.color= "red";
 	
 	if (jour == 1) {
-		document.getElementById('lundi').style.backgroundColor= "green";	
+		document.getElementById('lundi').style.backgroundColor= "green";
+		document.getElementById('ctrl1').style.backgroundColor= "green";	
 	}
 	if (jour == 2) {
 		document.getElementById('mardi').style.backgroundColor= "green";	
+		document.getElementById('ctrl2').style.backgroundColor= "green";	
 	}
 	if (jour == 3) {
 		document.getElementById('mercredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl3').style.backgroundColor= "green";	
 	}
 	if (jour == 4) {
 		document.getElementById('jeudi').style.backgroundColor= "green";	
+		document.getElementById('ctrl4').style.backgroundColor= "green";	
 	}
 	if (jour == 5) {
 		document.getElementById('vendredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl5').style.backgroundColor= "green";	
 	}
 	
 	var cpt=0;
@@ -150,13 +175,10 @@ function getControles(idPartie) {
 }
 
 function afficheListControles(data) {
-	var html ='<ul>';
 	var index = 0;
 	for (index = 0; index < data.controles.length; ++index) {
-		html = html + "<li>" + data.controles[index] + "</li>";
+		$("#ctrl"+(index+1)).html("<h3>"+data.controles[index]+"</h3>");
 	}
-	html = html + "</ul>";
-	$("#controlesdiv").html(html);
 }
 
 
@@ -206,7 +228,6 @@ function lancerPartie() {
 
 /*Fonction qui cree la partie*/
 function creerPartie(data) {
-	alert(nom);
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
@@ -227,6 +248,7 @@ function afficherEdt () {
 	Hide('bulletins');
 
   	Show('edt');
+  	getControles(idPartie);
 }
 
 function retourAccueil(){
