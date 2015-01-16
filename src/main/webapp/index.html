@@ -57,22 +57,14 @@
 					</br>
 					Nom : 
 				</p><input type="text" name="user" id="user" placeholder="Nom ?"/></br>
-				<button  id="sub">Lancer une partie</button>
+				<button  id="sub" onclick="creerPartie($('#user').val())">Creer une partie</button>	
+				<button  id="sub">Rejoindre une partie</button></br>
+				<button  id="lancer" onclick='lancerPartie()'>Lancer la partie</button>
+				
 				<a href="mailto:floguilbert@gmail.com"><button>Contacts</button></A></br>
 			</div>
 			
-			<script type="text/javascript">
-		
-				var element = document.getElementById('sub');
-				var nom = $('#user').val();
-				var idJoueur;
-				var idPartie;
-		   		element.onclick=function() {
-	  				creerPartie($('#user').val());
-	   				lancerPartie();			 
-	   			};		
-	  		</script>
-  		
+			
  	 	</div>   <!-- fin de la division d'authentification -->
 
 	
