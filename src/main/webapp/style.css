@@ -120,6 +120,24 @@ nav {
 	background-color:red;
 }
 
+.ctrl {
+	position:absolute;
+	height:100%;
+	width : 100%;
+	left: 18%;
+	top: 0%;
+}
+
+.ctrl2{
+	margin-top: 0%;
+	margin-left: 5%;
+	height:20%;
+	width : 12%;
+	border-width:2px; 
+	border-style:solid; 
+	border-color:white;
+}
+
 #choix {
 	position:absolute;
 	width : 25%;
