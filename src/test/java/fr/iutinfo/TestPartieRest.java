@@ -36,13 +36,15 @@ public class TestPartieRest extends JerseyTest {
 	@Test
 	public void testLancerPartie() {
 		String name = "Clavier";
-		ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
-
-		target("partie/" + obj.getIdPartie() + "/lancer").request().get();
-		Partie p = PartieRessource.parties.get(obj.getIdPartie());
-		assertTrue(p.getNumTour() > 0);
-		assertEquals(Partie.NB_CONTROLES, p.getSemaineActuelle().size());
-		assertEquals(Partie.NB_JOUEURS, p.getPersonnes().size());
+		for(int i = 0; i < 30; i++) {
+			ObjetTransfert obj = target("/partie/"+name+"/creer").request().get(ObjetTransfert.class);
+	
+			target("partie/" + obj.getIdPartie() + "/lancer").request().get();
+			Partie p = PartieRessource.parties.get(obj.getIdPartie());
+			assertTrue(p.getNumTour() > 0);
+			assertEquals(Partie.NB_CONTROLES, p.getSemaineActuelle().size());
+			assertEquals(Partie.NB_JOUEURS, p.getPersonnes().size());
+		}
 	}
 
 	@Test
@@ -92,6 +94,7 @@ public class TestPartieRest extends JerseyTest {
 					idxDoNothing--;
 				assertNotEquals(-1, idxDoNothing);
 			}
+			System.out.println();
 		}
 	}
 
