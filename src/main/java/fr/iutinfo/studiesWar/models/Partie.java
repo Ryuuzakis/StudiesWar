@@ -115,11 +115,11 @@ public class Partie {
 			moy.put(p,moyen);
 		}
 		ArrayList<Map.Entry<Personnage,Double>> list=new ArrayList<Map.Entry<Personnage,Double>>();
+		
+		
 		for(Map.Entry<Personnage,Double> entry : moy.entrySet()){
 			list.add(entry);
 		}
-		bulletin.addResult(this);
-		
 		Collections.sort(list,new Comparator<Map.Entry<Personnage,Double>>() {
 			@Override
 			public int compare(Map.Entry<Personnage, Double> e1,Map.Entry<Personnage, Double> e2) {
@@ -131,6 +131,10 @@ public class Partie {
 				return 0;
 			}
 		});
+		
+		bulletin.addResult(this);
+		
+		elimine(list.get(list.size() - 1).getKey());
 	}
 	
 	

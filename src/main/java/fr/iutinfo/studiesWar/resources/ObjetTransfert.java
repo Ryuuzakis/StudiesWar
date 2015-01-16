@@ -21,6 +21,7 @@ public class ObjetTransfert {
 	private List<String> resultats;
 	private List<String> controles;
 	private List<String> caracs;
+	private boolean elimine;
 	
 	public List<String> getActions() {
 		return actions;
@@ -75,6 +76,14 @@ public class ObjetTransfert {
 
 	public void setCaracs(List<String> caracs) {
 		this.caracs = caracs;
+	}
+
+	public boolean isElimine() {
+		return elimine;
+	}
+
+	public void setElimine(boolean elimine) {
+		this.elimine = elimine;
 	}
 	
 }
