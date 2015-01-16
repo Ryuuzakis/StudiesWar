@@ -15,8 +15,10 @@ public class PersonnageIA extends Personnage {
 		for(Controle c : partie.getSemaineActuelle().values()){
 			actions.add(getActionduControle(c).get(new Random().nextInt(getActionduControle(c).size())));
 		}
+		for(Action a : actions){
+			a.agit();
+		}
 		setaJoue(true);
-		
 	}
 
 }
