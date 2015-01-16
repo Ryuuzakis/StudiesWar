@@ -273,6 +273,43 @@ function afficherEdt () {
 
   	Show('edt');
   	getControles(idPartie);
+  	
+  	if (choix[0] != -1) {
+		document.getElementById('lundi').style.backgroundColor= "green";
+		document.getElementById('ctrl1').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('lundi').style.backgroundColor= "red";
+		document.getElementById('ctrl1').style.backgroundColor= "red";
+	}
+	if (choix[1] != -1) {
+		document.getElementById('mardi').style.backgroundColor= "green";	
+		document.getElementById('ctrl2').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('mardi').style.backgroundColor= "red";
+		document.getElementById('ctrl2').style.backgroundColor= "red";
+	}
+	if (choix[2] != -1) {
+		document.getElementById('mercredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl3').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('mercredi').style.backgroundColor= "red";	
+		document.getElementById('ctrl3').style.backgroundColor= "red";	
+	}
+	if (choix[3] != -1) {
+		document.getElementById('jeudi').style.backgroundColor= "green";	
+		document.getElementById('ctrl4').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('jeudi').style.backgroundColor= "red";	
+		document.getElementById('ctrl4').style.backgroundColor= "red";
+	}
+	if (choix[4] != -1) {
+		document.getElementById('vendredi').style.backgroundColor= "green";	
+		document.getElementById('ctrl5').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('vendredi').style.backgroundColor= "red";	
+		document.getElementById('ctrl5').style.backgroundColor= "red";
+	}
+	document.getElementById("choix").innerHTML = "";
 }
 
 function afficherBulletin () {
