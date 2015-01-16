@@ -14,6 +14,8 @@ function validerTour() {
 		}),
 		success : function(data, textStatus, jqXHR) {
 			console.log("ca marche");
+			
+			afficherBulletin();
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);

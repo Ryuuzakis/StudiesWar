@@ -138,7 +138,7 @@ public class PartieRessource {
 		PersonnageJoueur pj = joueurs.get(idJoueur);
 		Partie p = parties.get(idPartie);
 		for (int i = 0; i < tab.getActions().length; i++) {
-			Controle controle = p.getSemaineActuelle().get(i);
+			Controle controle = p.getSemaineActuelle().get(i+1);
 			ArrayList<Action> actions = p.getActions(controle, pj);
 			Action a = actions.get(tab.getActions()[i]);
 			a.agit();
