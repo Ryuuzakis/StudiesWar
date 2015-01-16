@@ -192,13 +192,12 @@ function getResultats(idPartie) {
 }
 
 function afficheListResultats(data) {
-	var html ='<p id="result">';
+	var html ="";
 	var index = 0;
 	for (index = 0; index < data.resultats.length; ++index) {
 		html = html + data.resultats[index] + "</br>";
 	}
-	html = html + "</p>";
-	$("#bulletins").html(html);
+	$("#result").html(html);
 }
 
 function getControles(idPartie) {
@@ -272,9 +271,9 @@ function lancerPartie() {
 }
 
 
-function rejoindrePartie() {
+function rejoindrePartie(data) {
+	console.log('rejoindre partie');
 	$.ajax({
-		console.log("rejoindre partie");
 		type : 'GET',
 		contentType : 'application/json',
 		url : "v1/partie/"+data+"/rejoindre",
