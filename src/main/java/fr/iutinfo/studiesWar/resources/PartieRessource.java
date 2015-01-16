@@ -144,8 +144,10 @@ public class PartieRessource {
 			a.agit();
 		}
 		pj.setaJoue(true);
-		if (p.tourEstTermine())
+		if (p.tourEstTermine()) {
 			parties.get(idPartie).finDuTour();
+			parties.get(idPartie).demarrerTour();
+		}
 	}
 	
 	@GET
