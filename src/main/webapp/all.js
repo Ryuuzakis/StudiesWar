@@ -214,9 +214,19 @@ function afficheListControles(data) {
 	}
 }
 
+function getEstVire() {
+	var path = "v1/partie/" + idPartie + "/idJoueur/"+ idJoueur + "/elimine";
+	$.getJSON(path, function(data) {
+		afficheElimine(data)
+	});
+}
+
+function afficheElimine(data) {
+	document.getElementById("result").html(data.elimine + "test");
+}
 
 function afficheListUsers(data) {
-	var html = '<ul>';
+	var html = '<ul>';ô
 	var index = 0;
 	for (index = 0; index < data.length; ++index) {
 		html = html + "<li>" + index + " : " + data[index].name + "</li>";
