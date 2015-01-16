@@ -96,7 +96,8 @@ public abstract class Personnage {
 	
 	public void genererActions(Partie partie){
 		actionPossibles.clear();
-		
+		actions.clear();
+		effets.clear();
 		for(Controle c : partie.getSemaineActuelle().values()){
 
 			//if (this.getPA() >= 1) {
@@ -115,8 +116,6 @@ public abstract class Personnage {
 
 			actionPossibles.add(new Absence(this, c,"simuler une gastro"));
 		}
-		
-		
 
 	}
 	
@@ -186,6 +185,11 @@ public abstract class Personnage {
 
 	public void setaJoue(boolean aJoue) {
 		this.aJoue = aJoue;
+	}
+
+	@Override
+	public String toString() {
+		return "Personnage [nom=" + nom + "]";
 	}
 		
 	

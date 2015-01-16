@@ -44,4 +44,16 @@ public class PartieTest {
 		}
 	}
 
+	@Test
+	public void testPartie() {
+		Partie p = new Partie();
+		PersonnageJoueur pj = new PersonnageJoueur();
+		pj.setNom("toto");
+		p.rejoindrePartie(pj);
+		p.lancerPartie();
+		p.demarrerTour();
+		p.finDuTour();
+		p.demarrerTour();
+		p.finDuTour();
+	}
 }
