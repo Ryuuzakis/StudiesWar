@@ -15,7 +15,7 @@ public class Bulletin {
 	}
 	
 	public ArrayList<Controle> getResult(int semaine){
-		return bulletin.get(semaine);
+		return bulletin.get(semaine - 1);
 	}
 	
 	public int getNumBulletin(){

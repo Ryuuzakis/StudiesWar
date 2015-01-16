@@ -164,7 +164,7 @@ function afficheListResultats(data) {
 		html = html + "<li>" + data.resultats[index] + "</li>";
 	}
 	html = html + "</ul>";
-	$("#resultsdiv").html(html);
+	$("#bulletins").html(html);
 }
 
 function getControles(idPartie) {
@@ -226,6 +226,12 @@ function lancerPartie() {
 	});
 }
 
+
+function rejoindrePartie() {
+
+}
+
+
 /*Fonction qui cree la partie*/
 function creerPartie(data) {
 	$.ajax({
@@ -235,12 +241,14 @@ function creerPartie(data) {
 		success : function(data, textStatus, jqXHR) {
 			idJoueur = data.idJoueur;
 			idPartie = data.idPartie;
+			document.getElementById('lancer').style.visibility = "visible";
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error lancer: ' + textStatus);
 		}
 	});
 }
+
 
 function afficherEdt () {
 	Hide('identification');
@@ -249,6 +257,15 @@ function afficherEdt () {
 
   	Show('edt');
   	getControles(idPartie);
+}
+
+function afficherBulletin () {
+	Hide('identification');
+	Hide('partie');
+	Hide('edt');
+  	Show('bulletins');
+
+  	getResultats(idPartie);
 }
 
 function retourAccueil(){

@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import fr.iutinfo.studiesWar.models.Controle;
 import fr.iutinfo.studiesWar.models.Factory;
 import fr.iutinfo.studiesWar.models.Partie;
+import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 import fr.iutinfo.studiesWar.models.action.Action;
 
@@ -154,10 +155,17 @@ public class PartieRessource {
 	@Path("{idPartie}/resultats")
 	public ObjetTransfert obtenirResultats(@PathParam("idPartie") int idPartie) {
 		Partie p = parties.get(idPartie);
-		if (!p.tourEstTermine())
-			return null;
 		ObjetTransfert obj = new ObjetTransfert();
-		obj.setResultats(p.getResultats());
+		ArrayList<String> resultats = new ArrayList<String>();
+		for (Personnage perso : p.getPersonnes()) {
+			String res = perso.getNom() + " -> ";
+			for (String s : p.getResultatsSemaine(p.getNumTour() - 1, perso)) {
+				res += s + "  ";
+			}
+			resultats.add(res);
+		}
+		obj.setResultats(resultats);
+		
 		return obj;
 	}
 	
