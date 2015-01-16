@@ -17,6 +17,7 @@ function validerTour() {
 			console.log("ca marche");
 			
 			afficherBulletin();
+			choix = [-1, -1, -1, -1, -1];
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('postUser error: ' + textStatus);
@@ -61,12 +62,11 @@ function listUsers() {
 	});
 }
 function getActions(idJour) {
-	alert('getActions ' + idJour);
 	jour=idJour;
 	
 	var path = "v1/partie/" + idPartie + "/joueur/" + idJoueur + "/jour/" + idJour;
 	$.getJSON(path, function(data) {
-		alert(JSON.stringify(data, null, 4));
+		//alert(JSON.stringify(data, null, 4));
 		afficheListActions(data, idJour)
 	});
 }
@@ -79,7 +79,6 @@ function getCaracteristiques(idJoueur) {
 }
 
 function afficheListCaracs(data) {
-	alert(data);
 	var html ="<p id='listCarac'>";
 	var index = 0;
 	for (index = 0; index < data.caracs.length; ++index) {
@@ -118,25 +117,40 @@ function action (index, nbrAction) {
 	
 	document.getElementById('action'+index).style.color= "red";
 	
-	if (jour == 1) {
+	if (choix[0] != -1) {
 		document.getElementById('lundi').style.backgroundColor= "green";
 		document.getElementById('ctrl1').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('lundi').style.backgroundColor= "red";
+		document.getElementById('ctrl1').style.backgroundColor= "red";
 	}
-	if (jour == 2) {
+	if (choix[1] != -1) {
 		document.getElementById('mardi').style.backgroundColor= "green";	
 		document.getElementById('ctrl2').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('mardi').style.backgroundColor= "red";
+		document.getElementById('ctrl2').style.backgroundColor= "red";
 	}
-	if (jour == 3) {
+	if (choix[2] != -1) {
 		document.getElementById('mercredi').style.backgroundColor= "green";	
 		document.getElementById('ctrl3').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('mercredi').style.backgroundColor= "red";	
+		document.getElementById('ctrl3').style.backgroundColor= "red";	
 	}
-	if (jour == 4) {
+	if (choix[3] != -1) {
 		document.getElementById('jeudi').style.backgroundColor= "green";	
 		document.getElementById('ctrl4').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('jeudi').style.backgroundColor= "red";	
+		document.getElementById('ctrl4').style.backgroundColor= "red";
 	}
-	if (jour == 5) {
+	if (choix[4] != -1) {
 		document.getElementById('vendredi').style.backgroundColor= "green";	
 		document.getElementById('ctrl5').style.backgroundColor= "green";	
+	} else {
+		document.getElementById('vendredi').style.backgroundColor= "red";	
+		document.getElementById('ctrl5').style.backgroundColor= "red";
 	}
 	
 	var cpt=0;
@@ -209,7 +223,7 @@ function Show (addr) {
 
 
 function lancerPartie() {
-	alert('Id partie' + idPartie);
+	alert('Partie lancée');
 	$.ajax({
 		type : 'GET',
 		contentType : 'application/json',
