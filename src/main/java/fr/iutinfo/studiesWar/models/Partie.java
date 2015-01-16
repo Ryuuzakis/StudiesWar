@@ -188,5 +188,9 @@ public class Partie {
 		}
 		return res;
 	}
+	public boolean tourEstTermine() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

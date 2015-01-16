@@ -111,7 +111,9 @@ public class PartieRessource {
 			Action a = actions.get(tab.getActions()[i]);
 			a.agit();
 		}
-		parties.get(idPartie).finDuTour();
+		pj.setaJoue(true);
+		if (p.tourEstTermine())
+			parties.get(idPartie).finDuTour();
 	}
 	
 	@GET
