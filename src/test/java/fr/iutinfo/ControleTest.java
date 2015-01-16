@@ -12,6 +12,7 @@ import fr.iutinfo.studiesWar.models.Personnage;
 import fr.iutinfo.studiesWar.models.PersonnageJoueur;
 import fr.iutinfo.studiesWar.models.action.Absence;
 import fr.iutinfo.studiesWar.models.action.Action;
+import fr.iutinfo.studiesWar.models.action.Etudier;
 
 
 public class ControleTest {
@@ -71,33 +72,33 @@ public class ControleTest {
 
 	}
 
-	/**
-	 * Verifie que les etudes depensent bien un point d'action
-	 */
 	@Test
 	public void test4() {
-//		int i =0;
-//		while(i<100){
-//
-//			Partie p=new Partie(0, 0);
-//
-//			Personnage p1=new PersonnageJoueur();
-//
-//			p.rejoinPartie(p1);
-//
-//			Action a1 = new Etudier(p1,new Controle("", p, (byte)1),3,"Test");
-//
-//			a1.agit();
-//			
-//			System.out.println(p.getResultatsSemaine(0, p1));
-//			
-//			
-//
-//			//assertTrue(p1.getPA()==2);
-//			
-//			i++;
-//
-//		}
+		int i =0;
+
+		Partie p=new Partie();
+
+		Personnage p1=new PersonnageJoueur();
+		Personnage p2=new PersonnageJoueur();
+		Personnage p3=new PersonnageJoueur();
+		Personnage p4=new PersonnageJoueur();
+
+		p.rejoindrePartie(p1);
+		p.rejoindrePartie(p2);
+		p.rejoindrePartie(p3);
+		p.rejoindrePartie(p4);
+		
+		p.demarrerTour();
+		
+		p.finDuTour();
+		
+		p.demarrerTour();
+		
+		p.finDuTour();
+		
+		System.out.println(p.getResultatsSemaine(0, p1));
+		System.out.println(p.getResultatsSemaine(1, p1));
+
 	}
 
 }

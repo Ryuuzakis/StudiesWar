@@ -16,7 +16,7 @@ public class Partie {
 	private Bulletin bulletin = new Bulletin();
 
 	public static final int NB_JOUEURS = 5;
-	public static final int NB_CONTROLES = 4;
+	public static int nbControles = 4;
 	public Partie(){
 		this.numTour=0;
 		this.personnes=new ArrayList<Personnage>();
@@ -64,12 +64,15 @@ public class Partie {
 	 */
 	public void demarrerTour(){
 		semaineActuelle.clear();
+		nbControles = (int) (Math.random() * 2 + 3);
 		this.setNumTour(this.getNumTour()+1);
 		for(Personnage p : this.personnes){
 			p.setPA(p.getPA()/2+5);
 		}
 		ArrayList<String> tmpMatieres = new ArrayList<String>();
-		tmpMatieres.addAll(matieres);
+		for (int i = 0; i < matieres.size() - 2; i++)
+			tmpMatieres.add(matieres.get(i));
+		
 		ArrayList<Integer> dates = new ArrayList<Integer>();
 		dates.add(1);
 		dates.add(2);
@@ -77,7 +80,7 @@ public class Partie {
 		dates.add(4);
 		dates.add(5);
 		
-		for (int i = 0; i < NB_CONTROLES; i++) {
+		for (int i = 0; i < nbControles; i++) {
 			int idxMatiere = (int) (Math.random() * tmpMatieres.size());
 			int idxJour = (int) (Math.random() * dates.size());
 			Controle controle = new Controle(tmpMatieres.remove(idxMatiere),
@@ -113,7 +116,6 @@ public class Partie {
 		for(Map.Entry<Personnage,Double> entry : moy.entrySet()){
 			list.add(entry);
 		}
-		
 		bulletin.addResult(this);
 		
 		Collections.sort(list,new Comparator<Map.Entry<Personnage,Double>>() {
@@ -184,6 +186,17 @@ public class Partie {
 			res.add(bulletin.getResult(semaine).get(i).toString(p));
 		}
 		return res;
+	}
+	public boolean tourEstTermine() {
+		for(Personnage p : personnes){
+			if(!p.aJoue())
+				return false;
+		}
+		return true;
+	}
+	
+	public int getNumBulletin(){
+		return bulletin.getNumBulletin();
 	}
 	
 }
